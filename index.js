@@ -6,7 +6,7 @@ class iroChanClient extends AkairoClient {
 
     constructor() {
         super({
-            ownerID: process.env.owner,
+            ownerID: config.owner,
             presence: {
                 status: 'online',
                 activity: {

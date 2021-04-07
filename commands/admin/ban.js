@@ -57,7 +57,7 @@ class BanCommand extends Command {
             member = message.mentions.members.first();
 
             // Send a dm to the banned member
-            await member.send(`You have been banned from **${message.guild.name}** for the following reasons: "**${reason}**"`, {files: ['./asset/img/yoshi-you-have-been-banned.gif']})
+            await member.send(`You have been banned from **${message.guild.name}** for the following reasons: "**${reason}**"`, {files: ['./asset/gif/yoshi-you-have-been-banned.gif']})
                 .catch(() => console.log("I couldn't send message to that user"));
 
             // Ban the member from the guild

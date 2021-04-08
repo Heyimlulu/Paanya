@@ -11,7 +11,7 @@ class iroChanClient extends AkairoClient {
                 status: 'online',
                 activity: {
                     type: 'PLAYING',
-                    name: 'Loading simulator...',
+                    name: 'Getting everything ready...',
                 }
             }
         });

@@ -48,12 +48,11 @@ class CuteCommand extends Command {
                 .setDescription(`I guess **${member.user.username}** is **${guess}**`)
                 .setThumbnail(member.user.displayAvatarURL())
                 .setColor("RANDOM")
-
             message.channel.send(Embed);
 
         } else { // ELSE => after first prompt message
 
-            console.log(this.client.users.resolve(`${args.member}`));
+            message.channel.send('You did not mentionned a user');
 
         }
 

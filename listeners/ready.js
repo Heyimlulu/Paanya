@@ -16,12 +16,13 @@ class readyListener extends Listener {
         let guildSize = this.client.guilds.cache.size; // Bot ID
         let userSize = this.client.users.cache.size; // Total users
         let channelSize = this.client.channels.cache.size; // Total channels
+        let commandSize = this.client.commandHandler.modules.size; // Total commands
         let clientID = this.client.user.id; // Total servers
 
         //  Send stats to the console
         console.log('===========[ READY ]===========');
         console.log(`\x1b[32mLogged in as \x1b[34m${clientTag}\x1b[0m! (\x1b[33m${clientID}\x1b[0m)`);
-        console.log(`Ready to serve in \x1b[33m${channelSize}\x1b[0m channels on \x1b[33m${guildSize}\x1b[0m servers, for a total of \x1b[33m${userSize}\x1b[0m users.`);
+        console.log(`Ready to serve in \x1b[33m${channelSize}\x1b[0m channels on \x1b[33m${guildSize}\x1b[0m servers, for a total of \x1b[33m${userSize}\x1b[0m users. (\x1b[33m${commandSize}\x1b[0m commands loaded)`);
         console.log(`${this.client.readyAt}`);
         console.log('===========[ READY ]===========');
 

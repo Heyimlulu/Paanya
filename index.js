@@ -47,4 +47,4 @@ class iroChanClient extends AkairoClient {
 
 const client = new iroChanClient();
 
-client.login(process.env.token);
+client.login(process.env.TOKEN);

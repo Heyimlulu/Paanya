@@ -52,7 +52,7 @@ class CuteCommand extends Command {
 
         } else { // ELSE => after first prompt message
 
-            message.channel.send('You did not mentionned a user');
+            message.reply('You did not mentionned a user!');
 
         }
 

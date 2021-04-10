@@ -4,12 +4,12 @@ const gclient = new textToSpeech.TextToSpeechClient();
 const fs = require('fs');
 const os = require('os');
 
-class TTSCommand extends Command {
+class TTSVcCommand extends Command {
     constructor() {
-        super('tts', {
-            aliases: ['tts'],
+        super('ttsvc', {
+            aliases: ['ttsvc'],
             category: 'fun',
-            clientPermissions: ['ATTACH_FILES'],
+            clientPermissions: ['SPEAK'],
             args: [
                 {
                     id: 'text',
@@ -21,7 +21,7 @@ class TTSCommand extends Command {
                 }
             ],
             description: {
-                content: 'Send you a mp3 file of what you wrote in chat',
+                content: 'Say what you wrote in a voice channel',
                 usage: '[text]',
                 examples: ['text']
             }
@@ -53,7 +53,7 @@ class TTSCommand extends Command {
             console.log(response);
 
             // Write the binary audio content to a local file
-            fs.writeFile(output, response.audioContent, 'binary', err => {
+            fs.writeFile(output, response.audioContent, 'binary', async err => {
                 if (err) {
 
                     console.error('ERROR:', err);
@@ -62,8 +62,25 @@ class TTSCommand extends Command {
 
                 }
 
-                console.log('Audio content written to file: tts.mp3');
-                message.channel.send({ files: [output] });
+                const voiceChannel = message.member.voice.channel;
+
+                if (!voiceChannel) return message.channel.send('You must be in a voice channel first');
+
+                try {
+
+                    const connection = await voiceChannel.join();
+                    const dispatcher = connection.play(output);
+                    dispatcher.once('finish', () => voiceChannel.leave());
+                    dispatcher.once('error', () => voiceChannel.leave());
+                    return null;
+
+                } catch (err) {
+
+                    voiceChannel.leave();
+                    return message.reply(`Oh no, an error occurred: \`${err.message}\`.`);
+
+                }
+
             });
 
         });
@@ -71,4 +88,4 @@ class TTSCommand extends Command {
     }
 }
 
-module.exports = TTSCommand;
+module.exports = TTSVcCommand;

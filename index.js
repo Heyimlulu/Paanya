@@ -18,7 +18,17 @@ class iroChanClient extends AkairoClient {
 
         this.commandHandler = new CommandHandler(this, {
             directory: './commands/',
-            prefix: config.prefix
+            prefix: config.prefix,
+            argumentDefaults: {
+                prompt: {
+                    timeout: 'Time ran out, command has been cancelled.',
+                    ended: 'Too many retries, command has been cancelled.',
+                    retry: 'Could not find your argument, please try again!',
+                    cancel: 'Command has been cancelled.',
+                    retries: 4,
+                    time: 30000
+                }
+            }
         });
 
         this.inhibitorHandler = new InhibitorHandler(this, {
@@ -32,7 +42,8 @@ class iroChanClient extends AkairoClient {
         this.listenerHandler.setEmitters({
             commandHandler: this.commandHandler,
             inhibitorHandler: this.inhibitorHandler,
-            listenerHandler: this.listenerHandler
+            listenerHandler: this.listenerHandler,
+            process: process
         });
 
         this.commandHandler.useInhibitorHandler(this.inhibitorHandler);

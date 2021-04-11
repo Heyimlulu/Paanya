@@ -1,5 +1,7 @@
 const { Command } = require('discord-akairo');
 const Discord = require('discord.js');
+const feedbackID = require('../../json/feedbackID.json');
+const { prefix } = require('../../config.json');
 
 class DmCommand extends Command {
     constructor() {
@@ -20,7 +22,8 @@ class DmCommand extends Command {
                     type: 'string',
                     prompt: {
                         start: 'What do you want to say to that user?'
-                    }
+                    },
+                    match: 'rest'
                 }
             ],
             description: {
@@ -33,6 +36,16 @@ class DmCommand extends Command {
 
     exec(message, args) {
 
+        function uuidv4() {
+            return 'xxxxxxxxx'.replace(/[x]/g, function(c) {
+                var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+                return v.toString(16);
+            });
+        }
+
+        const uuid = uuidv4();
+        feedbackID[uuid] = args.text;
+
         let user = this.client.users.resolve(args.user);
         if (!user) return message.channel.send('Not a valid user ID');
         let text = args.text;
@@ -41,6 +54,7 @@ class DmCommand extends Command {
             .setTitle('You got a message from the developer')
             .setDescription(text)
             .setAuthor(`${message.author.tag}`, `${message.author.displayAvatarURL()}`)
+            .setFooter(`If you wish to respond use the following command: ${prefix}feedback --reply ${uuid} <\message\>`)
             .setTimestamp()
 
         let Attachment = (message.attachments).array();

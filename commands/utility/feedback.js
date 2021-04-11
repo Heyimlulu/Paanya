@@ -1,5 +1,6 @@
 const { Command } = require('discord-akairo');
 const Discord = require('discord.js');
+const feedbackID = require('../../json/feedbackID.json');
 
 class FeedbackCommand extends Command {
     constructor() {
@@ -15,6 +16,11 @@ class FeedbackCommand extends Command {
                         start: 'What do you want to send to the developer?'
                     },
                     match: 'rest'
+                },
+                {
+                    id: 'reply',
+                    match: 'option',
+                    flag: '--reply'
                 }
             ],
             description: {
@@ -35,7 +41,12 @@ class FeedbackCommand extends Command {
             embed.addField('Guild', `${message.guild.name} (${message.guild.id})`, true);
         }
 
-        embed.addField('You got a new feedback!', args.text);
+        embed.setTitle('You got a new feedback!')
+            .setDescription(args.text);
+
+        if (feedbackID[args.reply]) {
+            embed.addField('Responding to', feedbackID[args.reply]);
+        }
 
         // Don't let new account use this command to prevent spam, if they have an UUID its fine to skip it
         let date = new Date();

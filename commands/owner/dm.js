@@ -21,16 +21,11 @@ class DmCommand extends Command {
                     prompt: {
                         start: 'What do you want to say to that user?'
                     }
-                },
-                {
-                    id: 'attachment',
-                    type: 'url',
-                    optional: true
                 }
             ],
             description: {
                 content: 'Send a dm to a user',
-                usage: '[userID] [text] [attachment]',
+                usage: '[userID] [text]',
                 example: ['265896171384340480 "Hello World ;)"']
             }
         });
@@ -41,7 +36,6 @@ class DmCommand extends Command {
         let user = this.client.users.resolve(args.user);
         if (!user) return message.channel.send('Not a valid user ID');
         let text = args.text;
-        let attachment = args.attachment;
 
         const embed = new Discord.MessageEmbed()
             .setTitle('You got a message from the developer')
@@ -49,15 +43,14 @@ class DmCommand extends Command {
             .setAuthor(`${message.author.tag}`, `${message.author.displayAvatarURL()}`)
             .setTimestamp()
 
-        console.log(attachment);
+        let Attachment = (message.attachments).array();
+        if (Attachment[0]) {
 
-        if (attachment) {
-
-            embed.setImage(attachment);
+            embed.setImage(Attachment[0].url)
 
             user.send(embed)
                 .then(() => {
-                    return message.channel.send(`Your message has been sent to ${user.username}`);
+                    return message.channel.send(`DM sent to ${user.username}`);
                 })
                 .catch(() => {
                     return message.channel.send(`Could not send a DM to ${user.username}`);

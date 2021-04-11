@@ -7,6 +7,7 @@ class PlayCommand extends Command {
         super('play', {
             aliases: ['play'],
             category: 'fun',
+            clientPermissions: ['CONNECT', 'SPEAK'],
             args: [
                 {
                     id: 'url',

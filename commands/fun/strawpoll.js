@@ -29,7 +29,7 @@ class StrawpollCommand extends Command {
                 }
             ],
             description: {
-                content: 'Tell a user the love he/she has to another person',
+                content: 'Create a poll (use | to separate options)',
                 usage: '[title] [options] [--multi]',
                 examples: ['"Am I a cute bot?" yes | no | ofc you are ;3']
             }

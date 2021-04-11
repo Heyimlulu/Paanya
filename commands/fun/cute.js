@@ -6,6 +6,7 @@ class CuteCommand extends Command {
         super('cute', {
             aliases: ['cute'],
             category: 'fun',
+            clientPermissions: 'SEND_MESSAGES',
             args: [
                 {
                     id: 'member',

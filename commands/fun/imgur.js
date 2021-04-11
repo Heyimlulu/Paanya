@@ -1,7 +1,7 @@
 const { Command } = require('discord-akairo');
-const Discord = require('discord.js');
 const fetch = require('node-fetch');
 require('dotenv').config();
+const censor = require("../../json/censor.json");
 
 class ImgurCommand extends Command {
     constructor() {
@@ -39,15 +39,33 @@ class ImgurCommand extends Command {
 
             if (response.success == 'false') return message.channel.send('An error has occurred');
 
-            const i = Math.floor((Math.random() * response.data.length));
+            let badWordFound = false;
 
-            if (response.data[i].hasOwnProperty('title')){
-                var title = response.data[i].title;
-            } else {
-                var title = 'Untitled';
+            // Check if user input contains censored word
+            for (let findWord in censor) {
+                if (message.content.toLowerCase().includes(censor[findWord].toLowerCase())) {
+                    badWordFound = true;
+                }
             }
 
-            message.channel.send(`**${title}**\n${response.data[i].link}`)
+            if (badWordFound == true) {
+
+                message.delete();
+                message.channel.send('Sorry, that word is unavailable or has been blacklisted');
+
+            } else {
+
+                const i = Math.floor((Math.random() * response.data.length));
+
+                if (response.data[i].hasOwnProperty('title')){
+                    var title = response.data[i].title;
+                } else {
+                    var title = 'Untitled';
+                }
+
+                message.channel.send(`**${title}**\n${response.data[i].link}`)
+
+            }
 
         });
 

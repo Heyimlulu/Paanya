@@ -57,7 +57,8 @@ class AddRoleCommand extends Command {
             data: {
                 name: roleName,
                 color: color,
-            }
+            },
+            reason: 'addrole command'
         })
 
         // Display the new created role in a MessageEmbed

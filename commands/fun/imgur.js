@@ -43,7 +43,7 @@ class ImgurCommand extends Command {
 
             // Check if user input contains censored word
             for (let findWord in censor) {
-                if (message.content.toLowerCase().includes(censor[findWord].toLowerCase())) {
+                if (search.toLowerCase().includes(censor[findWord].toLowerCase())) {
                     badWordFound = true;
                 }
             }

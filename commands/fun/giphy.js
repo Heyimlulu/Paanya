@@ -19,7 +19,7 @@ class GiphyCommand extends Command {
                 }
             ],
             description: {
-                content: 'Send some random gif from giphy',
+                content: 'Send some random animated images from giphy',
                 usage: '[cat]',
                 examples: ['cat']
             }
@@ -30,9 +30,8 @@ class GiphyCommand extends Command {
 
         let search = args.gif;
 
-        fetch(`https://api.giphy.com/v1/gifs/search?api_key=${process.env.GIPHY_SECRET_KEY}=${search}`)
-
-            .then((response) => {
+        fetch(`https://api.giphy.com/v1/gifs/search?api_key=${process.env.GIPHY_SECRET_KEY}&q=${search}&limit=10&offset=0&rating=g&lang=en`).then((response) => {
+            
             return response.json();
 
         }).then((response) => {
@@ -43,7 +42,7 @@ class GiphyCommand extends Command {
 
             // Check if user input contains censored word
             for (let findWord in censor) {
-                if (message.content.toLowerCase().includes(censor[findWord].toLowerCase())) {
+                if (search.toLowerCase().includes(censor[findWord].toLowerCase())) {
                     badWordFound = true;
                 }
             }
@@ -54,8 +53,6 @@ class GiphyCommand extends Command {
                 message.channel.send('Sorry, that word is unavailable or has been blacklisted');
 
             } else {
-
-                console.log(response);
 
                 const i = Math.floor((Math.random() * response.data.length));
 

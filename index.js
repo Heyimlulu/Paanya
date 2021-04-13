@@ -1,5 +1,6 @@
 const { AkairoClient, CommandHandler, InhibitorHandler, ListenerHandler } = require('discord-akairo');
-require('dotenv').config();
+const dotenv = require('dotenv');
+dotenv.config();
 const config = require('./config.json');
 
 class iroChanClient extends AkairoClient {

@@ -1,7 +1,8 @@
 const { Command } = require('discord-akairo');
 const Discord = require('discord.js');
 const fetch = require('node-fetch');
-require('dotenv').config();
+const dotenv = require('dotenv');
+dotenv.config();
 
 class UrbanCommand extends Command {
     constructor() {

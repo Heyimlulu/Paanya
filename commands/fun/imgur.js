@@ -1,6 +1,7 @@
 const { Command } = require('discord-akairo');
 const fetch = require('node-fetch');
-require('dotenv').config();
+const dotenv = require('dotenv');
+dotenv.config();
 const censor = require("../../json/censor.json");
 
 class ImgurCommand extends Command {

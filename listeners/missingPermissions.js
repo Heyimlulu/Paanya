@@ -19,7 +19,6 @@ class MissingPermissionsListener extends Listener {
         switch(type) {
             case 'client': // The bot
                 if (missing == 'SEND_MESSAGES') {
-                    console.log('1');
                     return;
                 } else {
                     message.reply(Embed);
@@ -27,7 +26,6 @@ class MissingPermissionsListener extends Listener {
                 break;
             case 'user': // The users
                 if (missing == 'SEND_MESSAGES') {
-                    console.log('2');
                     return;
                 } else {
                     Embed.setDescription(`You are missing the required permissions for the ${command.id} command!`);

@@ -38,6 +38,7 @@ class readyListener extends Listener {
 
         async function setStatus(client) {
 
+            // Generate a random number between 0 and 1
             let random = Math.floor((Math.random() * 3));
 
             if (random == 0) {

@@ -19,6 +19,7 @@
     "dotenv": "^8.2.0",
     "ffmpeg": "0.0.4",
     "ffmpeg-static": "^4.3.0",
+    "meta-extractor": "^2.0.0",
     "node-fetch": "^2.6.1",
     "youtube-dl-exec": "^1.2.0",
     "ytdl-core": "^4.5.0"

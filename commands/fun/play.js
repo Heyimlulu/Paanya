@@ -2,6 +2,9 @@ const { Command } = require('discord-akairo');
 const Discord = require('discord.js');
 const ytdl = require('ytdl-core');
 
+const embed = new Discord.MessageEmbed().setTitle('Music');
+let musicQueue = [];
+
 class PlayCommand extends Command {
     constructor() {
         super('play', {
@@ -25,37 +28,57 @@ class PlayCommand extends Command {
         });
     }
 
-    exec(message, args) {
+    async exec(message, args) {
 
-        let url = args.url;
+        let youtubeUrl = args.url;
 
-        const voiceChannel = message.member.voice.channel;
+        if (musicQueue.some(url => url === youtubeUrl)) {
+            embed.setDescription("Url is already in queue!");
+        } 
 
-        if (!voiceChannel) return message.channel.send('You must be in a voice channel first');
+        musicQueue.push(youtubeUrl);
+        embed.setDescription('Url has been added in the queue!');
+        await message.channel.send(embed);
+
+        let vc = message.member.voice.channel;
+        if(vc && vc.connection) {
+            if(!vc.connection.speaking) {
+                await this.playSong(vc.connection);
+            } else {
+                console.log(musicQueue);
+            }
+        }
 
         if (args.url == 'stop') {
-
-            voiceChannel.leave();
-            return message.channel.send('I left the channel');
-
-        } else {
-
-            voiceChannel.join().then(voiceChannel => {
-                
-                const stream = ytdl(url, { filter: "audioonly" });
-                const dispatcher = voiceChannel.play(stream);
-
-                dispatcher.on('finish', () => voiceChannel.disconnect());
-
-            }).catch(err => {
-
-                console.log('ERROR:', err);
-                voiceChannel.leave();
-                return message.channel.send('An error has occured! is the link you sent me valid?');
-
-            })
-
+            vc.leave();
+            embed.setDescription('I left the channel!');
+            return message.channel.send(embed);
         }
+    }
+
+    async playSong(connection) {
+
+        const stream = ytdl(musicQueue[0], { filter: "audioonly" });
+        console.log(musicQueue[0])
+        const dispatcher = connection.play(stream);
+
+        dispatcher.on('start', () => {
+            embed.setDescription(`Playing ${musicQueue[0]}`);
+        });
+
+        dispatcher.on('end', () => {
+            console.log("Finished song.");
+            musicQueue.shift(); // Remove song from list
+
+            if (musicQueue.length === 0) {
+                console.log("No more songs to be played...");
+                connection.disconnect();
+            } else {
+                setTimeout(() => {
+                    this.playSong(connection);
+                }, 500)
+            }
+        });
 
     }
 }

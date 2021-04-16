@@ -1,4 +1,6 @@
 const { Command } = require('discord-akairo');
+const Discord = require('discord.js');
+const { prefix } = require('../../config.json');
 
 class InviteCommand extends Command {
     constructor() {
@@ -15,7 +17,15 @@ class InviteCommand extends Command {
 
     exec(message) {
 
-        message.channel.send("You can add me from here: https://discord.com/api/oauth2/authorize?client_id=829230505123119164&permissions=842136663&scope=bot");
+        const embed = new Discord.MessageEmbed()
+            .setColor("RANDOM")
+            .setAuthor(this.client.user.tag, this.client.user.displayAvatarURL())
+            .setDescription('There\'s the link to invite me in your own server!')
+            .addField('\u200B', '**Please make sure you are logged in on your Discord account in your browser.**', false)
+            .addField('Invite', '[Click here!](https://discord.com/api/oauth2/authorize?client_id=829230505123119164&permissions=842136663&scope=bot)', true)
+            .addField('Commands', `\u0060${prefix} help\u0060`, true)
+
+        message.channel.send(embed);
 
     }
 }

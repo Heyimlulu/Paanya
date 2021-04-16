@@ -20,8 +20,8 @@ class InviteCommand extends Command {
         const embed = new Discord.MessageEmbed()
             .setColor("RANDOM")
             .setAuthor(this.client.user.tag, this.client.user.displayAvatarURL())
-            .setDescription('There\'s the link to invite me in your own server!')
-            .addField('\u200B', '**Please make sure you are logged in on your Discord account in your browser.**', false)
+            .setTitle('There\'s the link to invite me in your own server!')
+            .setDescription('**Please make sure you are logged in on your Discord account in your browser.**')
             .addField('Invite', '[Click here!](https://discord.com/api/oauth2/authorize?client_id=829230505123119164&permissions=842136663&scope=bot)', true)
             .addField('Commands', `\u0060${prefix} help\u0060`, true)
 

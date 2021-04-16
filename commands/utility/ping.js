@@ -14,24 +14,22 @@ class PingCommand extends Command {
         });
     }
 
-    exec(message) {
+    async exec(message) {
 
-        const pingEmbed = new Discord.MessageEmbed()
-            .setColor("RANDOM")
-            .setTitle('Pinging...');
+        const loadingEmbed = new Discord.MessageEmbed().setTitle('Pinging...');
 
-        message.channel.send(pingEmbed).then((msg) => {
-            setTimeout(() => {
-                const pongEmbed = new Discord.MessageEmbed()
-                    .setColor('RANDOM')
-                    .setTitle('Pong 🏓')
-                    .setDescription("Your ping is " + `${Math.round(this.client.ws.ping)} ms`)
-                    .setTimestamp()
+        await message.reply(loadingEmbed).then(sent => {
+            
+            const timeDiff = (sent.editedAt || sent.createdAt) - (message.editedAt || message.createdAt);
+            const embed = new Discord.MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle('Pong 🏓')
+                .setDescription(`🔂\u2000**RTT**: ${timeDiff} ms\n💟\u2000**Heartbeat**: ${Math.round(this.client.ws.ping)} ms`)
+                .setTimestamp()
 
-                msg.edit(pongEmbed); // Edit message
-            }, 1000); // Wait 1 seconds before editing message
+            return sent.edit(embed);
+
         })
-
     }
 }
 

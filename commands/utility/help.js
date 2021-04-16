@@ -54,6 +54,11 @@ class HelpCommand extends Command {
             embed.addField('Examples', `\`${text} ${description.examples.join(`\`\n\`${text} `)}\``, true);
         }
 
+        // Show aliases if any
+        if (command.aliases.length > 1) {
+            embed.addField('Aliases', `\`${command.aliases.join('` `')}\``, true);
+        }
+
         // Show required user permissions if any
         if (command.userPermissions) {
             embed.addField('User permission', `\`${command.userPermissions.join('` `')}\``, true);

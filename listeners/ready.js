@@ -55,25 +55,26 @@ class readyListener extends Listener {
 
             }
 
-            const storage = new Storage();
-
-            async function listBuckets() {
-                try {
-                    const results = await storage.getBuckets();
-
-                    const [buckets] = results;
-
-                    console.log('Buckets:');
-                    buckets.forEach(bucket => {
-                        console.log(bucket.name);
-                    });
-                } catch (err) {
-                    console.error('ERROR:', err);
-                }
-            }
-            listBuckets();
-
         }
+
+        // Google Cloud
+        const storage = new Storage();
+
+        async function listBuckets() {
+            try {
+                const results = await storage.getBuckets();
+
+                const [buckets] = results;
+
+                console.log('Buckets:');
+                buckets.forEach(bucket => {
+                    console.log(bucket.name);
+                });
+            } catch (err) {
+                console.error('ERROR:', err);
+            }
+        }
+        listBuckets();
     }
 }
 

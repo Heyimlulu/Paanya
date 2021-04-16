@@ -1,3 +1,4 @@
+/*
 const { Command } = require('discord-akairo');
 const Discord = require('discord.js');
 const blacklistID = require("../../json/blacklistID.json");
@@ -32,3 +33,5 @@ class SeeBannedUserCommand extends Command {
 }
 
 module.exports = SeeBannedUserCommand;
+
+ */

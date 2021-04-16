@@ -1,7 +1,7 @@
 const { Command } = require('discord-akairo');
 const extract = require('meta-extractor');
 
-class Bing extends Command {
+class BingCommand extends Command {
     constructor() {
         super('bing', {
             aliases: ['bing'],
@@ -24,4 +24,4 @@ class Bing extends Command {
     }
 }
 
-module.exports = Bing;
+module.exports = BingCommand;

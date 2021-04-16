@@ -6,7 +6,7 @@ class FakeUserCommand extends Command {
         super('fakeuser', {
             aliases: ['fakeuser'],
             category: 'fun',
-            clientPermissions: 'MANAGE_WEBHOOKS',
+            clientPermissions: ['MANAGE_WEBHOOKS'],
             args: [
                 {
                     id: 'user',
@@ -28,7 +28,7 @@ class FakeUserCommand extends Command {
             description: {
                 content: 'Fake a user using webhook',
                 usage: '[user] [text]',
-                examples: ['Lulu 💜#0001 Hi :)']
+                examples: ['user Hello']
             }
         });
     }

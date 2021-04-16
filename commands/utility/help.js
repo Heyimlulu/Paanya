@@ -81,7 +81,7 @@ class HelpCommand extends Command {
                     .addField('Commands List',
                         [
                             "There's a list of commands",
-                            `To view details for a command, do \`${config.prefix[0]} help <\command>\ \``
+                            `To view details for a command, do \`${config.prefix} help <\command>\ \``
                         ]);
 
                 for (const category of this.handler.categories.values()) {

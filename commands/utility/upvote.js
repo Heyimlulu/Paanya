@@ -22,7 +22,7 @@ class UpvoteCommand extends Command {
             .setTitle('Vote for my bot')
             .setAuthor(this.client.user.tag, this.client.user.displayAvatarURL())
             .setDescription('You can vote for my bot if you like it!')
-            .addField('top.gg', 'https://top.gg/bot/734426328002068481/vote')
+            .addField('top.gg', 'https://top.gg/bot/829230505123119164')
             //.addField('Discordbotlist.com', 'https://discordbotlist.com/bots/racoonbot/upvote')
             .attachFiles(attachment)
             .setImage('attachment://please-cat.jpg')

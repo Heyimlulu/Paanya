@@ -1,14 +1,14 @@
 {
-  "name": "IroChan",
+  "name": "Paanya",
   "version": "1.0.0",
-  "description": "",
+  "description": "A multifunctional discord bot made using the DiscordJS API and Discord Akairo Framework",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Heyimlulu",
   "license": "ISC",
   "dependencies": {
     "@discordjs/opus": "^0.5.0",

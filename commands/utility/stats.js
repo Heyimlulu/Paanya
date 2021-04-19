@@ -44,7 +44,7 @@ class StatsCommand extends Command {
         const Embed = new Discord.MessageEmbed()
             .setColor('RANDOM')
             .setTitle('Bot stats')
-            .setAuthor('Iro-Chan')
+            .setAuthor(this.client.user.tag, this.client.user.displayAvatarURL())
             .addField('Servers', this.client.guilds.cache.size, true)
             .addField('Channels', this.client.channels.cache.size, true)
             .addField('Users', this.client.users.cache.size, true)

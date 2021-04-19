@@ -1,4 +1,3 @@
-/*
 const { Command } = require('discord-akairo');
 const Discord = require('discord.js');
 const fs = require('fs');
@@ -133,5 +132,3 @@ class StarBoardCommand extends Command {
 }
 
 module.exports = StarBoardCommand;
-
- */

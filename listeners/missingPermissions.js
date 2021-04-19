@@ -1,4 +1,5 @@
 const { Listener } = require('discord-akairo');
+const Discord = require('discord.js');
 
 class MissingPermissionsListener extends Listener {
     constructor() {
@@ -10,26 +11,20 @@ class MissingPermissionsListener extends Listener {
 
     async exec(message, command, type, missing) {
 
-        let Embed = this.client.util.embed()
-            .setColor('RED')
-            .setTitle('Missing permission')
-            .setDescription(`I'm missing the required permissions for the ${command.id} command!`)
-            .addField('Missing permission:', missing);
-
         switch(type) {
             case 'client': // The bot
                 if (missing == 'SEND_MESSAGES') {
                     return;
                 } else {
-                    message.reply(Embed);
+                    message.reply(`I'm missing theses permissions: \u0060${missing}\u0060 for the ${command.id} command!`);
                 }
                 break;
             case 'user': // The users
                 if (missing == 'SEND_MESSAGES') {
                     return;
                 } else {
-                    Embed.setDescription(`You are missing the required permissions for the ${command.id} command!`);
-                    message.reply(Embed);
+                    console.log('4');
+                    message.reply(`You are missing theses permissions: \u0060${missing}\u0060 for the ${command.id} command!`);
                 }
                 break;
         }

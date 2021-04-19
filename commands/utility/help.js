@@ -93,12 +93,22 @@ class HelpCommand extends Command {
 
                     let title;
 
-                    title = {
-                        general: '📝\u2000General',
-                        fun: '🎉\u2000Fun',
-                        utility: '🔩\u2000Utility',
-                        admin: '⚡\u2000Admin',
-                    }[category.id];
+                    if (message.author.id == this.client.ownerID) {
+                        title = {
+                            general: '📝\u2000General',
+                            fun: '🎉\u2000Fun',
+                            owner: '⭐\u2000Owner',
+                            utility: '🔩\u2000Utility',
+                            admin: '⚡\u2000Admin',
+                        }[category.id];
+                    } else {
+                        title = {
+                            general: '📝\u2000General',
+                            fun: '🎉\u2000Fun',
+                            utility: '🔩\u2000Utility',
+                            admin: '⚡\u2000Admin',
+                        }[category.id];
+                    }
 
                     if (title) embed.addField(title, `\`${category.map(cmd => cmd.aliases[0]).join('` `')}\``);
 

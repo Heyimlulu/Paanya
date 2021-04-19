@@ -1,6 +1,6 @@
 const { Listener } = require('discord-akairo');
 const { Client } = require('pg');
-const { prefix } = require('../config.json');
+const { owner, prefix } = require('../config.json');
 
 class LogsListener extends Listener {
     constructor() {
@@ -34,14 +34,13 @@ class LogsListener extends Listener {
             );
         }
 
-        // IF => message is from the bot => ignore it
-        if (message.author.id === '829230505123119164') {
-            return
-        } else {
-            // IF => message does not start with the prefix => ignore it
-            if (!message.content.startsWith(prefix)) return;
-            logsDatabase();
-        }
+        // IF => message is from the bot or the owner => ignore it
+        if (message.author.id === '829230505123119164' || message.author.id === owner) return;
+
+        // IF => message does not start with the prefix => ignore it
+        if (!message.content.startsWith(prefix)) return;
+
+        logsDatabase();
 
     }
 }

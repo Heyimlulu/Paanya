@@ -4,7 +4,7 @@ const Discord = require('discord.js');
 class UserInfoCommand extends Command {
     constructor() {
         super('userinfo', {
-            aliases: ['userinfo'],
+            aliases: ['userinfo', 'user'],
             category: 'utility',
             clientPermissions: ['SEND_MESSAGES', 'EMBED_LINKS'],
             args: [
@@ -19,7 +19,7 @@ class UserInfoCommand extends Command {
             description: {
                 content: 'Show info about a user',
                 usage: '[@user]',
-                example: ['@Lulu 💜#0001']
+                example: ['user']
             }
         });
     }
@@ -35,7 +35,7 @@ class UserInfoCommand extends Command {
         let member = message.guild.member(user);
 
         const Embed = new Discord.MessageEmbed()
-            .setAuthor('RacoonBot')
+            .setAuthor(this.client.user.tag, this.client.user.displayAvatarURL())
             .setTitle('User information')
             .setColor(member ? member.displayHexColor : "RANDOM")
             .setThumbnail(user.displayAvatarURL())

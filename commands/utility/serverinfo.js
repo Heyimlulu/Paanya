@@ -4,7 +4,7 @@ const Discord = require('discord.js');
 class ServerInfoCommand extends Command {
     constructor() {
         super('serverinfo', {
-            aliases: ['serverinfo'],
+            aliases: ['serverinfo', 'server'],
             category: 'utility',
             clientPermissions: ['SEND_MESSAGES', 'EMBED_LINKS'],
             description: {
@@ -20,7 +20,7 @@ class ServerInfoCommand extends Command {
         let botCount = message.guild.members.cache.filter(member => member.user.bot).size;
 
         const serverInfo = new Discord.MessageEmbed()
-            .setAuthor(this.client.user.username)
+            .setAuthor(this.client.user.tag, this.client.user.displayAvatarURL())
             .setColor("RANDOM")
             .setTitle(message.guild.name)
             .setThumbnail(message.guild.iconURL())

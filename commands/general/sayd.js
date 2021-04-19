@@ -18,8 +18,8 @@ class SaydCommand extends Command {
             ],
             description: {
                 content: 'Write something you want the bot to repeat',
-                usage: '[Hello World]',
-                examples: ['Hello World']
+                usage: '[text]',
+                examples: ['Hello ;)']
             }
         });
     }

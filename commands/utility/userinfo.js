@@ -37,7 +37,7 @@ class UserInfoCommand extends Command {
         const Embed = new Discord.MessageEmbed()
             .setAuthor(this.client.user.tag, this.client.user.displayAvatarURL())
             .setTitle('User information')
-            .setColor(member ? member.displayHexColor : "RANDOM")
+            .setColor(message.member ? message.member.displayHexColor : 'RANDOM')
             .setThumbnail(user.displayAvatarURL())
             .addField("Username", `${user.username}`, false)
             .addField("Discriminator", "#" + user.discriminator, false)

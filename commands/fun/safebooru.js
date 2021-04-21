@@ -30,7 +30,7 @@ class SafebooruCommand extends Command {
             //console.log(`https://safebooru.org/images/3308/${response[i].image}`);
 
             const embed = new Discord.MessageEmbed()
-                .setColor("RANDOM")
+                .setColor(message.member ? message.member.displayHexColor : 'RANDOM')
                 .setAuthor(message.member.user.tag, message.member.user.displayAvatarURL())
                 .setImage(`https://safebooru.org/images/3308/${response[i].image}`)
                 //.setFooter(`tags: ${response[i].tags}`)

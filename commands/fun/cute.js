@@ -48,7 +48,7 @@ class CuteCommand extends Command {
             Embed.setTitle('Cute-o-Meter')
                 .setDescription(`I guess **${member.user.username}** is **${guess}**`)
                 .setThumbnail(member.user.displayAvatarURL())
-                .setColor("RANDOM")
+                .setColor(message.member ? message.member.displayHexColor : 'RANDOM')
             message.channel.send(Embed);
 
         } else { // ELSE => after first prompt message

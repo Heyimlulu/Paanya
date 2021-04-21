@@ -22,7 +22,7 @@ class SeeBannedWordCommand extends Command {
         console.log(bannedWords);
 
         const embed = new Discord.MessageEmbed()
-            .setColor("RANDOM")
+            .setColor(message.member ? message.member.displayHexColor : 'RANDOM')
             .setTitle('List of banned words')
             .setDescription(bannedWords);
 

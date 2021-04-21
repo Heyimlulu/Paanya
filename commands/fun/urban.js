@@ -47,7 +47,7 @@ class UrbanCommand extends Command {
 
             try {
                 const embed = new Discord.MessageEmbed()
-                    .setColor("RANDOM")
+                    .setColor(message.member ? message.member.displayHexColor : 'RANDOM')
                     .setAuthor('Urban dictionary')
                     .setThumbnail('https://s3.amazonaws.com/mashape-production-logos/apis/53aa4f67e4b0a9b1348da532_medium')
                     .setTitle(response.list[i].word)

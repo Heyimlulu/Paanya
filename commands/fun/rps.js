@@ -25,7 +25,7 @@ class RPSCommand extends Command {
     async exec(message, args) {
 
         const embed = new Discord.MessageEmbed()
-            .setColor("RANDOM")
+            .setColor(message.member ? message.member.displayHexColor : 'RANDOM')
             .setAuthor(this.client.user.tag, this.client.user.displayAvatarURL())
             .setFooter('Rock-Paper-Scissors')
             .setTimestamp();

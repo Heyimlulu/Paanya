@@ -20,7 +20,7 @@ class InfoCommand extends Command {
         const attachment = new Discord.MessageAttachment('./asset/gif/catJam.gif', 'catJam.gif');
 
         const embed = new Discord.MessageEmbed()
-            .setColor("RANDOM")
+            .setColor(message.member ? message.member.displayHexColor : 'RANDOM')
             .setAuthor(this.client.user.tag, this.client.user.displayAvatarURL())
             .setTitle('About me')
             .setDescription('Feel free to contact me if you have any question regarding my bot :3')

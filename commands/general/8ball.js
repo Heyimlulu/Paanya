@@ -54,7 +54,7 @@ class Ball8Command extends Command {
         let reply = answers[Math.floor(Math.random() * answers.length)];
 
         const embed = new Discord.MessageEmbed()
-            .setColor("RANDOM")
+            .setColor(message.member ? message.member.displayHexColor : 'RANDOM')
             .setTitle(ask)
             .setDescription(reply)
             .setTimestamp()

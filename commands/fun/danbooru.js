@@ -34,7 +34,7 @@ class DanbooruCommand extends Command {
                 }
 
                 const embed = new Discord.MessageEmbed()
-                    .setColor("RANDOM")
+                    .setColor(message.member ? message.member.displayHexColor : 'RANDOM')
                     .setAuthor(message.member.user.tag, message.member.user.displayAvatarURL())
                     .setTitle(response[i].tag_string_artist)
                     .setURL(response[i].source)

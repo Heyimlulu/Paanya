@@ -21,7 +21,7 @@ class ServerInfoCommand extends Command {
 
         const serverInfo = new Discord.MessageEmbed()
             .setAuthor(this.client.user.tag, this.client.user.displayAvatarURL())
-            .setColor("RANDOM")
+            .setColor(message.member ? message.member.displayHexColor : 'RANDOM')
             .setTitle(message.guild.name)
             .setThumbnail(message.guild.iconURL())
             .addField('Number of users', message.guild.memberCount - botCount, false)

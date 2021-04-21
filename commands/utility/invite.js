@@ -18,7 +18,7 @@ class InviteCommand extends Command {
     exec(message) {
 
         const embed = new Discord.MessageEmbed()
-            .setColor("RANDOM")
+            .setColor(message.member ? message.member.displayHexColor : 'RANDOM')
             .setAuthor(this.client.user.tag, this.client.user.displayAvatarURL())
             .setTitle('There\'s the link to invite me in your own server!')
             .setDescription('**Please make sure you are logged in on your Discord account in your browser.**')

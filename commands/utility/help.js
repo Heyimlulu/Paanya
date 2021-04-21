@@ -41,7 +41,7 @@ class HelpCommand extends Command {
         }, command.description);
 
         const embed = new Discord.MessageEmbed()
-            .setColor('RANDOM')
+            .setColor(message.member ? message.member.displayHexColor : 'RANDOM')
             .setTitle(`\`${command.aliases[0]} ${description.usage}\``)
             .addField('Description', description.content)
             .setFooter(`prefix: ${config.prefix}`);

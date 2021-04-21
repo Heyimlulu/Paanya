@@ -23,7 +23,7 @@ class AdviceCommand extends Command {
 
         }).then((response) => {
             const adviceEmbed = new Discord.MessageEmbed()
-                .setColor("RANDOM")
+                .setColor(message.member ? message.member.displayHexColor : 'RANDOM')
                 .setAuthor(`${this.client.user.username}`)
                 .setTitle('Random advice')
                 .setDescription(response.slip.advice)

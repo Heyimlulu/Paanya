@@ -22,7 +22,7 @@ class PingCommand extends Command {
             
             const timeDiff = (sent.editedAt || sent.createdAt) - (message.editedAt || message.createdAt);
             const embed = new Discord.MessageEmbed()
-                .setColor('RANDOM')
+                .setColor(message.member ? message.member.displayHexColor : 'RANDOM')
                 .setTitle('Pong 🏓')
                 .setDescription(`🔂\u2000**RTT**: ${timeDiff} ms\n💟\u2000**Heartbeat**: ${Math.round(this.client.ws.ping)} ms`)
                 .setTimestamp()

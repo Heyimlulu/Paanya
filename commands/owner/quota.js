@@ -19,7 +19,7 @@ class QuotaCommand extends Command {
     async exec(message) {
 
         const embed = new Discord.MessageEmbed()
-            .setColor("RANDOM")
+            .setColor(message.member ? message.member.displayHexColor : 'RANDOM')
             .setAuthor(this.client.user.tag, this.client.user.displayAvatarURL())
             .setImage('https://jomarieblog.files.wordpress.com/2013/09/sweaty-cat.jpg')
             .setFooter('Heroku PostGreSQL, Hobby Dev');

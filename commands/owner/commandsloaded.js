@@ -18,7 +18,7 @@ class CommandsLoadedCommand extends Command {
     exec(message, args) {
 
         const embed = new Discord.MessageEmbed()
-            .setColor("RANDOM")
+            .setColor(message.member ? message.member.displayHexColor : 'RANDOM')
             .setAuthor(this.client.user.tag, this.client.user.displayAvatarURL())
             .setTitle(`There are \u0060${this.client.commandHandler.modules.size}\u0060 commands loaded!`);
 

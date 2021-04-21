@@ -42,7 +42,7 @@ class StatsCommand extends Command {
         };
 
         const Embed = new Discord.MessageEmbed()
-            .setColor('RANDOM')
+            .setColor(message.member ? message.member.displayHexColor : 'RANDOM')
             .setTitle('Bot stats')
             .setAuthor(this.client.user.tag, this.client.user.displayAvatarURL())
             .addField('Servers', this.client.guilds.cache.size, true)

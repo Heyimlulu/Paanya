@@ -99,7 +99,7 @@ class HelpCommand extends Command {
                             fun: '🎉\u2000Fun',
                             owner: '⭐\u2000Owner',
                             utility: '🔩\u2000Utility',
-                            image: '🖼️\u2000Image',
+                            image: '🖼️\u2000Image [WIP]',
                             admin: '⚡\u2000Admin',
                         }[category.id];
                     } else {
@@ -107,7 +107,7 @@ class HelpCommand extends Command {
                             general: '📝\u2000General',
                             fun: '🎉\u2000Fun',
                             utility: '🔩\u2000Utility',
-                            image: '🖼️\u2000Image',
+                            image: '🖼️\u2000Image [WIP]',
                             admin: '⚡\u2000Admin',
                         }[category.id];
                     }

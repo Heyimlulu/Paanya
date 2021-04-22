@@ -27,7 +27,7 @@ class ImgurCommand extends Command {
         });
     }
 
-    exec(message, args) {
+    async exec(message, args) {
 
         let search = args.img;
 

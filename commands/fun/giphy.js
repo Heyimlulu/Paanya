@@ -27,7 +27,7 @@ class GiphyCommand extends Command {
         });
     }
 
-    exec(message, args) {
+    async exec(message, args) {
 
         let search = args.gif;
 

@@ -1,6 +1,6 @@
 const { Command } = require('discord-akairo');
 const Discord = require('discord.js');
-const { owner } = require('../../config.json');
+const { owner, prefix } = require('../../config.json');
 
 class InfoCommand extends Command {
     constructor() {
@@ -15,7 +15,7 @@ class InfoCommand extends Command {
         });
     }
 
-    exec(message) {
+    async exec(message) {
 
         const attachment = new Discord.MessageAttachment('./asset/gif/catJam.gif', 'catJam.gif');
 
@@ -23,16 +23,18 @@ class InfoCommand extends Command {
             .setColor(message.member ? message.member.displayHexColor : 'RANDOM')
             .setAuthor(this.client.user.tag, this.client.user.displayAvatarURL())
             .setTitle('About me')
-            .setDescription('Feel free to contact me if you have any question regarding my bot :3')
+            .setDescription('I\'m a simple and fun discord bot with moderation, auto-color rank, text-to-speech, strawpoll commands and more')
             .addField('Owner', `${this.client.users.resolve(owner).tag} (${this.client.users.resolve(owner).id})`)
-            .addField('My GitHub', 'https://github.com/Heyimlulu')
+            .addField('My GitHub profile', 'https://github.com/Heyimlulu')
+            .addField('Total commands', `${this.client.commandHandler.modules.size - 9}`)
             .addField('Support server', 'none yet')
+            .addField('Contact', `Use ${prefix[0]} feedback <\message\> to let me know what you think of my bot ;3`)
             .attachFiles(attachment)
             .setThumbnail('attachment://catJam.gif')
             .setFooter(`${this.client.user.tag} made with 💛 by ${this.client.users.resolve(owner).tag}`)
             .setTimestamp()
 
-        message.channel.send(embed);
+        await message.channel.send(embed);
 
     }
 }

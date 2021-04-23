@@ -1,4 +1,3 @@
-/*
 const { Command } = require('discord-akairo');
 const Discord = require('discord.js');
 
@@ -11,69 +10,75 @@ class RoleCommand extends Command {
             userPermissions: ['MANAGE_ROLES'],
             args: [
                 {
+                    id: 'member',
+                    type: 'string',
+                    unordered: true,
+                    prompt: {
+                        start: 'Which user do you want to set role?'
+                    },
+                    optional: true
+                },
+                {
                     id: 'role',
                     type: 'string',
                     prompt: {
-                        start: 'What name should I use for the new role?'
-                    },
-                },
-                {
-                    id: 'color',
-                    type: 'string',
-                    prompt: {
-                        start: 'Which color for the new role?'
+                        start: 'Which role do you want that user be?'
                     }
                 }
             ],
             description: {
-                content: 'Add / Remove a role',
-                usage: '[role] [#HEX]',
-                example: ['mods #050505']
+                content: 'Assign or unassign a role to a user or yourself',
+                usage: '[role] [@user] or [role] for yourself',
+                example: ['']
             }
         });
     }
 
-    exec(message, args) {
+    async exec(message, args) {
 
-        let embed = new Discord.MessageEmbed()
-            .setColor(args.color);
+        const embed = new Discord.MessageEmbed()
+            .setColor(message.member ? message.member.displayHexColor : 'RANDOM')
 
-        if (!args.role) return;
+        let role = message.guild.roles.cache.find(role => role.name === args.role);
 
-        // If color input match "#800080" format
-        if (args.color.match(/^#[0-9A-F]{6}$/i)) {
+        if (message.mentions.members.first()) {
 
-            let role = message.guild.roles.cache.find(role => role.name === args.role);
+            let member = message.mentions.members.first();
 
-            // IF => role doesn't exist => Create role
-            if (!role) {
-                message.guild.roles.create({
-                    data: {
-                        name: args.role,
-                        color: args.color.toUpperCase()
-                    },
-                    reason: 'Role command'
-                });
+            // IF => User has the specified role
+            if (message.guild.member(member).roles.cache.has(role.id)) {
 
-                embed.setTitle('Role created! try again if you want to delete this role!')
+                embed.setTitle(`${member.user.username}, you have been removed from role: \u0060${args.role}\u0060 by ${message.author.username}!`)
 
-                return message.channel.send(embed);
-
-            } else { // ELSE IF => role exists => Delete role
-
-                message.guild.roles.cache.delete(args.role);
-
-                embed.setTitle('Role deleted!')
-
+                await message.guild.member(message.author).roles.remove(role);
                 return message.channel.send(embed);
 
             }
 
+            // ELSE => Add role to the user
+            embed.setTitle(`${member.user.username}, you have been added to role: \u0060${args.role}\u0060 by ${message.author.username}!`)
+
+            await message.guild.member(member).roles.add(role);
+            return message.channel.send(embed);
+
         } else {
 
-            embed.setTitle(`${args.color} is not a valid color`)
+            // IF => User has the specified role
+            if (message.guild.member(message.author).roles.cache.has(role.id)) {
 
+                embed.setTitle(`You have been removed from role: \u0060${args.role}\u0060!`)
+
+                await message.guild.member(message.author).roles.remove(role);
+                return message.channel.send(embed);
+
+            }
+
+            // ELSE => Add role to the user
+            embed.setTitle(`You have been added to role: \u0060${args.role}\u0060!`)
+
+            await message.guild.member(message.author).roles.add(role);
             return message.channel.send(embed);
+
 
         }
 
@@ -81,5 +86,3 @@ class RoleCommand extends Command {
 }
 
 module.exports = RoleCommand;
-
- */

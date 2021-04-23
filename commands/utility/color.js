@@ -23,7 +23,7 @@ class ColorCommand extends Command {
         });
     }
 
-    exec(message, args) {
+    async exec(message, args) {
 
         let embed = new Discord.MessageEmbed()
             .setColor(args.color);
@@ -35,7 +35,7 @@ class ColorCommand extends Command {
 
             // If role doesn't exist
             if (!role) {
-                message.guild.roles.create({
+                await message.guild.roles.create({
                     data: {
                         name: args.color,
                         color: args.color.toUpperCase()
@@ -51,7 +51,7 @@ class ColorCommand extends Command {
 
                 embed.setTitle('Role removed!')
 
-                message.guild.member(message.author).roles.remove(role);
+                await message.guild.member(message.author).roles.remove(role);
                 return message.channel.send(embed);
                 
             }
@@ -59,7 +59,7 @@ class ColorCommand extends Command {
             embed.setTitle('Role added!')
 
             // Add role to the message author
-            message.guild.member(message.author).roles.add(role);
+            await message.guild.member(message.author).roles.add(role);
             return message.channel.send(embed);
 
         } else {

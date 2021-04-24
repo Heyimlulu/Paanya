@@ -27,24 +27,34 @@ class LoveCommand extends Command {
     exec(message, args) {
 
         let member = args.member;
+        let text = '';
+        
+        let love = Math.random() * 100; // Generate a random number between 0 and 100
+        let loveIndex = Math.floor(love / 10);
+        //let loveLevel = '💖'.repeat(loveIndex) + '💔'.repeat(10 - loveIndex);
 
-        const love = Math.random() * 100
-        const loveIndex = Math.floor(love / 10)
-        const loveLevel = '💖'.repeat(loveIndex) + '💔'.repeat(10 - loveIndex)
+        if (love <= 25) text = 'It\'s low, but don\'t give up';
+        if (love > 25) text = 'Still low, try again';
+        if (love == 50) text = 'It\'s a fifty fifty'
+        if (love > 50) text = 'You have your chance';
+        if (love >= 75) text = 'I can say it is a match';
+        if (love == 100) text = 'It\'s a perfect match!';
 
-        if (message.mentions.users.first()) { // IF => member already mentionned
+        if (message.mentions.users.first()) {
 
             member = message.mentions.members.first();
 
             const Embed = new Discord.MessageEmbed()
                 .setColor(message.member ? message.member.displayHexColor : 'RANDOM')
-                .setTitle('Love')
-                .addField(`**${message.author.username}** loves **${member.user.username}** this much`, `💟 ${Math.floor(love)}%\n\n${loveLevel}`)
+                .setAuthor(message.member.user.tag, message.member.user.displayAvatarURL())
                 .setThumbnail(member.user.displayAvatarURL())
+                .setTitle(text)
+                .setDescription(`${message.author} + ${member} = 💟 ${Math.floor(love)}%`)
+                //.addField('📊', loveLevel)
 
             message.channel.send(Embed)
 
-        } else { // ELSE => after first prompt message
+        } else {
             message.reply(`You did not mentionned a user!`)
         }
 

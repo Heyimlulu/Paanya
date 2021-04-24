@@ -15,7 +15,7 @@ class BingCommand extends Command {
         });
     }
 
-    exec(message) {
+    async exec(message) {
 
         extract({ uri: 'https://bing.gifposter.com/' }, (err, res) => {
             return message.channel.send({files: [res.twitterImage]});

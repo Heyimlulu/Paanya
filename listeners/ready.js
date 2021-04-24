@@ -18,7 +18,7 @@ class readyListener extends Listener {
         let guildSize = this.client.guilds.cache.size; // Bot ID
         let userSize = this.client.users.cache.size; // Total users
         let channelSize = this.client.channels.cache.size; // Total channels
-        let commandSize = this.client.commandHandler.modules.size; // Total commands
+        let commandSize = this.client.commandHandler.modules.size - 9; // Total commands
         let clientID = this.client.user.id; // Total servers
 
         //  Send stats to the console

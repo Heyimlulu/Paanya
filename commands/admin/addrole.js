@@ -10,23 +10,24 @@ class AddRoleCommand extends Command {
             userPermissions: ['MANAGE_ROLES'],
             args: [
                 {
-                    id: 'role',
-                    type: 'string',
-                    prompt: {
-                        start: 'What name should I use for the new role?'
-                    },
-                },
-                {
                     id: 'color',
                     type: 'string',
                     prompt: {
                         start: 'Which color for the new role?'
                     }
+                },
+                {
+                    id: 'role',
+                    type: 'string',
+                    prompt: {
+                        start: 'What name should I use for the new role?'
+                    },
+                    match: 'rest'
                 }
             ],
             description: {
                 content: 'Add or remove a role',
-                usage: '[role] [hex color]',
+                usage: '[hex color] [role]',
                 example: ['']
             }
         });

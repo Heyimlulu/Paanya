@@ -12,7 +12,6 @@ class RoleCommand extends Command {
                 {
                     id: 'member',
                     type: 'string',
-                    unordered: true,
                     prompt: {
                         start: 'Which user do you want to set role?'
                     },

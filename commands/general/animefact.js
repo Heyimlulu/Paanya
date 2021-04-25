@@ -1,3 +1,4 @@
+/*
 const { Command } = require('discord-akairo');
 const Discord = require('discord.js');
 const fetch = require('node-fetch');
@@ -46,3 +47,5 @@ class AnimeFactCommand extends Command {
 }
 
 module.exports = AnimeFactCommand;
+
+ */

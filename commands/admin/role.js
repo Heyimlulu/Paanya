@@ -10,24 +10,21 @@ class RoleCommand extends Command {
             userPermissions: ['MANAGE_ROLES'],
             args: [
                 {
-                    id: 'member',
-                    type: 'string',
-                    prompt: {
-                        start: 'Which user do you want to set role?'
-                    },
-                    optional: true
-                },
-                {
                     id: 'role',
                     type: 'string',
                     prompt: {
                         start: 'Which role do you want that user be?'
                     }
+                },
+                {
+                    id: 'member',
+                    type: 'string',
+                    optional: true
                 }
             ],
             description: {
                 content: 'Assign or unassign a role to a user or yourself',
-                usage: '[role] [@user] or [role] for yourself',
+                usage: '["role"] [@user] or [role] for yourself',
                 example: ['']
             }
         });
@@ -50,11 +47,12 @@ class RoleCommand extends Command {
                 embed.setTitle(`${member.user.username}, you have been removed from role: \u0060${args.role}\u0060 by ${message.author.username}!`)
 
                 await message.guild.member(message.author).roles.remove(role);
-                return message.channel.send(embed);
+                return message.channel.send(embed).catch(() => {
+                    message.reply('There\'s was an error with the \u0060role\u0060 command. Are you sure you put a valid role?');
+                });
 
             }
 
-            // ELSE => Add role to the user
             embed.setTitle(`${member.user.username}, you have been added to role: \u0060${args.role}\u0060 by ${message.author.username}!`)
 
             await message.guild.member(member).roles.add(role);
@@ -68,11 +66,12 @@ class RoleCommand extends Command {
                 embed.setTitle(`You have been removed from role: \u0060${args.role}\u0060!`)
 
                 await message.guild.member(message.author).roles.remove(role);
-                return message.channel.send(embed);
+                return message.channel.send(embed).catch(() => {
+                    message.reply('There\'s was an error with the \u0060role\u0060 command. Are you sure you put a valid role?');
+                });
 
             }
 
-            // ELSE => Add role to the user
             embed.setTitle(`You have been added to role: \u0060${args.role}\u0060!`)
 
             await message.guild.member(message.author).roles.add(role);

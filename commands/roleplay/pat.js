@@ -15,7 +15,7 @@ class PatCommand extends Command {
                 }
             ],
             description: {
-                content: '',
+                content: 'Give a headpat to the mentionned user',
                 usage: '[@user]',
                 examples: ['']
             }
@@ -34,7 +34,7 @@ class PatCommand extends Command {
 
                 const embed = new Discord.MessageEmbed()
                     .setColor(message.member ? message.member.displayHexColor : 'RANDOM')
-                    .setDescription(`${message.author} pat ${member}`)
+                    .setDescription(`${message.author} patted ${member}`)
                     .setImage(response.url)
                     .setFooter('Powered by waifu.pics')
 

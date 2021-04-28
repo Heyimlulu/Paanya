@@ -15,7 +15,7 @@ class LickCommand extends Command {
                 }
             ],
             description: {
-                content: '',
+                content: 'Lick the mentionned user',
                 usage: '[@user]',
                 examples: ['']
             }
@@ -34,7 +34,7 @@ class LickCommand extends Command {
 
                 const embed = new Discord.MessageEmbed()
                     .setColor(message.member ? message.member.displayHexColor : 'RANDOM')
-                    .setDescription(`${message.author} licked ${member}`)
+                    .setDescription(`${message.author} licked ${member} :p`)
                     .setImage(response.url)
                     .setFooter('Powered by waifu.pics')
 

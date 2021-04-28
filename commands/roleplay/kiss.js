@@ -15,7 +15,7 @@ class KissCommand extends Command {
                 }
             ],
             description: {
-                content: '',
+                content: 'Give a kiss to the mentionned user',
                 usage: '[@user]',
                 examples: ['']
             }
@@ -34,7 +34,7 @@ class KissCommand extends Command {
 
                 const embed = new Discord.MessageEmbed()
                     .setColor(message.member ? message.member.displayHexColor : 'RANDOM')
-                    .setDescription(`${message.author} kissed ${member}`)
+                    .setDescription(`${message.author} kissed ${member} :heart:`)
                     .setImage(response.url)
                     .setFooter('Powered by waifu.pics')
 

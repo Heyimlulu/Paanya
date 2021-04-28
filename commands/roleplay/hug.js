@@ -15,7 +15,7 @@ class HugCommand extends Command {
                 }
             ],
             description: {
-                content: '',
+                content: 'Give a hug to the mentionned user',
                 usage: '[@user]',
                 examples: ['']
             }

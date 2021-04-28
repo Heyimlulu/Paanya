@@ -15,7 +15,7 @@ class PokeCommand extends Command {
                 }
             ],
             description: {
-                content: '',
+                content: 'Poke the mentionned user',
                 usage: '[@user]',
                 examples: ['']
             }

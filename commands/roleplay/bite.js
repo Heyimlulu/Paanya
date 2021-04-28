@@ -15,7 +15,7 @@ class BiteCommand extends Command {
                 }
             ],
             description: {
-                content: '',
+                content: 'Bite the mentionned user',
                 usage: '[@user]',
                 examples: ['']
             }

@@ -15,7 +15,7 @@ class CuddleCommand extends Command {
                 }
             ],
             description: {
-                content: '',
+                content: 'Cuddle with the mentionned user',
                 usage: '[@user]',
                 examples: ['']
             }

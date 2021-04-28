@@ -2,10 +2,10 @@ const { Command } = require('discord-akairo');
 const fetch = require('node-fetch');
 const Discord = require('discord.js');
 
-class WaveCommand extends Command {
+class HandHoldCommand extends Command {
     constructor() {
-        super('wave', {
-            aliases: ['wave'],
+        super('handhold', {
+            aliases: ['handhold'],
             category: 'roleplay',
             clientPermissions: ['SEND_MESSAGES', 'EMBED_LINKS'],
             args: [
@@ -15,7 +15,7 @@ class WaveCommand extends Command {
                 }
             ],
             description: {
-                content: 'Wave the mentionned user :wave:',
+                content: 'Hold user\'s hand ',
                 usage: '[@user]',
                 examples: ['']
             }
@@ -28,13 +28,13 @@ class WaveCommand extends Command {
 
             let member = message.mentions.members.first();
 
-            fetch(`https://waifu.pics/api/sfw/wave`).then((response) => {
+            fetch(`https://waifu.pics/api/sfw/handhold`).then((response) => {
                 return response.json();
             }).then((response) => {
 
                 const embed = new Discord.MessageEmbed()
                     .setColor(message.member ? message.member.displayHexColor : 'RANDOM')
-                    .setDescription(`${message.author} waved ${member} :wave:`)
+                    .setDescription(`${message.author} hold ${member}\'s hand`)
                     .setImage(response.url)
                     .setFooter('Powered by waifu.pics')
 
@@ -49,4 +49,4 @@ class WaveCommand extends Command {
     }
 }
 
-module.exports = WaveCommand;
+module.exports = HandHoldCommand;

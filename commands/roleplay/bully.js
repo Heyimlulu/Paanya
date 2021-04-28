@@ -15,7 +15,7 @@ class BullyCommand extends Command {
                 }
             ],
             description: {
-                content: '',
+                content: 'Bully the mentionned user',
                 usage: '[@user]',
                 examples: ['']
             }

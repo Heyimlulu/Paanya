@@ -15,7 +15,7 @@ class KillCommand extends Command {
                 }
             ],
             description: {
-                content: '',
+                content: 'Murder the mentionned user (I\'m calling 911)',
                 usage: '[@user]',
                 examples: ['']
             }
@@ -34,7 +34,7 @@ class KillCommand extends Command {
 
                 const embed = new Discord.MessageEmbed()
                     .setColor(message.member ? message.member.displayHexColor : 'RANDOM')
-                    .setDescription(`${message.author} killed ${member} :o`)
+                    .setDescription(`${message.author} murdered ${member} :o`)
                     .setImage(response.url)
                     .setFooter('Powered by waifu.pics')
 

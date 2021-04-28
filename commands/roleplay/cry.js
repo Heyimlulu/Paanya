@@ -8,14 +8,8 @@ class CryCommand extends Command {
             aliases: ['cry'],
             category: 'roleplay',
             clientPermissions: ['SEND_MESSAGES', 'EMBED_LINKS'],
-            args: [
-                {
-                    id: 'user',
-                    type: 'string'
-                }
-            ],
             description: {
-                content: '',
+                content: 'Why are you sad ;c',
                 usage: '[@user]',
                 examples: ['']
             }

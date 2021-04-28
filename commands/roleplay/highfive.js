@@ -15,7 +15,7 @@ class HighFiveCommand extends Command {
                 }
             ],
             description: {
-                content: '',
+                content: 'Give a highfive to the mentionned user',
                 usage: '[@user]',
                 examples: ['']
             }

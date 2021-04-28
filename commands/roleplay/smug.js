@@ -2,15 +2,15 @@ const { Command } = require('discord-akairo');
 const fetch = require('node-fetch');
 const Discord = require('discord.js');
 
-class BlushCommand extends Command {
+class SmugCommand extends Command {
     constructor() {
-        super('blush', {
-            aliases: ['blush'],
+        super('smug', {
+            aliases: ['smug'],
             category: 'roleplay',
             clientPermissions: ['SEND_MESSAGES', 'EMBED_LINKS'],
             description: {
-                content: 'Will make you embarassed or blushy',
-                usage: '[@user]',
+                content: 'Show an excessive pride of yourself',
+                usage: '',
                 examples: ['']
             }
         });
@@ -18,13 +18,13 @@ class BlushCommand extends Command {
 
     async exec(message) {
 
-        fetch(`https://waifu.pics/api/sfw/blush`).then((response) => {
+        fetch(`https://waifu.pics/api/sfw/smug`).then((response) => {
             return response.json();
         }).then((response) => {
 
             const embed = new Discord.MessageEmbed()
                 .setColor(message.member ? message.member.displayHexColor : 'RANDOM')
-                .setDescription(`${message.author} became all blushy :point_right: :point_left:`)
+                .setDescription(`${message.author} just smugged`)
                 .setImage(response.url)
                 .setFooter('Powered by waifu.pics')
 
@@ -35,4 +35,4 @@ class BlushCommand extends Command {
     }
 }
 
-module.exports = BlushCommand;
+module.exports = SmugCommand;

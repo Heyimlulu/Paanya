@@ -15,7 +15,7 @@ class SlapCommand extends Command {
                 }
             ],
             description: {
-                content: '',
+                content: 'Slap the mentionned user',
                 usage: '[@user]',
                 examples: ['']
             }

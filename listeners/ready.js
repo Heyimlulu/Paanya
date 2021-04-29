@@ -1,6 +1,7 @@
 const { Listener } = require('discord-akairo');
 const play = require('../json/status/playing.json');
 const watch = require('../json/status/watching.json');
+const listen = require('../json/status/listening.json');
 // Imports the Google Cloud client library.
 const {Storage} = require('@google-cloud/storage');
 
@@ -38,20 +39,26 @@ class readyListener extends Listener {
 
         async function setStatus(client) {
 
-            // Generate a random number between 0 and 1
-            let random = Math.floor((Math.random() * 3));
+            // Generate a random number between 0 and 2
+            let random = Math.floor((Math.random() * 4));
 
             if (random == 0) {
 
                 let status = play[Math.floor(Math.random() * (play.length))];
 
-                client.user.setActivity(status, { type: "PLAYING" });
+                await client.user.setActivity(status, { type: "PLAYING" });
 
             } else if (random == 1) {
 
                 let status = watch[Math.floor(Math.random() * (watch.length))];
 
-                client.user.setActivity(status, { type: "WATCHING" });
+                await client.user.setActivity(status, { type: "WATCHING" });
+
+            } else if (random == 2) {
+
+                let status = listen[Math.floor(Math.random() * (listen.length))];
+
+                await client.user.setActivity(status, { type: "LISTENING" });
 
             }
 

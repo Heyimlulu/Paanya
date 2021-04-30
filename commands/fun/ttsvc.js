@@ -28,7 +28,7 @@ class TTSVcCommand extends Command {
         });
     }
 
-    exec(message, args) {
+    async exec(message, args) {
 
         let text = args.text;
         let output = `${os.tmpdir()}/${message.id}_tts.mp3`; // filename
@@ -43,7 +43,7 @@ class TTSVcCommand extends Command {
         };
 
         // Performs the Text-to-Speech request
-        gclient.synthesizeSpeech(request, (err, response) => {
+        await gclient.synthesizeSpeech(request, (err, response) => {
             if (err) {
 
                 return console.error('ERROR:', err);
@@ -57,7 +57,7 @@ class TTSVcCommand extends Command {
                 if (err) {
 
                     console.error('ERROR:', err);
-                    message.channel.send('An error has occurred, the message is probably too long');
+                    await message.channel.send('An error has occurred, the message is probably too long');
                     return;
 
                 }

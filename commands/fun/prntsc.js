@@ -6,17 +6,19 @@ class PrntscCommand extends Command {
     constructor() {
         super('prntsc', {
             aliases: ['prntsc', 'screenshot'],
-            category: 'general',
+            category: 'fun',
             clientPermissions: ['SEND_MESSAGES', 'EMBED_LINKS'],
             description: {
-                content: '',
+                content: 'Fetch a random screenshot from Lightshot. (Images may be NSFW, so be careful!) (You must use this command in a NSFW channel!)',
                 usage: '[]',
                 example: ['']
             }
         });
     }
 
-    async exec(message, args) {
+    async exec(message) {
+
+        if (!message.channel.nsfw) return message.channel.send('You must be in a NSFW channel only to use this command!');
 
         let url = generator();
 
@@ -31,15 +33,15 @@ class PrntscCommand extends Command {
 
         await extract({ uri: `https://prnt.sc/${url}/` }, (err, res) => {
 
-            console.log(res)
+            console.log(res);
 
             if(!res.hasOwnProperty('ogImage')) return console.log('Could not fetch screenshot');
 
             embed.setTitle(res.ogTitle)
                 .setDescription(res.ogDescription)
-                .setURL(res.ogUrl)
+                .setURL(res.ogImage)
                 .setImage(res.ogImage)
-                //.setThumbnail(res.images[2])
+                .setThumbnail('https://st.prntscr.com/2021/04/08/1538/img/footer-logo.png')
                 .setFooter(res.title);
 
             return message.channel.send(embed);

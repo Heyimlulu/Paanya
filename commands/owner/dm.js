@@ -34,7 +34,7 @@ class DmCommand extends Command {
         });
     }
 
-    exec(message, args) {
+    async exec(message, args) {
 
         function uuidv4() {
             return 'xxxxxxxxx'.replace(/[x]/g, function(c) {

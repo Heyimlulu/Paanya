@@ -11,7 +11,6 @@ Paanya is a simple and fun discord bot with moderation, auto-color rank, text-to
 - Roleplay commands (hug, cuddle, ...)
 - Fake a user/bot using webhooks!
 - Get a good looking color with the auto-color command!
-- Start a conversation with Cleverbot!
 - And more!
 
 # Paanya commands

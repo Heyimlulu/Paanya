@@ -1,3 +1,4 @@
+/*
 const { Command } = require('discord-akairo');
 const cleverbot = require('cleverbot-free');
 let conversation = {};
@@ -45,3 +46,5 @@ class CleverBotCommand extends Command {
 }
 
 module.exports = CleverBotCommand;
+
+ */

@@ -9,7 +9,7 @@ class NekoCommand extends Command {
             category: 'fun',
             clientPermissions: ['SEND_MESSAGES'],
             description: {
-                content: 'Get a random neko anime character!',
+                content: 'Get a random neko anime character. (Some images may be NSFW, so be careful!)',
                 usage: '',
                 examples: ['']
             }
@@ -17,6 +17,8 @@ class NekoCommand extends Command {
     }
 
     async exec(message) {
+
+        if (!message.channel.nsfw) return message.channel.send('You must be in a NSFW channel only to use this command!');
 
         fetch('https://waifu.pics/api/sfw/neko').then(response => {
             return response.json();

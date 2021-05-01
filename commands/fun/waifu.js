@@ -9,7 +9,7 @@ class WaifuCommand extends Command {
             category: 'fun',
             clientPermissions: ['SEND_MESSAGES'],
             description: {
-                content: 'Get a random Waifu!',
+                content: 'Get a random Waifu. (Some images may be NSFW, so be careful!)',
                 usage: '',
                 examples: ['']
             }
@@ -17,6 +17,8 @@ class WaifuCommand extends Command {
     }
 
     async exec(message) {
+
+        if (!message.channel.nsfw) return message.channel.send('You must be in a NSFW channel only to use this command!');
 
         fetch('https://waifu.pics/api/sfw/waifu').then(response => {
             return response.json();

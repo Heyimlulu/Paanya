@@ -21,6 +21,8 @@ class SafebooruCommand extends Command {
 
     async exec(message, args) {
 
+        if (!message.channel.nsfw) return message.channel.send('You must be in a NSFW channel only to use this command!');
+
         fetch(`https://safebooru.org/index.php?page=dapi&s=post&q=index&json=1`).then((response) => {
             return response.json();
         }).then((response) => {

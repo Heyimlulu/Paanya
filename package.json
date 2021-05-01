@@ -27,6 +27,7 @@
     "node-fetch": "^2.6.1",
     "pg": "^8.6.0",
     "superagent": "^6.1.0",
+    "turndown": "^7.0.0",
     "youtube-dl-exec": "^1.2.0",
     "ytdl-core": "^4.5.0"
   },
@@ -34,6 +35,7 @@
     "4chan-boards": "^2.0.1",
     "@google-cloud/storage": "^5.8.3",
     "@google-cloud/text-to-speech": "^3.1.3",
+    "asciify-image": "^0.1.6",
     "canvas": "^2.7.0",
     "dotenv": "^8.2.0",
     "youtube-dl-exec": "^1.2.0",

@@ -38,6 +38,7 @@ class PrntscCommand extends Command {
             if(!res.hasOwnProperty('ogImage')) return console.log('Could not fetch screenshot');
 
             embed.setTitle(res.ogTitle)
+                .setColor(message.member ? message.member.displayHexColor : 'RANDOM')
                 .setDescription(res.ogDescription)
                 .setURL(res.ogImage)
                 .setImage(res.ogImage)

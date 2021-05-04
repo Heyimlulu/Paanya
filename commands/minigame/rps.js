@@ -5,7 +5,7 @@ class RPSCommand extends Command {
     constructor() {
         super('rps', {
             aliases: ['rps'],
-            category: 'fun',
+            category: 'minigame',
             clientPermissions: ['SEND_MESSAGES'],
             args: [
                 {

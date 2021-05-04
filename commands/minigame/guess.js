@@ -5,7 +5,7 @@ class GuessCommand extends Command {
     constructor() {
         super('guess', {
             aliases: ['guess'],
-            category: 'fun',
+            category: 'minigame',
             clientPermissions: ['SEND_MESSAGES'],
             args: [
                 {

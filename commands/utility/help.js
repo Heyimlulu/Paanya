@@ -100,6 +100,7 @@ class HelpCommand extends Command {
                             owner: '⭐\u2000Owner',
                             utility: '🔩\u2000Utility',
                             image: '🖼️\u2000Image [WIP]',
+                            minigame: '🎲\u2000Minigame',
                             roleplay: '🎭\u2000Roleplay',
                             admin: '⚡\u2000Admin',
                         }[category.id];
@@ -109,6 +110,7 @@ class HelpCommand extends Command {
                             fun: '🎉\u2000Fun',
                             utility: '🔩\u2000Utility',
                             image: '🖼️\u2000Image [WIP]',
+                            minigame: '🎲\u2000Minigame',
                             roleplay: '🎭\u2000Roleplay',
                             admin: '⚡\u2000Admin',
                         }[category.id];

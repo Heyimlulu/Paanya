@@ -33,8 +33,8 @@ class AsciifyCommand extends Command {
 
         let options = {
             fit:    'box',
-            width:  50,
-            height: 25
+            width:  200,
+            height: 50
         }
 
         asciify(url, options)

@@ -7,6 +7,13 @@ class InsultCommand extends Command {
             aliases: ['insult'],
             category: 'general',
             clientPermissions: ["SEND_MESSAGES"],
+            args: [
+                {
+                    id: 'lang',
+                    type: ['cn', 'de', 'el', 'en', 'es', 'fr', 'ru', 'sw'],
+                    optional: true
+                }
+            ],
             description: {
                 content: 'Generate an insult from evilinsult.com',
                 usage: '[]',
@@ -17,9 +24,16 @@ class InsultCommand extends Command {
 
     async exec(message, args) {
 
-        fetch('https://evilinsult.com/generate_insult.php?lang=en&type=json').then(response => {
+        let lang = 'en';
+
+        if (args.lang) {
+            lang = args.lang;
+        }
+
+        fetch(`https://evilinsult.com/generate_insult.php?lang=${lang}&type=json`).then(response => {
             return response.json();
         }).then(response => {
+            console.log(response);
             message.channel.send(response.insult);
         })
 

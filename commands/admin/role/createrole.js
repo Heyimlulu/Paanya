@@ -27,7 +27,7 @@ class CreateRoleCommand extends Command {
                 }
             ],
             description: {
-                content: 'Create or delete a role',
+                content: 'Create a new role',
                 usage: '[hex color] [role]',
                 example: ['']
             }
@@ -53,18 +53,10 @@ class CreateRoleCommand extends Command {
                         name: args.role,
                         color: args.color.toUpperCase()
                     },
-                    reason: `Role command executed by ${message.author.username}`
+                    reason: `createrole command executed by ${message.author.username}`
                 });
 
-                embed.setTitle(`\u0060${args.role}\u0060 has been created! Try again if you want to delete this role!`)
-
-                return await message.channel.send(embed);
-
-            } else { // ELSE IF => role exists => Delete role
-
-                await message.guild.roles.cache.find(role => role.name === args.role).delete('Role command');
-
-                embed.setTitle(`\u0060${args.role}\u0060 has been deleted!`)
+                embed.setTitle(`\u0060${args.role}\u0060 has been created by ${message.author}!`)
 
                 return await message.channel.send(embed);
 

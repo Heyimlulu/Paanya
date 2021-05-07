@@ -1,13 +1,14 @@
 const { Command } = require('discord-akairo');
 const Discord = require('discord.js');
 
-class AddRoleCommand extends Command {
+class CreateRoleCommand extends Command {
     constructor() {
-        super('addrole', {
-            aliases: ['addrole'],
+        super('createrole', {
+            aliases: ['createrole', 'newrole'],
             category: 'admin',
             clientPermissions: ['SEND_MESSAGES', 'MANAGE_ROLES'],
             userPermissions: ['MANAGE_ROLES'],
+            channel: 'guild',
             args: [
                 {
                     id: 'color',
@@ -26,7 +27,7 @@ class AddRoleCommand extends Command {
                 }
             ],
             description: {
-                content: 'Add or remove a role',
+                content: 'Create or delete a role',
                 usage: '[hex color] [role]',
                 example: ['']
             }
@@ -80,4 +81,4 @@ class AddRoleCommand extends Command {
     }
 }
 
-module.exports = AddRoleCommand;
+module.exports = CreateRoleCommand;

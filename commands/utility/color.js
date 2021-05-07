@@ -40,7 +40,7 @@ class ColorCommand extends Command {
                         name: args.color,
                         color: args.color.toUpperCase()
                     },
-                    reason: 'Color command'
+                    reason: `Color command executed by ${message.author.username}`
                 });
 
                 embed.setTitle('Role created! try again to apply it to yourself!')

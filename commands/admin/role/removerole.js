@@ -41,9 +41,6 @@ class RemoveRoleCommand extends Command {
 
         if (!role) return message.reply('I couldn\'t find that role!');
 
-        if (message.mentions.members.first()) {
-
-        }
         if (message.guild.member(member).roles.cache.has(role.id)) { // If member have the role
 
             rmvEmbed.setTitle('Role Removed!')
@@ -51,13 +48,13 @@ class RemoveRoleCommand extends Command {
                 .addField('Unassigned Role', role)
                 .addField('To', member)
 
-
+            // Remove the role
             await message.guild.member(member).roles.remove(role);
             return message.channel.send(rmvEmbed);
 
         }
 
-        await message.reply('That member didn\'t have that role!')
+        await message.reply('This member didn\'t have that role!')
 
     }
 }

@@ -54,7 +54,7 @@ class AddRoleCommand extends Command {
 
         }
 
-        await message.reply(`That member has already that role!`)
+        await message.reply(`This member has already that role!`)
 
     }
 }

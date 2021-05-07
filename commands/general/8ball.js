@@ -1,67 +1,44 @@
 const { Command } = require('discord-akairo');
 const Discord = require('discord.js');
+const answer = require('../../json/commands/8ball.json');
 
-class Ball8Command extends Command {
+class EightBallCommand extends Command {
     constructor() {
         super('8ball', {
-            aliases: ['8ball'],
+            aliases: ['8ball', 'eightball'],
             category: 'general',
-            clientPermissions: ["SEND_MESSAGES" ,'MANAGE_MESSAGES'],
+            clientPermissions: ["SEND_MESSAGES"],
             args: [
                 {
-                    id: 'ball',
+                    id: 'say',
                     type: 'string',
                     prompt: {
-                        start: 'What do you need to know?'
+                        start: 'You need to ask the 8ball a question!'
                     },
                     match: "rest"
                 }
             ],
             description: {
                 content: 'Fortune-telling or seeking advice',
-                usage: '[Will I be a popular bot?]',
-                examples: ['Will I be a popular bot?']
+                usage: '[text]',
+                examples: ['']
             }
         });
     }
 
-    exec(message, args) {
+    async exec(message, args) {
 
-        let ask = args.ball;
-        let answers = [
-            "It is certain",
-            "It is decidely so",
-            "Without a doubt",
-            "Yes - definitely",
-            "You may rely on it",
-            "As I see it, yes",
-            "Most likely",
-            "Outlook good",
-            "Yes",
-            "Signs point to yes",
-            "Reply hazy, try again",
-            "Ask again later",
-            "Better not tell you now",
-            "Cannot predict now",
-            "Concentrate and ask again",
-            "Don't count on it",
-            "My reply is no",
-            "My sources say no",
-            "Outlook not so good",
-            "Very doubtful"
-        ]
-
-        let reply = answers[Math.floor(Math.random() * answers.length)];
+        let ask = args.say;
+        let reply = answer[Math.floor(Math.random() * answer.length) + 1];
 
         const embed = new Discord.MessageEmbed()
             .setColor(message.member ? message.member.displayHexColor : 'RANDOM')
             .setTitle(ask)
             .setDescription(reply)
-            .setTimestamp()
 
-        message.channel.send(embed);
+        await message.channel.send(embed);
 
     }
 }
 
-module.exports = Ball8Command;
+module.exports = EightBallCommand;

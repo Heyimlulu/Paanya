@@ -99,7 +99,12 @@ DATABASE_URL = **************************
 Now you can run the bot with
 
 ```
-npm start or node index.js
+#With Node
+node index.js
+npm start
+
+#With pm2
+pm2 start index.js --name "Paanya"
 ```
 
 ## Using my bot

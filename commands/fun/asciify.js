@@ -12,16 +12,12 @@ class AsciifyCommand extends Command {
             args: [
                 {
                     id: 'link',
-                    type: 'url',
-                    prompt: {
-                        start: 'Which image do you want me to asciify?',
-                        retry: "It doesn't seem to be a valid url, please try again!"
-                    }
+                    type: 'url'
                 }
             ],
             description: {
-                content: 'Transform your image into ASCII',
-                usage: '[url to image]',
+                content: 'Transform your image into ASCII. (It may be a bit spammy so be careful!)',
+                usage: '[url to image or attachment]',
                 examples: ['']
             }
         });
@@ -29,27 +25,35 @@ class AsciifyCommand extends Command {
 
     async exec(message, args) {
 
-        let url = args.link.href;
+        let url;
+        let Attachment = (message.attachments).array();
 
+        if (args.url) {
+            url = args.link.href;
+        } else {
+            url = Attachment[0].url;
+        }
+
+        let output = `${os.tmpdir()}/${message.id}ascii.txt`; // filename
         let options = {
             fit:    'box',
             width:  200,
             height: 50
         }
 
-        asciify(url, options)
-            .then(function (asciified) {
+        asciify(url, options).then(function (asciified) {
 
                 // Print asciified image to console
                 console.log(asciified);
 
                 // Write asciified image into a text file
-                fs.writeFile(`${os.tmpdir()}/${message.id}ascii.txt`, asciified, function (err) {
+                fs.writeFile(output, asciified, function (err) {
+
                     if (err) {
                         console.log(err);
                     }
 
-                    return message.channel.send({files: [`${os.tmpdir()}/${message.id}ascii.txt`]});
+                    return message.channel.send({files: [output]});
                 });
             })
             .catch(function (err) {

@@ -1,8 +1,6 @@
-/*
 const { Command } = require('discord-akairo');
-const Discord = require('discord.js');
 const fs = require('fs');
-const youtubedl = require('youtube-dl-exec');
+const ytdl = require('ytdl-core');
 const os = require('os');
 
 class DownloadCommand extends Command {
@@ -10,61 +8,50 @@ class DownloadCommand extends Command {
         super('download', {
             aliases: ['download'],
             category: 'utility',
-            clientPermissions: "ATTACH_FILES",
+            clientPermissions: ['SEND_MESSAGES', 'ATTACH_FILES'],
             args: [
                 {
                     id: 'url',
-                    type: 'string',
-                    prompt: {
-                        start: 'Which video do you want me to downlaod?'
-                    },
-                    match: 'rest'
+                    type: 'string'
                 }
             ],
             description: {
                 content: 'Download videos from youtube',
-                usage: '[url-to-video]',
-                example: ['url-to-video']
+                usage: '[url to video]',
+                example: ['']
             }
         });
     }
 
-    exec(message, args) {
+    async exec(message, args) {
 
         let url = args.url;
-        let output = `${os.tmpdir()}/${message.id}_video.mp4`; // filename
+
+        if (!url) return message.reply('You put an invalid link. Please try again!');
+
+        let output = `${os.tmpdir()}/${message.id}video.mp4`; // filename
 
         if (url.includes("http") || url.includes("www")) {
-            message.channel.send('Downloading...').then(msg => {
 
-                let video = youtubedl(url); // Get the url from the user
+            const video = ytdl(url, { filter: format => format.container === 'mp4' });
 
-                video.pipe(fs.writeFile(output));
+            video.pipe(fs.createWriteStream(output));
 
-                // on error
-                video.on('error', function error(err) {
+            video.on('error', function(err) {
+                console.log('error :', err);
+                message.channel.send("An error has occured, i can't download from the link you provided.")
+            });
 
-                    console.log('error :', err);
-                    message.channel.send("An error has occured, i can't download from the link you provided.")
+            video.on('end', function() {
+                message.channel.send(`Video downloaded by ${message.author.username}`, { files: [output] })
+                    .catch(error => message.channel.send('Uh Oh... File is too big to be send on discord'));
+            });
 
-                });
-
-                // on end or if download is finished
-                video.on('end', function () {
-
-                    message.channel.send(`Downloaded by ${message.author.username}`, {files: [output]})
-                        .then(msg.edit('**Download successful!**'))
-                        .catch(error => message.channel.send('Uh Oh... File is too big'))
-
-                })
-            })
         } else {
-            message.channel.send("You need to input a valid link");
+            await message.channel.send("You need to input a valid link");
         }
 
     }
 }
 
 module.exports = DownloadCommand;
-
- */

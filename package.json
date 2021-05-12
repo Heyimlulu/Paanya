@@ -1,13 +1,18 @@
 {
   "name": "Paanya",
   "version": "1.0.0",
-  "description": "A multifunctional discord bot made using the DiscordJS API and Discord Akairo Framework",
+  "description": "Paanya is a multifunctional discord bot made using the DiscordJS API and Discord Akairo Framework",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js"
   },
-  "keywords": [],
+  "keywords": [
+    "node",
+    "javascript",
+    "npm",
+    "discord"
+  ],
   "author": "Heyimlulu",
   "license": "ISC",
   "dependencies": {

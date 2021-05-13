@@ -22,7 +22,7 @@ class SteamCommand extends Command {
             description: {
                 content: 'Send stats for a steam use',
                 usage: '[steamID]',
-                examples: ['76561198034572288']
+                examples: ['']
             }
         });
     }
@@ -44,11 +44,10 @@ class SteamCommand extends Command {
 
         const embed = new MessageEmbed()
             .setColor(message.member ? message.member.displayHexColor : 'RANDOM')
-            .setTitle(player.userName)
-            .setDescription(`Realname : ${player.realName}`)
+            .setTitle(`${player.userName} (${steamID})`)
+            .setDescription(`Realname : \u0060${player.realName}\u0060`)
             .setURL(player.url)
             .setThumbnail(player.avatar)
-            .addField('SteamID', steamID, false)
             .addField('Profile visibility', player.stateProfile, false)
             .addField('Country', decoder.country, true)
             .addField('State', decoder.state, true)

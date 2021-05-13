@@ -20,7 +20,7 @@ class SteamCommand extends Command {
                 }
             ],
             description: {
-                content: 'Send stats for a steam use',
+                content: 'Send stats for a steam user',
                 usage: '[steamID]',
                 examples: ['']
             }

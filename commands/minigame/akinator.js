@@ -23,11 +23,12 @@ class AkinatorCommand extends Command {
 
         await aki.start();
 
-        //let myAnswer = 0; // yes = 0
+        let myAnswer;
+
         let embed = new MessageEmbed()
             .setColor(message.member ? message.member.displayHexColor : 'RANDOM')
             .setTitle(`Question: ${aki.question}`)
-            .setDescription(`Answers: ${aki.answers}`)
+            .setDescription('Yes [0] | No [1] | Don\'t know [2] | Probably [3] | Probably not [4]')
             .setFooter( `Progress: ${aki.progress}`);
 
         await message.channel.send(embed);
@@ -35,34 +36,25 @@ class AkinatorCommand extends Command {
         let filter = m =>  m.content && m.author.id == message.author.id;
         message.channel.awaitMessages(filter, { max: 1, time: 60000, errors: ['time'] })
             .then(input => {
-                console.log('First Step: ', input.map(input => input.content)[0]);
-                game(input.map(input => input.content)[0]);
+                myAnswer = input.map(input => input.content)[0]
+                game();
             })
             .catch(() => {
                 return message.reply('Times out!')
             });
 
-        async function game(myAnswer) {
+        async function game() {
 
             await aki.step(myAnswer);
 
             if (aki.progress >= 70 || aki.currentStep >= 78) {
 
-                let guessEmbed = new MessageEmbed()
-                    .setColor(message.member ? message.member.displayHexColor : 'RANDOM')
-                    .setTitle(`I think of: ${aki.answers[0].name}`)
-                    .setDescription(`From: ${aki.answers[0].description}`)
-                    .setImage(aki.answers[0].absolute_picture_path)
-                    .setFooter(aki.guessCount);
-
+                if (aki.answers[0].nsfw === true && !message.channel.nsfw) {
+                    return await message.channel.send(`I think of \u0060${aki.answers[0].name}\u0060 from \u0060${aki.answers[0].description}\u0060 (${aki.guessCount} attempts)`);
+                }
 
                 await aki.win();
-                await message.channel.send(guessEmbed);
-                
-                console.log(aki.answers);
-                console.log('Hello ', aki.answers.name);
-                console.log('World ', aki.answers[0].name);
-                console.log('guessCount:', aki.guessCount);
+                await message.channel.send(`I think of \u0060${aki.answers[0].name}\u0060 from \u0060${aki.answers[0].description}\u0060 (${aki.guessCount} attempts)`, {files: [aki.answers[0].absolute_picture_path]});
             } else {
                 await nextStep();
             }
@@ -72,15 +64,14 @@ class AkinatorCommand extends Command {
 
             // Sort new questions
             embed.setTitle(`Question: ${aki.question}`)
-                .setDescription(`Answers: ${aki.answers}`)
                 .setFooter( `Progress: ${aki.progress}`);
 
             await message.channel.send(embed);
 
             message.channel.awaitMessages(filter, { max: 1, time: 60000, errors: ['time'] })
                 .then(input => {
-                    console.log('Function nextStep: ', input.map(input => input.content)[0]);
-                    game(input.map(input => input.content)[0]);
+                    myAnswer = input.map(input => input.content)[0];
+                    game();
                 })
                 .catch(() => {
                     return message.reply('Times out!')

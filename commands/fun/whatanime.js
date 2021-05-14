@@ -18,7 +18,7 @@ class WhatAnimeCommand extends Command {
                 }
             ],
             description: {
-                content: 'Search the anime title from the image you provide! (Doesn\'t work always!)',
+                content: 'Search the anime title from the image you provide! (May not work always!)',
                 usage: '[image url or attachment]',
                 examples: ['']
             }

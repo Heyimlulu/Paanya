@@ -15,7 +15,7 @@ class SteamCommand extends Command {
                     id: 'user',
                     type: 'string',
                     prompt: {
-                        start: 'Which steam user should I fetch infos?'
+                        start: 'Which steam user should I show infos?'
                     }
                 }
             ],

@@ -1,30 +1,6 @@
 # Paanya
 
-Paanya is a simple and fun discord bot with moderation, auto-color rank, text-to-speech, strawpoll commands and more
-
-# Paanya features
-
-*Use `nya help <command>` to see the command detail*
-
-- Google Text-to-speech voice in your server!
-- Get a random post from a Subreddit of your choice
-- Get a random image from Imgur and Giphy
-- Fetch an article from Urban Dictionary
-- Get a nice looking color with the auto-color command!
-- Fake a user / bot using webhooks
-- Roleplay commands! (hug, cuddle, ...)
-- And more!
-
-# Paanya commands
-
-- ``nya 8ball``: Fortune telling or seeking advice
-- ``nya safebooru``: Get a random anime picture from Safebooru. 
-- ``nya strawpoll``: Create a poll
-- ``nya advice``: Send some random advices
-- ``nya help``: Show all commands
-- ``nya invite``: Get a link to invite me in your own server
-- ``nya serverinfo``: Show some informations about a guild
-- ``nya userinfo``: Show some informations about a user
+Paanya is a multipurpose and fun discord bot with moderation, auto-color rank, text-to-speech, strawpoll commands and more
 
 ## Getting started
 

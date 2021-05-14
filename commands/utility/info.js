@@ -23,7 +23,7 @@ class InfoCommand extends Command {
             .setColor(message.member ? message.member.displayHexColor : 'RANDOM')
             .setAuthor(this.client.user.tag, this.client.user.displayAvatarURL())
             .setTitle('About me')
-            .setDescription('I\'m a simple and fun discord bot with moderation, auto-color rank, text-to-speech, strawpoll commands and more')
+            .setDescription('I\'m a multipurpose and fun discord bot with moderation, auto-color rank, text-to-speech, strawpoll commands and more')
             .addField('Owner', `${this.client.users.resolve(owner).tag} (${this.client.users.resolve(owner).id})`)
             .addField('My GitHub profile', 'https://github.com/Heyimlulu')
             .addField('Total commands', `${this.client.commandHandler.modules.size - 9}`)

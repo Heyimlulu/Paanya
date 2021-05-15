@@ -2,6 +2,18 @@
   "owner": "265896171384340480",
   "prefix": ["nya"],
   "statsChannel": "833351458664873994",
+  "discordbotlist": {
+    "name": "discordbotlist.com",
+    "url": "https://discordbotlist.com/api/v1/bots/829230505123119164/stats",
+    "authorization": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0IjoxLCJpZCI6IjgyOTIzMDUwNTEyMzExOTE2NCIsImlhdCI6MTYyMTAyMzI5Nn0.AR2g1XB9b68riPanGDjAvkhIIIPJwFy7mzWXymcT2-s",
+    "body": "{\"guilds\": 0, \"users\": 0}"
+  },
+  "discordbotsgg": {
+    "name": "discord.bots.gg",
+    "url": "https://discord.bots.gg/api/v1/bots/829230505123119164/stats",
+    "authorization": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcGkiOnRydWUsImlkIjoiMjY1ODk2MTcxMzg0MzQwNDgwIiwiaWF0IjoxNjIxMDI2MzQ3fQ.UdX4FOf9S6nw-N1Y1Fk-nbHhmsR9lkDsre0qs8HOJL4",
+    "body": "{\"guildCount\": {{SERVER_COUNT}}}"
+  },
   "danbooru": {
     "login": "Paanya"
   }

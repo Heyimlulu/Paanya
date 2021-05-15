@@ -2,6 +2,24 @@
   "owner": "",
   "prefix": ["nya"],
   "statsChannel": "",
+  "topgg" : {
+    "name": "top.gg",
+    "url": "https://top.gg/api/bots/<BOT_ID>/stats",
+    "authorization": "<TOKEN>",
+    "body": "{\"server_count\":{{SERVER_COUNT}}}"
+  },
+  "discordbotlist": {
+    "name": "discordbotlist.com",
+    "url": "https://discordbotlist.com/api/v1/bots/<BOT_ID>/stats",
+    "authorization": "<TOKEN>",
+    "body": "{\"guilds\": 0, \"users\": 0}"
+  },
+  "discordbotsgg": {
+    "name": "discord.bots.gg",
+    "url": "https://discord.bots.gg/api/v1/bots/<BOT_ID>/stats",
+    "authorization": "<TOKEN>",
+    "body": "{\"guildCount\":{{SERVER_COUNT}}}"
+  },
   "danbooru": {
     "login": ""
   }

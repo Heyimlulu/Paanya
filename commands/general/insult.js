@@ -16,8 +16,8 @@ class InsultCommand extends Command {
             ],
             description: {
                 content: 'Generate an insult from evilinsult.com',
-                usage: '[]',
-                examples: ['']
+                usage: '[cn, de, el, en, es, fr, ru, sw]',
+                examples: ['[language (optional)]']
             }
         });
     }
@@ -33,7 +33,6 @@ class InsultCommand extends Command {
         fetch(`https://evilinsult.com/generate_insult.php?lang=${lang}&type=json`).then(response => {
             return response.json();
         }).then(response => {
-            console.log(response);
             message.channel.send(response.insult);
         })
 

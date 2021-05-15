@@ -1,6 +1,8 @@
 const { Listener } = require('discord-akairo');
 const { statsChannel } = require('../config.json');
 const Discord = require('discord.js');
+const fetch = require('node-fetch');
+const config = require('../config.json');
 
 class GuildDeleteListener extends Listener {
     constructor() {
@@ -11,6 +13,36 @@ class GuildDeleteListener extends Listener {
     }
 
     async exec(guild) {
+
+        let body;
+
+        if (config.discordbotlist) {
+            body = JSON.parse(config.discordbotlist.body);
+
+            body.guilds = this.client.guilds.cache.size;
+            body.users = this.client.users.cache.size;
+
+            await guildCounter(config.discordbotlist.url, config.discordbotlist.authorization, body);
+        }
+
+        if (config.discordbotsgg) {
+            body = JSON.parse(config.discordbotsgg.body.replace('{{SERVER_COUNT}}', this.client.guilds.cache.size));
+
+            await guildCounter(config.discordbotsgg.url, config.discordbotsgg.authorization, body)
+        }
+
+        async function guildCounter(url, auth, body) {
+
+            await fetch(url, {
+                method: 'post',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': auth
+                },
+                body: JSON.stringify(body)
+            }).then((response) => console.log(response));
+
+        }
 
         await guild.members.fetch();
 

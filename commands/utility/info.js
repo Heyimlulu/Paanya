@@ -28,6 +28,7 @@ class InfoCommand extends Command {
             .addField('My GitHub profile', 'https://github.com/Heyimlulu')
             .addField('Total commands', `${this.client.commandHandler.modules.size - 9}`)
             .addField('Support server', 'none yet')
+            .addField('Website', 'https://paanya.moe/')
             .addField('Contact', `Use ${prefix[0]} feedback <\message\> to let me know what you think of my bot ;3`)
             .attachFiles(attachment)
             .setThumbnail('attachment://catJam.gif')

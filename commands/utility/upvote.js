@@ -14,18 +14,16 @@ class UpvoteCommand extends Command {
         });
     }
 
-    exec(message) {
+    async exec(message) {
 
-        const attachment = new Discord.MessageAttachment('./asset/img/please-cat.jpg', 'please-cat.jpg');
+        const attachment = new Discord.MessageAttachment('./asset/img/paanya-this-must-hurted-a-lot.jpg', 'paanya-this-must-hurted-a-lot.jpg');
         const UpvoteEmbed = new Discord.MessageEmbed()
             .setColor(message.member ? message.member.displayHexColor : 'RANDOM')
-            .setTitle('Vote for my bot')
+            .setTitle('You can vote for my bot if you like it!')
             .setAuthor(this.client.user.tag, this.client.user.displayAvatarURL())
-            .setDescription('You can vote for my bot if you like it!')
-            .addField('Top.gg', 'https://top.gg/bot/829230505123119164')
-            .addField('Discordbotlist.com', 'https://discordbotlist.com/bots/paanya')
+            .setDescription('[top.gg](https://top.gg/bot/829230505123119164) | [discordbotlist.com](https://discordbotlist.com/bots/paanya) | [discord.bots.gg](https://discord.bots.gg/bots/829230505123119164)')
             .attachFiles(attachment)
-            .setImage('attachment://please-cat.jpg')
+            .setImage('attachment://paanya-this-must-hurted-a-lot.jpg')
             .setTimestamp()
             .setFooter('💛 Thanks for the upvote', message.author.displayAvatarURL());
 

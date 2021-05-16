@@ -87,10 +87,11 @@ pm2 start index.js --name "Paanya"
 
 ## Using my bot
 
-You can find my bot in these website. Don't forget to vote if you do like it ;)
+You can find my bot in these website. Don't forget to vote if you do like it and want to support my bot ;)
 
+- [top.gg](https://top.gg/bot/829230505123119164)
 - [discordbotlist.com](https://discordbotlist.com/bots/paanya)
-- [top.gg](https://top.gg/bot/829230505123119164) 
+- [discord.bots.gg](https://discord.bots.gg/bots/829230505123119164) 
 
 ## Built with
 

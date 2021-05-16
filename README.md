@@ -89,9 +89,9 @@ pm2 start index.js --name "Paanya"
 
 You can find my bot in these website. Don't forget to vote if you do like it and want to support my bot ;)
 
-- [top.gg](https://top.gg/bot/829230505123119164)
-- [discordbotlist.com](https://discordbotlist.com/bots/paanya)
-- [discord.bots.gg](https://discord.bots.gg/bots/829230505123119164) 
+<a href="https://top.gg/bot/829230505123119164" target="_blank">top.gg</a> |
+<a href="https://discordbotlist.com/bots/paanya" target="_blank">discordbotlist.com</a> |
+<a href="https://discord.bots.gg/bots/829230505123119164" target="_blank">discord.bots.gg</a>
 
 ## Built with
 

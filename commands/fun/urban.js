@@ -20,7 +20,7 @@ class UrbanCommand extends Command {
                 }
             ],
             description: {
-                content: 'Fetch an article from urban dictionary',
+                content: 'Look up for a word on Urban Dictionary',
                 usage: '[wat]',
                 examples: ['wat']
             }

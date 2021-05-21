@@ -23,7 +23,6 @@ class MissingPermissionsListener extends Listener {
                 if (missing == 'SEND_MESSAGES') {
                     return;
                 } else {
-                    console.log('4');
                     message.reply(`You are missing theses permissions: \u0060${missing}\u0060 for the ${command.id} command!`);
                 }
                 break;

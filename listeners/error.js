@@ -25,7 +25,7 @@ class ErrorListener extends Listener {
         if (message.guild) errorEmbed.addField('Guild', `${message.guild.name} (${message.guild.id})`);
 
         console.error(`Something went wrong on command: ${command.id}\n${error}\nOn the message: ${message}!`);
-        channel.send(`Something went wrong! on command: \u0060${command.id}\u0060, error: \u0060${error}\u0060, message: \u0060${message}\u0060!`);
+        channel.send(errorEmbed);
 
         // Get current date
         let today = new Date();

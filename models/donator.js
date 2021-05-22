@@ -1,4 +1,3 @@
-/*
 module.exports = (sequelize, DataTypes) => {
     const donator = sequelize.define('donator', {
         userID: DataTypes.BIGINT,
@@ -11,5 +10,3 @@ module.exports = (sequelize, DataTypes) => {
     };
     return donator;
 };
-
- */

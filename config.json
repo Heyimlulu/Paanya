@@ -31,7 +31,7 @@
     "database": "ddjv53sp4eigt7",
     "username": "xsnggtbwkbhyij",
     "password": "de8fb8599d954ab37b66534d9f2b9ba1b48b4ab1f441b02436378b085a1de77e",
-    "host": "127.0.0.1",
+    "host": "ec2-54-90-211-192.compute-1.amazonaws.com",
     "dialect": "postgres",
     "logging": false
   }

@@ -1,4 +1,3 @@
-/*
 const { Command } = require('discord-akairo');
 const { MessageEmbed } = require('discord.js');
 const { Donator } = require('../../dbObjects');
@@ -26,7 +25,7 @@ class DonatorCommand extends Command {
         let donatorMessage = `Here\'s every donators that support ${this.client.user.tag} 💛\n`;
 
         for (let i = 0; i < donator.length; i++) {
-            donatorMessage += `\u0060${this.client.users.resolve(donator[i].get('userID').toString()).tag}\u0060\n`;
+            donatorMessage += `\u0060${this.client.users.resolve(donator[i].get('userID').toString()).tag} : ${donator[i].get('donation').toString()}\u0060\n`;
         }
 
         await message.channel.send(donatorMessage);
@@ -35,5 +34,3 @@ class DonatorCommand extends Command {
 }
 
 module.exports = DonatorCommand;
-
- */

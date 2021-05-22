@@ -1,4 +1,3 @@
-/*
 const { Command } = require('discord-akairo');
 const { MessageEmbed } = require('discord.js');
 const { donation } = require('../../config.json');
@@ -33,5 +32,3 @@ class DonateCommand extends Command {
 }
 
 module.exports = DonateCommand;
-
- */

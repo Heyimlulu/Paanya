@@ -20,7 +20,25 @@
     "authorization": "<TOKEN>",
     "body": "{\"guildCount\":{{SERVER_COUNT}}}"
   },
+  "donation": {
+    "url": ""
+  },
   "danbooru": {
     "login": ""
+  },
+  "development": {
+    "database": "",
+    "username": "",
+    "password": "",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "database": "",
+    "username": "",
+    "password": "",
+    "host": "",
+    "dialect": "postgres",
+    "logging": false
   }
 }

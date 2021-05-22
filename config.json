@@ -14,7 +14,25 @@
     "authorization": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcGkiOnRydWUsImlkIjoiMjY1ODk2MTcxMzg0MzQwNDgwIiwiaWF0IjoxNjIxMDI2MzQ3fQ.UdX4FOf9S6nw-N1Y1Fk-nbHhmsR9lkDsre0qs8HOJL4",
     "body": "{\"guildCount\": {{SERVER_COUNT}}}"
   },
+  "donation": {
+    "url": ""
+  },
   "danbooru": {
     "login": "Paanya"
+  },
+  "development": {
+    "database": "paanyadb",
+    "username": "root",
+    "password": "",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "database": "ddjv53sp4eigt7",
+    "username": "xsnggtbwkbhyij",
+    "password": "de8fb8599d954ab37b66534d9f2b9ba1b48b4ab1f441b02436378b085a1de77e",
+    "host": "127.0.0.1",
+    "dialect": "postgres",
+    "logging": false
   }
 }

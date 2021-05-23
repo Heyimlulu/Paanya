@@ -3,6 +3,7 @@ const { statsChannel } = require('../config.json');
 const Discord = require('discord.js');
 const fetch = require('node-fetch');
 const config = require('../config.json');
+const guildBlacklist = require('../dbObjects').guildBlacklist;
 
 class GuildCreateListener extends Listener {
     constructor() {
@@ -44,7 +45,6 @@ class GuildCreateListener extends Listener {
 
         }
 
-
         await guild.members.fetch();
 
         const channel = this.client.channels.resolve(statsChannel);
@@ -61,6 +61,13 @@ class GuildCreateListener extends Listener {
             .addField('Owner', `${guild.owner.user.username} (${guild.owner.id})`, true)
             .setFooter(`I'm now in ${this.client.guilds.cache.size} servers!`)
             .setTimestamp();
+
+        const blacklist = await guildBlacklist.findOne({where: {guildID: guild.id}});
+
+        if (blacklist) {
+            guild.leave();
+            return channel.send(`${guild.owner.user.username} (${guild.owner.id}) from ${guild.name} (${guild.id}) tried to add me to their guild while being blacklisted!`);
+        }
 
         channel.send(embed);
 

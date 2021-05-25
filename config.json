@@ -2,6 +2,12 @@
   "owner": "265896171384340480",
   "prefix": ["nya"],
   "statsChannel": "833351458664873994",
+  "topgg": {
+    "name": "top.gg",
+    "url": "https://top.gg/api/bots/829230505123119164/stats",
+    "authorization": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjgyOTIzMDUwNTEyMzExOTE2NCIsImJvdCI6dHJ1ZSwiaWF0IjoxNjIxOTU4NTU3fQ.PAHGKEUhOBedVQoAdolgVfJrtryTyEE2J4bRcSIO_hA",
+    "body": "{\"server_count\":{{SERVER_COUNT}}}"
+  },
   "discordbotlist": {
     "name": "discordbotlist.com",
     "url": "https://discordbotlist.com/api/v1/bots/829230505123119164/stats",

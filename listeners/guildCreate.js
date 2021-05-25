@@ -17,6 +17,12 @@ class GuildCreateListener extends Listener {
 
         let body;
 
+        if (config.topgg) {
+            body = JSON.parse(config.topgg.body.replace('{{SERVER_COUNT}}', this.client.guilds.cache.size));
+
+            await guildCounter(config.topgg.url, config.topgg.authorization, body)
+        }
+
         if (config.discordbotlist) {
             body = JSON.parse(config.discordbotlist.body);
 

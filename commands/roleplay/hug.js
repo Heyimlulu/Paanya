@@ -28,22 +28,30 @@ class HugCommand extends Command {
 
             let member = message.mentions.members.first();
 
-            fetch(`https://waifu.pics/api/sfw/hug`).then((response) => {
-                return response.json();
-            }).then((response) => {
+            let response;
+            let hug;
 
-                const embed = new Discord.MessageEmbed()
-                    .setColor(message.member ? message.member.displayHexColor : 'RANDOM')
-                    .setDescription(`${message.author} hugged ${member}`)
-                    .setImage(response.url)
-                    .setFooter('Powered by waifu.pics')
+            // Randomly generated number between 0 and 1
+            let i = Math.floor(Math.random() * 2);
 
-                message.channel.send(embed);
+            if (i === 0) {
+                response = await fetch('https://waifu.pics/api/sfw/hug');
+                hug = await response.json();
+            } else if (i === 1) {
+                response = await fetch('https://waifu.pics/api/sfw/glomp');
+                hug = await response.json();
+            }
 
-            });
+            const embed = new Discord.MessageEmbed()
+                .setColor(message.member ? message.member.displayHexColor : 'RANDOM')
+                .setDescription(`${message.author} hugged ${member}`)
+                .setImage(hug.url)
+                .setFooter('Powered by waifu.pics')
+
+            await message.channel.send(embed);
 
         } else {
-            return message.reply('You have to mentionned a user first!')
+            return message.reply('You have to mention a user first!')
         }
 
     }

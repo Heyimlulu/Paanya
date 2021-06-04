@@ -8,6 +8,13 @@ class AkinatorCommand extends Command {
             aliases: ['akinator'],
             category: 'minigame',
             clientPermissions: ['SEND_MESSAGES'],
+            args: [
+                {
+                    id: 'region',
+                    type: ['en', 'en_objects','en_animals', 'ar', 'cn', 'de', 'de_animals', 'es', 'es_animals', 'fr', 'fr_objects', 'fr_animals', 'il', 'it', 'it_animals', 'jp', 'jp_animals', 'kr', 'nl', 'pl', 'pt', 'ru', 'tr', 'id'],
+                    optional: true
+                }
+            ],
             description: {
                 content: 'Let Akinator guess about a real or fictional character you choose',
                 usage: '[]',
@@ -16,9 +23,13 @@ class AkinatorCommand extends Command {
         });
     }
 
-    async exec(message) {
+    async exec(message, args) {
 
-        let region = 'en';
+        let region = args.region;
+        if (!region) {
+            region = 'en';
+        }
+
         let aki = new Aki(region);
 
         await aki.start();

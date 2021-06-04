@@ -50,7 +50,7 @@ class IDubbzPaintCommand extends Command {
                 return message.channel.send('An error as occurred, please try again. Is it a correct image?');
             });
             
-            ctx.drawImage(background, 140, 40, 750, 550);
+            ctx.drawImage(background, 140, 40, 600, 540);
             const { body: buffer } = await superagent.get('https://cdn.discordapp.com/attachments/734432426457301043/834457155066265600/idubbbz-painting-meme.png');
             const bg = await loadImage(buffer);
             ctx.drawImage(bg, 0, 0, canvas.width, canvas.height);

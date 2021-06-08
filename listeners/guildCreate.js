@@ -1,9 +1,9 @@
 const { Listener } = require('discord-akairo');
-const { statsChannel } = require('../config.json');
+const { statsChannel } = require('../config/config.json');
 const Discord = require('discord.js');
 const fetch = require('node-fetch');
-const config = require('../config.json');
-const guildBlacklist = require('../db/dbObjects').guildBlacklist;
+const config = require('../config/bot-sites.json');
+const guildBlacklist = require('../database/dbObjects').guildBlacklist;
 
 class GuildCreateListener extends Listener {
     constructor() {

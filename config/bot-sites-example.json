@@ -1,7 +1,4 @@
 {
-  "owner": "",
-  "prefix": ["nya"],
-  "statsChannel": "",
   "topgg" : {
     "name": "top.gg",
     "url": "https://top.gg/api/bots/<BOT_ID>/stats",
@@ -19,11 +16,5 @@
     "url": "https://discord.bots.gg/api/v1/bots/<BOT_ID>/stats",
     "authorization": "<TOKEN>",
     "body": "{\"guildCount\":{{SERVER_COUNT}}}"
-  },
-  "donation": {
-    "url": ""
-  },
-  "danbooru": {
-    "login": ""
   }
 }

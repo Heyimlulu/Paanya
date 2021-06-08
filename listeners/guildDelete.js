@@ -1,8 +1,8 @@
 const { Listener } = require('discord-akairo');
-const { statsChannel } = require('../config.json');
+const { statsChannel } = require('../config/config.json');
 const Discord = require('discord.js');
 const fetch = require('node-fetch');
-const config = require('../config.json');
+const config = require('../config/bot-sites.json');
 
 class GuildDeleteListener extends Listener {
     constructor() {

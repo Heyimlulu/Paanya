@@ -1,5 +1,5 @@
 const { Command } = require('discord-akairo');
-const userBlacklist = require('../../db/dbObjects').userBlacklist;
+const userBlacklist = require('../../database/dbObjects').userBlacklist;
 
 class UserBlacklistCommand extends Command {
     constructor() {

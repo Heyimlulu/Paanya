@@ -1,6 +1,6 @@
 const { Command } = require('discord-akairo');
 const Discord = require('discord.js');
-const { owner, prefix } = require('../../config.json');
+const { owner, prefix } = require('../../config/config.json');
 
 class InfoCommand extends Command {
     constructor() {
@@ -26,7 +26,7 @@ class InfoCommand extends Command {
             .setDescription('I\'m a multipurpose and fun discord bot with moderation, auto-color rank, text-to-speech, strawpoll commands and more')
             .addField('Owner', `${this.client.users.resolve(owner).tag} (${this.client.users.resolve(owner).id})`)
             .addField('My GitHub profile', 'https://github.com/Heyimlulu')
-            .addField('Total commands', `${this.client.commandHandler.modules.size - 14}`)
+            .addField('Total commands', `${this.client.commandHandler.modules.size - 12}`) // Minus x owner commands
             .addField('Support server', 'none yet')
             .addField('Website', 'https://paanya.moe/')
             .addField('Contact', `Use ${prefix[0]} feedback <\message\> to let me know what you think of my bot ;3`)

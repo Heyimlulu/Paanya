@@ -1,6 +1,6 @@
 const { Command } = require('discord-akairo');
 const Discord = require('discord.js');
-const { Donator } = require('../../db/dbObjects');
+const { Donator } = require('../../database/dbObjects');
 
 class AddDonatorCommand extends Command {
     constructor() {

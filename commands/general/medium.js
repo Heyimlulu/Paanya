@@ -27,7 +27,11 @@ class MediumCommand extends Command {
         let url = args.url;
         if (!url) return;
 
-        let search = url.replace(/(^\w+:|^)\/\//, '');
+        console.log(url.slice(8));
+
+        let search = url.slice(8); // Remove https:// from URL
+
+        console.log(search);
 
         const embed = new MessageEmbed()
         .setColor(message.member ? message.member.displayHexColor : 'RANDOM')

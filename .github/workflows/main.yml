@@ -1,25 +1,17 @@
-name: Notification on push
-
-on:
-  push:
-    branches:
-      - main
-
+name: discord message
+on: [push]
 jobs:
+
   build:
-
+    name: Build
     runs-on: ubuntu-latest
-
     steps:
-      - name: Discord notification
-        env:
-          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
-          DISCORD_USERNAME: Paanya-Git
-          DISCORD_AVATAR: https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png
-        uses: Heyimlulu/Paanya@main
+      - uses: actions/checkout@master
+      - name: send custom message
+        uses: appleboy/discord-action@master
         with:
-          args: 'A new commit has been pushed to Heyimlulu/Paanya.'
-      - name: Discord notification
-        env:
-          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
-        uses: Heyimlulu/Paanya@main
+          webhook_id: ${{ secrets.WEBHOOK_ID }}
+          webhook_token: ${{ secrets.WEBHOOK_TOKEN }}
+          color: "#9146FF"
+          message: "A new commit has been pushed on Heyimlulu/Paanya."
+

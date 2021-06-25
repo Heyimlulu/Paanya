@@ -1,12 +1,16 @@
 const Sequelize = require('sequelize');
 const config = require('./config.json');
-//const fs = require('fs');
+const fs = require('fs');
+let db = [];
 
-const sequelize = new Sequelize(config.production);
+const sequelize = new Sequelize(config.development);
 
-const Donator = require('../models/donator')(sequelize, Sequelize.DataTypes);
-const Logs = require('../models/logs')(sequelize, Sequelize.DataTypes);
-const userBlacklist = require('../models/userBlacklist')(sequelize, Sequelize.DataTypes);
-const guildBlacklist = require('../models/guildBlacklist')(sequelize, Sequelize.DataTypes);
+// Display all models in an Array
+const modelsList = fs.readdirSync('./models');
 
-module.exports = { Donator, Logs, userBlacklist, guildBlacklist };
+// Loop that load each model from an Array
+for (let model in modelsList) {
+   db = require('../models/' + modelsList[model].split('.js')[0])(sequelize, Sequelize.DataTypes);
+}
+
+module.exports = { db };

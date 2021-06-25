@@ -1,5 +1,5 @@
 const { Listener } = require('discord-akairo');
-const userBlacklist = require('../database/dbObjects').userBlacklist;
+const userBlacklist = require('../database/dbObjects').db;
 
 class MessageListener extends Listener {
     constructor() {

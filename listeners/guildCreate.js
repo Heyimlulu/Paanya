@@ -3,7 +3,7 @@ const { statsChannel } = require('../config/config.json');
 const Discord = require('discord.js');
 const fetch = require('node-fetch');
 const config = require('../config/bot-sites.json');
-const guildBlacklist = require('../database/dbObjects').guildBlacklist;
+const guildBlacklist = require('../database/dbObjects').db;
 
 class GuildCreateListener extends Listener {
     constructor() {

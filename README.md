@@ -1,6 +1,6 @@
 # Paanya
 
-Paanya is a multipurpose and fun discord bot with moderation, auto-color rank, text-to-speech, strawpoll commands and more
+Paanya is a multipurpose and fun discord bot made with the Discord.JS API and the Discord Akairo Framework
 
 ## Getting started
 

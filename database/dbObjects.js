@@ -2,7 +2,6 @@ const Sequelize = require('sequelize');
 const config = require('./config.json');
 const fs = require('fs');
 let db = [];
-const model = '';
 
 const sequelize = new Sequelize(config.development);
 

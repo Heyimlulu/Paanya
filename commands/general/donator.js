@@ -1,6 +1,6 @@
 const { Command } = require('discord-akairo');
 const { MessageEmbed } = require('discord.js');
-const Donator = require('../../database/dbObjects').db;
+const Donator = require('../../database/dbObjects').donator;
 
 class DonatorCommand extends Command {
     constructor() {

@@ -3,7 +3,7 @@ const config = require('./config.json');
 const fs = require('fs');
 let db = [];
 
-const sequelize = new Sequelize(config.development);
+const sequelize = new Sequelize(config.production);
 
 // Display all models in an Array
 const modelsList = fs.readdirSync('./models');

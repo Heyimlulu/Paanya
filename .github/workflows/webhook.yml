@@ -22,5 +22,4 @@ jobs:
           webhook_id: ${{ secrets.WEBHOOK_ID }}
           webhook_token: ${{ secrets.WEBHOOK_TOKEN }}
           color: "#9146FF"
-          message: "A new commit has been pushed on Heyimlulu/Paanya."
-
+          message: "A new commit has been pushed on Heyimlulu/Paanya on Main branch."

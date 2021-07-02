@@ -24,6 +24,7 @@ class DogFactCommand extends Command {
 
             const embed = new MessageEmbed()
                 .setColor(message.member ? message.member.displayHexColor : 'RANDOM')
+                .setTitle('Random dog fact 🐶')
                 .setDescription(response.facts)
 
             message.channel.send(embed);

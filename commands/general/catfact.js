@@ -24,6 +24,7 @@ class CatFactCommand extends Command {
 
             const embed = new MessageEmbed()
                 .setColor(message.member ? message.member.displayHexColor : 'RANDOM')
+                .setTitle('Random cat fact 🐱')
                 .setDescription(response.fact)
 
             message.channel.send(embed);

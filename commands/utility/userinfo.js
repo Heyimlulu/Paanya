@@ -24,7 +24,7 @@ class UserInfoCommand extends Command {
         });
     }
 
-    exec(message, args) {
+    async exec(message, args) {
 
         let user = message.author;
 

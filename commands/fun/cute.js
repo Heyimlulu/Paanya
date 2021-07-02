@@ -10,17 +10,13 @@ class CuteCommand extends Command {
             args: [
                 {
                     id: 'member',
-                    type: 'string',
-                    prompt: {
-                        start: 'Which user do you want me to verify cuteness?',
-                        retry: "It doesn't seem to be a valid user, please try again!"
-                    }
+                    type: 'string'
                 }
             ],
             description: {
                 content: 'Tell a user how cute he/she is',
-                usage: '[@user]',
-                examples: ['@user']
+                usage: '[@user or none for yourself]',
+                examples: ['']
             }
         });
     }
@@ -39,23 +35,27 @@ class CuteCommand extends Command {
 
         let guess = cute[Math.floor(Math.random() * (cute.length))];
 
-        const Embed = new Discord.MessageEmbed();
+        const embed = new Discord.MessageEmbed()
+            .setColor(message.member ? message.member.displayHexColor : 'RANDOM')
+            .setTitle('Cute-o-Meter');
 
         if (message.mentions.users.first()) { // IF => member already mentionned
 
             member = message.mentions.members.first();
 
-            Embed.setTitle('Cute-o-Meter')
-                .setDescription(`I guess **${member.user.username}** is **${guess}**`)
-                .setThumbnail(member.user.displayAvatarURL())
-                .setColor(message.member ? message.member.displayHexColor : 'RANDOM')
-            message.channel.send(Embed);
+            embed.setDescription(`I guess **${member.user.username}** is **${guess}**`)
+                .setThumbnail(member.user.displayAvatarURL());
 
-        } else { // ELSE => after first prompt message
 
-            message.reply('You did not mentionned a user!');
+
+        } else { // ELSE => for yourself
+
+            embed.setDescription(`I guess you're **${guess}**`)
+                .setThumbnail(message.author.displayAvatarURL());
 
         }
+
+        message.channel.send(embed);
 
     }
 }

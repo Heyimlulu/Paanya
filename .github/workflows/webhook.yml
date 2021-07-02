@@ -1,7 +1,16 @@
 name: discord message
-on: [push]
-jobs:
 
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - README.md
+      - .github/
+      - package.json
+  pull_request:
+    branches: [main]
+    
+jobs:
   build:
     name: Build
     runs-on: ubuntu-latest

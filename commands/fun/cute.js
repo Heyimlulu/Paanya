@@ -21,7 +21,7 @@ class CuteCommand extends Command {
         });
     }
 
-    exec(message, args) {
+    async exec(message, args) {
 
         let member = args.member;
 

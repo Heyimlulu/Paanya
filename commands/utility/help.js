@@ -101,7 +101,7 @@ class HelpCommand extends Command {
                             utility: '🔩\u2000Utility',
                             image: '🖼️\u2000Image',
                             minigame: '🎲\u2000Minigame [WIP]',
-                            roleplay: '🎭\u2000Roleplay',
+                            roleplay: '💬\u2000Social',
                             admin: '⚡\u2000Admin',
                         }[category.id];
                     } else {
@@ -111,7 +111,7 @@ class HelpCommand extends Command {
                             utility: '🔩\u2000Utility',
                             image: '🖼️\u2000Image',
                             minigame: '🎲\u2000Minigame [WIP]',
-                            roleplay: '🎭\u2000Roleplay',
+                            roleplay: '💬\u2000Social',
                             admin: '⚡\u2000Admin',
                         }[category.id];
                     }

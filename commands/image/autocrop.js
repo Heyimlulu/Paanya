@@ -12,7 +12,6 @@ class AutoCropCommand extends Command {
                 {
                     id: 'link',
                     type: 'url',
-                    unordered: true,
                     prompt: {
                         start: 'Which image do you want to blur?',
                         retry: 'It doesn\'t seem to be a valid link, please try again'

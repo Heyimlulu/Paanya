@@ -37,6 +37,7 @@
     "meta-extractor": "^2.0.0",
     "mysql2": "^2.2.5",
     "node-fetch": "^2.6.1",
+    "owoify-js": "^1.0.7",
     "pg": "^8.6.0",
     "postgres": "^1.0.2",
     "sequelize": "^6.6.2",

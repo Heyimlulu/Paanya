@@ -2,10 +2,10 @@ const { Command } = require('discord-akairo');
 const Jimp = require('jimp');
 const os = require('os');
 
-class BlurCommand extends Command {
+class GaussianCommand extends Command {
     constructor() {
-        super('blur', {
-            aliases: ['blur'],
+        super('gaussian', {
+            aliases: ['gaussian'],
             category: 'image',
             clientPermissions: ['SEND_MESSAGES', 'ATTACH_FILES'],
             args: [
@@ -14,7 +14,7 @@ class BlurCommand extends Command {
                     type: 'url',
                     unordered: true,
                     prompt: {
-                        start: 'Which image do you want to blur?',
+                        start: 'Which image do you want to add gaussian blur?',
                         retry: 'It doesn\'t seem to be a valid link, please try again'
                     }
                 },
@@ -25,7 +25,7 @@ class BlurCommand extends Command {
                 }
             ],
             description: {
-                content: 'Blur the image from the link you provide',
+                content: 'Glaussian blur the image from the link you provide',
                 usage: '[Link-to-Image] [radius]',
                 examples: ['link-to-image 50']
             }
@@ -34,7 +34,7 @@ class BlurCommand extends Command {
 
     async exec(message, args) {
 
-        let output = `${os.tmpdir()}/blurred${message.id}.jpg`;
+        let output = `${os.tmpdir()}/gaussianblurred${message.id}.jpg`;
 
         let url;
         let radius;
@@ -51,22 +51,19 @@ class BlurCommand extends Command {
             radius = args.radius
         }
 
-        await message.channel.send('Processing image...').then(msg => {
-            Jimp.read({
-                url: url
-            }).then(image => {
-                image
-                    .blur(radius)
-                    .write(output);
-                msg.delete();
-                return message.channel.send({files: [output]});
-            }).catch(err => {
-                console.error(err);
-                return message.channel.send('Uh Oh, an error has occurred! Maybe the format of your image don\'t work?');
-            });
-        })
+        Jimp.read({
+            url: url
+        }).then(image => {
+            image
+                .gaussian(radius)
+                .write(output);
+            return message.channel.send({files: [output]});
+        }).catch(err => {
+            console.error(err);
+            return message.channel.send('Uh Oh, an error has occurred! Maybe the format of your image don\'t work?');
+        });
 
     }
 }
 
-module.exports = BlurCommand;
+module.exports = GaussianCommand;

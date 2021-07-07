@@ -51,17 +51,20 @@ class PixelCommand extends Command {
             size = args.size;
         }
 
-        Jimp.read({
-            url: url
-        }).then(image => {
-            image
-                .pixelate(size)
-                .write(output);
-            return message.channel.send({files: [output]});
-        }).catch(err => {
-            console.error(err);
-            return message.channel.send('Uh Oh, an error has occurred! Maybe the format of your image don\'t work?');
-        });
+        await message.channel.send('Processing image...').then(msg => {
+            Jimp.read({
+                url: url
+            }).then(image => {
+                image
+                    .pixelate(size)
+                    .write(output);
+                msg.delete();
+                return message.channel.send({files: [output]});
+            }).catch(err => {
+                console.error(err);
+                return message.channel.send('Uh Oh, an error has occurred! Maybe the format of your image don\'t work?');
+            });
+        })
 
     }
 }

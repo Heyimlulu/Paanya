@@ -2,45 +2,42 @@ const { Command } = require('discord-akairo');
 const Jimp = require('jimp');
 const os = require('os');
 
-class ResizeCommand extends Command {
+class RotateCommand extends Command {
     constructor() {
-        super('resize', {
-            aliases: ['resize'],
+        super('rotate', {
+            aliases: ['rotate'],
             category: 'image',
             clientPermissions: ['SEND_MESSAGES', 'ATTACH_FILES'],
             args: [
                 {
                     id: 'link',
                     type: 'url',
+                    unordered: true,
                     prompt: {
-                        start: 'Which image do you want to resize?',
+                        start: 'Which image do you want to rotate?',
                         retry: 'It doesn\'t seem to be a valid link, please try again'
                     }
                 },
                 {
-                    id: 'options',
-                    type: 'string',
-                    prompt: {
-                        start: 'What should be the width and height for this image? (separate options by |)',
-                        retry: 'Please input a valid width and height (separated by |)'
-                    },
-                    match: 'rest'
+                    id: 'degrees',
+                    type: 'integer',
+                    unordered: true
                 }
             ],
             description: {
-                content: 'Resize an image from the link you provide. (separate options by |)',
-                usage: '[Link-to-Image] [width | height]',
-                examples: ['']
+                content: 'Rotate the image from the link you provide',
+                usage: '[Link-to-Image] [radius]',
+                examples: ['link-to-image 50']
             }
         });
     }
 
     async exec(message, args) {
 
-        let output = `${os.tmpdir()}/resized${message.id}.jpg`;
+        let output = `${os.tmpdir()}/rotated${message.id}.jpg`;
 
         let url;
-        let options = args.options.trim().split('|');
+        let degrees;
 
         if (!args.link) {
             return;
@@ -48,24 +45,28 @@ class ResizeCommand extends Command {
             url = args.link.href;
         }
 
-        if (!options) return;
+        if (!args.degrees) {
+            degrees = 10;
+        } else {
+            degrees = args.degrees
+        }
 
         await message.channel.send('Processing image...').then(msg => {
             Jimp.read({
                 url: url
             }).then(image => {
                 image
-                    .resize(parseInt(options[0]), parseInt(options[1]))
+                    .rotate(degrees)
                     .write(output);
                 msg.delete();
                 return message.channel.send({files: [output]});
             }).catch(err => {
                 console.error(err);
-                return message.channel.send('Uh Oh, an error has occurred! Maybe the size of your image is invalid?');
+                return message.channel.send('Uh Oh, an error has occurred! Maybe the format of your image don\'t work?');
             });
         })
 
     }
 }
 
-module.exports = ResizeCommand;
+module.exports = RotateCommand;

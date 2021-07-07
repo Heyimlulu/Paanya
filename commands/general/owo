@@ -1,0 +1,45 @@
+/*
+const { Command } = require('discord-akairo');
+const { MessageEmbed } = require('discord.js');
+const owoify = require('owoify-js').default
+
+class OwOCommand extends Command {
+    constructor() {
+        super('owo', {
+            aliases: ['owo', 'uwu'],
+            category: 'general',
+            clientPermissions: ["SEND_MESSAGES"],
+            args: [
+                {
+                    id: 'text',
+                    type: 'string',
+                    match: "rest"
+                }
+            ],
+            description: {
+                content: 'For all of your OwO and UuU needs',
+                usage: '[text]',
+                examples: ['']
+            }
+        });
+    }
+
+    async exec(message, args) {
+
+        let text = args.text;
+
+        const embed = new MessageEmbed()
+            .setColor(message.member ? message.member.displayHexColor : 'RANDOM')
+            .setTitle('Owoify')
+            .addField('Original', text, false)
+            .addField('OwO', owoify(text), false);
+
+        await message.delete();
+        await message.channel.send(embed);
+
+    }
+}
+
+module.exports = OwOCommand;
+
+ */

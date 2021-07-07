@@ -12,7 +12,6 @@ class AutoCropCommand extends Command {
                 {
                     id: 'link',
                     type: 'url',
-                    unordered: true,
                     prompt: {
                         start: 'Which image do you want to blur?',
                         retry: 'It doesn\'t seem to be a valid link, please try again'
@@ -39,17 +38,20 @@ class AutoCropCommand extends Command {
             url = args.link.href;
         }
 
-        Jimp.read({
-            url: url
-        }).then(image => {
-            image
-                .autocrop()
-                .write(output);
-            return message.channel.send({files: [output]});
-        }).catch(err => {
-            console.error(err);
-            return message.channel.send('Uh Oh, an error has occurred! Maybe the format of your image don\'t work?');
-        });
+        await message.channel.send('Processing image...').then(msg => {
+            Jimp.read({
+                url: url
+            }).then(image => {
+                image
+                    .autocrop()
+                    .write(output);
+                msg.delete();
+                return message.channel.send({files: [output]});
+            }).catch(err => {
+                console.error(err);
+                return message.channel.send('Uh Oh, an error has occurred! Maybe the format of your image don\'t work?');
+            });
+        })
 
     }
 }

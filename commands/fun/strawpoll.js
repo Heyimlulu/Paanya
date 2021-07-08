@@ -36,7 +36,7 @@ class StrawpollCommand extends Command {
         });
     }
 
-    exec(message, args) {
+    async exec(message, args) {
 
         let options = args.options.trim().split('|');
 

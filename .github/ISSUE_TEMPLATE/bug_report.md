@@ -2,7 +2,7 @@
 name: Bug report
 about: Create a bug report to help me improve Paayna
 title: ''
-labels: ''
+labels: bug
 assignees: ''
 
 ---

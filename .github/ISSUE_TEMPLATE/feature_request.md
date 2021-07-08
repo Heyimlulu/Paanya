@@ -2,7 +2,7 @@
 name: Feature request
 about: Suggest a new feature or command for Paanya
 title: ''
-labels: ''
+labels: enhancement
 assignees: ''
 
 ---

@@ -3,7 +3,7 @@ const fetch = require('node-fetch');
 const dotenv = require('dotenv');
 dotenv.config();
 const censor = require("../../json/censor.json");
-const Infraction = require('../../database/dbObjects').infraction;
+const Infraction = require('../../models').infraction;
 const dateUtils = require('../../utils/datetime');
 
 class GiphyCommand extends Command {

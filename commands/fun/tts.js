@@ -5,7 +5,7 @@ const fs = require('fs');
 const os = require('os');
 const censor = require("../../json/censor.json");
 const Infraction = require('../../database/dbObjects').infraction;
-const dateUtils = require('../../utils/date');
+const dateUtils = require('../../utils/datetime');
 
 class TTSCommand extends Command {
     constructor() {

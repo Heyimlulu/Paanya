@@ -34,7 +34,7 @@ class SlapCommand extends Command {
 
                 const embed = new Discord.MessageEmbed()
                     .setColor(message.member ? message.member.displayHexColor : 'RANDOM')
-                    .setDescription(`${message.author} slapped ${member}`)
+                    .setDescription(`${message.author} slaps ${member}`)
                     .setImage(response.url)
                     .setFooter('Powered by waifu.pics')
 

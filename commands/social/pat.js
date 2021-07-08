@@ -34,7 +34,7 @@ class PatCommand extends Command {
 
                 const embed = new Discord.MessageEmbed()
                     .setColor(message.member ? message.member.displayHexColor : 'RANDOM')
-                    .setDescription(`${message.author} patted ${member}`)
+                    .setDescription(`${message.author} pats ${member}`)
                     .setImage(response.url)
                     .setFooter('Powered by waifu.pics')
 

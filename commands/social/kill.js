@@ -34,7 +34,7 @@ class KillCommand extends Command {
 
                 const embed = new Discord.MessageEmbed()
                     .setColor(message.member ? message.member.displayHexColor : 'RANDOM')
-                    .setDescription(`${message.author} murdered ${member} :o`)
+                    .setDescription(`🔪 ${message.author} kills ${member}`)
                     .setImage(response.url)
                     .setFooter('Powered by waifu.pics')
 

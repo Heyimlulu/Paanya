@@ -34,7 +34,7 @@ class WaveCommand extends Command {
 
                 const embed = new Discord.MessageEmbed()
                     .setColor(message.member ? message.member.displayHexColor : 'RANDOM')
-                    .setDescription(`${message.author} waved ${member} :wave:`)
+                    .setDescription(`👋 ${message.author} waves ${member}`)
                     .setImage(response.url)
                     .setFooter('Powered by waifu.pics')
 

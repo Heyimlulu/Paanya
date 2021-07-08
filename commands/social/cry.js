@@ -24,7 +24,7 @@ class CryCommand extends Command {
 
             const embed = new Discord.MessageEmbed()
                 .setColor(message.member ? message.member.displayHexColor : 'RANDOM')
-                .setDescription(`${message.author} is sad ;c`)
+                .setDescription(`😢 ${message.author} cries`)
                 .setImage(response.url)
                 .setFooter('Powered by waifu.pics')
 

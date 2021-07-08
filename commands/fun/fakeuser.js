@@ -1,7 +1,7 @@
 const { Command } = require('discord-akairo');
 const censor = require("../../json/censor.json");
 const Infraction = require('../../database/dbObjects').infraction;
-const dateUtils = require('../../utils/date');
+const dateUtils = require('../../utils/datetime');
 
 class FakeUserCommand extends Command {
     constructor() {

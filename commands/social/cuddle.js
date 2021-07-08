@@ -34,7 +34,7 @@ class CuddleCommand extends Command {
 
                 const embed = new Discord.MessageEmbed()
                     .setColor(message.member ? message.member.displayHexColor : 'RANDOM')
-                    .setDescription(`${message.author} cuddled ${member}`)
+                    .setDescription(`${message.author} cuddles ${member}`)
                     .setImage(response.url)
                     .setFooter('Powered by waifu.pics')
 

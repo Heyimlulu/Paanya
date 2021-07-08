@@ -34,7 +34,7 @@ class BiteCommand extends Command {
 
                 const embed = new Discord.MessageEmbed()
                     .setColor(message.member ? message.member.displayHexColor : 'RANDOM')
-                    .setDescription(`${message.author} bite ${member}`)
+                    .setDescription(`🤐 ${message.author} bites ${member}`)
                     .setImage(response.url)
                     .setFooter('Powered by waifu.pics')
 

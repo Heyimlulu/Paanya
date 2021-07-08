@@ -24,7 +24,7 @@ class BlushCommand extends Command {
 
             const embed = new Discord.MessageEmbed()
                 .setColor(message.member ? message.member.displayHexColor : 'RANDOM')
-                .setDescription(`${message.author} became all blushy :point_right: :point_left:`)
+                .setDescription(`😳 ${message.author} blushes`)
                 .setImage(response.url)
                 .setFooter('Powered by waifu.pics')
 

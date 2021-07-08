@@ -3,6 +3,8 @@ const fetch = require('node-fetch');
 const dotenv = require('dotenv');
 dotenv.config();
 const censor = require("../../json/censor.json");
+const Infraction = require('../../database/dbObjects').infraction;
+const dateUtils = require('../../utils/date');
 
 class GiphyCommand extends Command {
     constructor() {
@@ -35,7 +37,7 @@ class GiphyCommand extends Command {
             
             return response.json();
 
-        }).then((response) => {
+        }).then(async (response) => {
 
             if (response.success == 'false') return message.channel.send('An error has occurred');
 
@@ -50,20 +52,33 @@ class GiphyCommand extends Command {
 
             if (badWordFound == true) {
 
-                message.delete();
-                message.channel.send('Sorry, that word is unavailable or has been blacklisted');
+                let date = await dateUtils();
+
+                const body = {
+                    user: message.author.tag,
+                    userID: message.author.id,
+                    message: message.content,
+                    command: 'giphy',
+                    createdAt: date,
+                    updatedAt: date
+                };
+
+                Infraction.create(body);
+
+                await message.delete();
+                await message.channel.send('Sorry, that word is unavailable or has been blacklisted');
 
             } else {
 
                 const i = Math.floor((Math.random() * response.data.length));
 
-                if (response.data[i].hasOwnProperty('title')){
+                if (response.data[i].hasOwnProperty('title')) {
                     var title = response.data[i].title;
                 } else {
                     var title = 'Untitled';
                 }
 
-                message.channel.send(`**${title}**\n${response.data[i].url}`);
+                await message.channel.send(`**${title}**\n${response.data[i].url}`);
 
             }
 

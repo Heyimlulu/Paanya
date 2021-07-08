@@ -2,6 +2,7 @@ const { Listener } = require('discord-akairo');
 //const { Client } = require('pg');
 const { owner, prefix } = require('../config/config.json');
 const Logs = require('../database/dbObjects').logs;
+const dateUtils = require('../../utils/date');
 
 class LogsListener extends Listener {
     constructor() {
@@ -46,20 +47,7 @@ class LogsListener extends Listener {
 
          */
 
-        let date;
-        let today = new Date();
-
-        let dd = today.getDate(); // Day
-        let mm = today.getMonth() + 1; // Month
-        let yyyy = today.getFullYear(); // Year
-
-        today = yyyy + '-' + mm + '-' + dd;
-
-        // Get current hour
-        let time = new Date();
-        let currentTime = time.getHours() + ':' + time.getMinutes() + ':' + time.getSeconds();
-
-        date = today + ' ' + currentTime;
+        let date = await dateUtils();
 
         const body = {
             user: message.author.tag,

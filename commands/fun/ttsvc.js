@@ -3,6 +3,9 @@ const textToSpeech = require('@google-cloud/text-to-speech');
 const gclient = new textToSpeech.TextToSpeechClient();
 const fs = require('fs');
 const os = require('os');
+const censor = require("../../json/censor.json");
+const Infraction = require('../../database/dbObjects').infraction;
+const dateUtils = require('../../utils/date');
 
 class TTSVcCommand extends Command {
     constructor() {
@@ -33,57 +36,87 @@ class TTSVcCommand extends Command {
         let text = args.text;
         let output = `${os.tmpdir()}/${message.id}_tts.mp3`; // filename
 
-        // Construct the request
-        const request = {
-            input: { text: text },
-            // Select the language and SSML Voice Gender (optional)
-            voice: { languageCode: 'en-US', ssmlGender: 'NEUTRAL' },
-            // Select the type of audio encoding
-            audioConfig: { audioEncoding: 'MP3' },
-        };
+        let badWordFound = false;
 
-        // Performs the Text-to-Speech request
-        await gclient.synthesizeSpeech(request, (err, response) => {
-            if (err) {
-
-                return console.error('ERROR:', err);
-
+        // Check if user input contains censored word
+        for (let findWord in censor) {
+            if (text.toLowerCase().includes(censor[findWord].toLowerCase())) {
+                badWordFound = true;
             }
+        }
 
-            console.log(response);
+        if (badWordFound) {
 
-            // Write the binary audio content to a local file
-            fs.writeFile(output, response.audioContent, 'binary', async err => {
+            let date = await dateUtils();
+
+            const body = {
+                user: message.author.tag,
+                userID: message.author.id,
+                message: message.content,
+                command: 'ttsvc',
+                createdAt: date,
+                updatedAt: date
+            };
+
+            Infraction.create(body);
+
+            await message.delete();
+            await message.channel.send('Sorry, you use word(s) that has been blacklisted');
+
+        } else {
+
+            // Construct the request
+            const request = {
+                input: { text: text },
+                // Select the language and SSML Voice Gender (optional)
+                voice: { languageCode: 'en-US', ssmlGender: 'NEUTRAL' },
+                // Select the type of audio encoding
+                audioConfig: { audioEncoding: 'MP3' },
+            };
+
+            // Performs the Text-to-Speech request
+            await gclient.synthesizeSpeech(request, (err, response) => {
                 if (err) {
 
-                    console.error('ERROR:', err);
-                    await message.channel.send('An error has occurred, the message is probably too long');
-                    return;
+                    return console.error('ERROR:', err);
 
                 }
 
-                const voiceChannel = message.member.voice.channel;
+                console.log(response);
 
-                if (!voiceChannel) return message.channel.send('You must be in a voice channel first');
+                // Write the binary audio content to a local file
+                fs.writeFile(output, response.audioContent, 'binary', async err => {
+                    if (err) {
 
-                try {
+                        console.error('ERROR:', err);
+                        await message.channel.send('An error has occurred, the message is probably too long');
+                        return;
 
-                    const connection = await voiceChannel.join();
-                    const dispatcher = connection.play(output);
-                    dispatcher.once('finish', () => voiceChannel.leave());
-                    dispatcher.once('error', () => voiceChannel.leave());
-                    return null;
+                    }
 
-                } catch (err) {
+                    const voiceChannel = message.member.voice.channel;
 
-                    voiceChannel.leave();
-                    return message.reply(`Oh no, an error occurred: \`${err.message}\`.`);
+                    if (!voiceChannel) return message.channel.send('You must be in a voice channel first');
 
-                }
+                    try {
+
+                        const connection = await voiceChannel.join();
+                        const dispatcher = connection.play(output);
+                        dispatcher.once('finish', () => voiceChannel.leave());
+                        dispatcher.once('error', () => voiceChannel.leave());
+                        return null;
+
+                    } catch (err) {
+
+                        voiceChannel.leave();
+                        return message.reply(`Oh no, an error occurred: \`${err.message}\`.`);
+
+                    }
+
+                });
 
             });
-
-        });
+        }
 
     }
 }

@@ -1,5 +1,7 @@
 const { Command } = require('discord-akairo');
-const Discord = require('discord.js');
+const censor = require("../../json/censor.json");
+const Infraction = require('../../database/dbObjects').infraction;
+const dateUtils = require('../../utils/date');
 
 class FakeUserCommand extends Command {
     constructor() {
@@ -39,17 +41,46 @@ class FakeUserCommand extends Command {
         let member = message.guild.members.resolve(args.user.id);
         let text = args.text;
 
-        // Show nickname if user is in guild
-        if (member) {
-            if (member.nickname) {
-                username = member.nickname;
+        let badWordFound = false;
+
+        // Check if user input contains censored word
+        for (let findWord in censor) {
+            if (text.toLowerCase().includes(censor[findWord].toLowerCase())) {
+                badWordFound = true;
             }
         }
 
-        message.channel.createWebhook(username, {
-            avatar: args.user.displayAvatarURL(),
-            reason: `Fakeuser command triggered by: ${message.author.username}`
-        }).then(webhook => {
+        if (badWordFound) {
+
+            let date = await dateUtils();
+
+            const body = {
+                user: message.author.tag,
+                userID: message.author.id,
+                message: message.content,
+                command: 'fakeuser',
+                createdAt: date,
+                updatedAt: date
+            };
+
+            Infraction.create(body);
+
+            await message.delete();
+            await message.channel.send('Sorry, you use word(s) that has been blacklisted');
+
+        } else {
+
+            // Show nickname if user is in guild
+            if (member) {
+                if (member.nickname) {
+                    username = member.nickname;
+                }
+            }
+
+            message.channel.createWebhook(username, {
+                avatar: args.user.displayAvatarURL(),
+                reason: `Fakeuser command triggered by: ${message.author.username}`
+            }).then(webhook => {
 
                 webhook.edit({
                     name: username,
@@ -71,6 +102,8 @@ class FakeUserCommand extends Command {
                     });
 
             });
+
+        }
 
     }
 }

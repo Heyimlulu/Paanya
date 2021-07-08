@@ -34,7 +34,7 @@ class BullyCommand extends Command {
 
                 const embed = new Discord.MessageEmbed()
                     .setColor(message.member ? message.member.displayHexColor : 'RANDOM')
-                    .setDescription(`${message.author} the meanie bullied ${member}`)
+                    .setDescription(`😈 ${message.author} the meanie bullies ${member}`)
                     .setImage(response.url)
                     .setFooter('Powered by waifu.pics')
 

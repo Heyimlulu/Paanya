@@ -44,7 +44,7 @@ class HugCommand extends Command {
 
             const embed = new Discord.MessageEmbed()
                 .setColor(message.member ? message.member.displayHexColor : 'RANDOM')
-                .setDescription(`${message.author} hugged ${member}`)
+                .setDescription(`🤗 ${message.author} hugs ${member}`)
                 .setImage(hug.url)
                 .setFooter('Powered by waifu.pics')
 

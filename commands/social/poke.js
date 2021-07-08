@@ -34,7 +34,7 @@ class PokeCommand extends Command {
 
                 const embed = new Discord.MessageEmbed()
                     .setColor(message.member ? message.member.displayHexColor : 'RANDOM')
-                    .setDescription(`${message.author} poked ${member}`)
+                    .setDescription(`☝ ${message.author} pokes ${member}`)
                     .setImage(response.url)
                     .setFooter('Powered by waifu.pics')
 

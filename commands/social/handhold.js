@@ -34,7 +34,7 @@ class HandHoldCommand extends Command {
 
                 const embed = new Discord.MessageEmbed()
                     .setColor(message.member ? message.member.displayHexColor : 'RANDOM')
-                    .setDescription(`${message.author} hold ${member}\'s hand`)
+                    .setDescription(`🤝 ${message.author} holds ${member}\'s hand`)
                     .setImage(response.url)
                     .setFooter('Powered by waifu.pics')
 

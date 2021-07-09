@@ -4,7 +4,7 @@ const gclient = new textToSpeech.TextToSpeechClient();
 const fs = require('fs');
 const os = require('os');
 const censor = require("../../json/censor.json");
-const Infraction = require('../../database/dbObjects').infraction;
+const Infraction = require('../../models').infraction;
 const dateUtils = require('../../utils/datetime');
 
 class TTSVcCommand extends Command {

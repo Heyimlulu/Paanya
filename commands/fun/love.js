@@ -57,7 +57,7 @@ class LoveCommand extends Command {
         } else if (love > 50) {
             description = 'You have your chance';
         } else if (love == 100) {
-            description = 'It\'s a perfect match!';
+            description = 'Get married!';
         }
 
         const canvas = Canvas.createCanvas(425, 200);

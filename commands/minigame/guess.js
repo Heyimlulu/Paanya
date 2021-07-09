@@ -1,6 +1,6 @@
 const { Command } = require('discord-akairo');
 const { MessageEmbed } = require('discord.js');
-const Leaderboard = require('../../database/dbObjects').leaderboard;
+const Leaderboard = require('../../models').leaderboard;
 
 class GuessCommand extends Command {
     constructor() {

@@ -21,7 +21,7 @@ class FCommand extends Command {
         const embed = new MessageEmbed()
             .setColor(message.member ? message.member.displayHexColor : 'RANDOM')
             .setAuthor(message.author.username, message.author.displayAvatarURL(), message.author.displayAvatarURL())
-            .setTitle(`${message.author.username} just pressed 🇫 to pay respect`)
+            .setTitle(`${message.author.username} presses 🇫 to pay respect`)
 
         await message.channel.send(embed);
 

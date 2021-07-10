@@ -1,0 +1,90 @@
+/*
+const { Command } = require('discord-akairo');
+const { MessageEmbed } = require('discord.js');
+const fetch = require('node-fetch');
+const censor = require('../../json/censor.json');
+const Infraction = require('../../models').infraction;
+const dateUtils = require('../../utils/datetime');
+
+class GoogleCommand extends Command {
+    constructor() {
+        super('google', {
+            aliases: ['google'],
+            category: 'utility',
+            args: [
+                {
+                    id: 'search',
+                    type: 'string',
+                    match: 'rest',
+                    prompt: {
+                        start: 'What do you waant to search for?'
+                    }
+                }
+            ],
+            description: {
+                content: 'Send some random google query from the search you provide',
+                usage: '[search]',
+                example: ['']
+            }
+        });
+    }
+
+    async exec(message, args) {
+
+        let search = args.search;
+        if (!search) return;
+
+        let badWordFound = false;
+
+        // Check if user input contains censored word
+        for (let findWord in censor) {
+            if (search.toLowerCase().includes(censor[findWord].toLowerCase())) {
+                badWordFound = true;
+            }
+        }
+
+        if (badWordFound) {
+
+            let date = await dateUtils();
+
+            const body = {
+                user: message.author.tag,
+                userID: message.author.id,
+                message: message.content,
+                command: 'google',
+                createdAt: date,
+                updatedAt: date
+            };
+
+            Infraction.create(body);
+
+            await message.delete();
+            await message.channel.send('Sorry, you use word(s) that has been blacklisted');
+
+        } else {
+
+            const response = await fetch(`https://www.googleapis.com/customsearch/v1?key=${process.env.GOOGLE_SECRET_KEY}&cx=bc1e8d203d3bdeeaf&q=${search}`);
+            const queries = await response.json();
+
+            let embed = new MessageEmbed()
+                .setColor(message.member ? message.member.displayHexColor : 'RANDOM')
+                .setTitle('Google Search');
+
+            console.log(queries.items);
+
+            for (let i = 0; i < queries.items.length; i++) {
+                let item = queries.items[i];
+                console.log(item.title + '\n');
+                embed.addField(`[${item.title}](${item.link})`, `${item.snippet}`, false);
+            }
+
+            return message.channel.send(embed);
+
+        }
+
+    }
+}
+
+module.exports = GoogleCommand;
+
+ */

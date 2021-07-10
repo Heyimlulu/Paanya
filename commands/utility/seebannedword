@@ -1,3 +1,4 @@
+/*
 const { Command } = require('discord-akairo');
 const Discord = require('discord.js');
 const censor = require("../../json/censor.json");
@@ -32,3 +33,5 @@ class SeeBannedWordCommand extends Command {
 }
 
 module.exports = SeeBannedWordCommand;
+
+ */

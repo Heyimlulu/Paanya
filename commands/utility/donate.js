@@ -6,7 +6,7 @@ class DonateCommand extends Command {
     constructor() {
         super('donate', {
             aliases: ['donate'],
-            category: 'general',
+            category: 'utility',
             clientPermissions: ["SEND_MESSAGES"],
             description: {
                 content: 'Send you a donate link to support Paanya',
@@ -20,11 +20,10 @@ class DonateCommand extends Command {
 
         if (!donation.url) return message.channel.send('No donations has been setup for that bot yet');
 
-        const embed = new MessageEmbed()
+        let embed = new MessageEmbed()
             .setColor(message.member ? message.member.displayHexColor : 'RANDOM')
             .setTitle('Donation link')
-            .setURL(donation.url)
-            .setDescription(`Donations are optional, but are appreciated if you want to support ${this.client.user.tag} 💛`);
+            .setDescription(`Donations are optional, but are appreciated if you want to support ${this.client.user.tag} 💛\n[Paypal](${donation.url})`);
 
         return message.channel.send(embed);
 

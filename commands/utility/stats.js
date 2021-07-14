@@ -15,7 +15,7 @@ class StatsCommand extends Command {
         });
     }
 
-    exec(message) {
+    async exec(message) {
 
         var uptime = process.uptime();
         const date = new Date(uptime*1000);
@@ -54,7 +54,7 @@ class StatsCommand extends Command {
             .addField('OS', `${os.platform()} ${os.release()}`, true)
             .setTimestamp();
 
-        message.channel.send(Embed);
+        await message.channel.send(Embed);
 
     }
 }

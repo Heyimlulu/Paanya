@@ -6,7 +6,7 @@ class DonatorCommand extends Command {
     constructor() {
         super('donator', {
             aliases: ['donator'],
-            category: 'general',
+            category: 'utility',
             clientPermissions: ["SEND_MESSAGES"],
             description: {
                 content: 'Send you the list of currents donators/supporters',

@@ -1,10 +1,10 @@
 const { Command } = require('discord-akairo');
 const Discord = require('discord.js');
 
-class FlipCommand extends Command {
+class CoinFlipCommand extends Command {
     constructor() {
-        super('flip', {
-            aliases: ['flip', 'coin'],
+        super('coinflip', {
+            aliases: ['coinflip', 'flip'],
             category: 'general',
             clientPermissions: ["SEND_MESSAGES"],
             description: {
@@ -34,4 +34,4 @@ class FlipCommand extends Command {
     }
 }
 
-module.exports = FlipCommand;
+module.exports = CoinFlipCommand;

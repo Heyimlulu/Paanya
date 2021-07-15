@@ -1,6 +1,14 @@
-# Paanya
+<p align="center">
+  <img style="max-width:100%;" src="https://i.imgur.com/zOl84re.jpeg" alt="Paanya - Discord Bot" />
+</p>
 
-Paanya is a multipurpose and fun discord bot made with the Discord.JS API and the Discord Akairo Framework
+<h1 align="center">
+  Paanya Discord Bot
+</h1>
+
+<h4 align="center">
+  Moderation, Fun, General, Image, Minigame, Social & Utility commands
+</h4>
 
 ## Getting started
 
@@ -10,10 +18,6 @@ You need to do the following
 - Install [NodeJS](https://nodejs.org/) on your computer
 - Install the DiscordJS module. You can check their official website and documentation [here.](https://discord.js.org/#/)
   - You can also check their guide [here.](https://discordjs.guide/)
-- Install theses modules to get the music command working
-  - discordjs/opus
-  - ffmpeg, ffmpeg-static, flutent-ffmpeg
-  - ytdl-core
 - Register to the Google Cloud platform for the tts commands
 - Register to theses websites to get your API key 
   - imgur 
@@ -21,7 +25,6 @@ You need to do the following
   - reddit 
   - RapidAPI for Urban Dictionary
   - Danbooru
-  - Google credentials for tts command
 - A PostGreSQL database for the logging feature
 
 ### Installing
@@ -33,38 +36,21 @@ npm install
 
 ### Running
 
-> config.json 
-
-```
-{
-  "owner": "", <-- Your discord user ID
-  "prefix": ["nya"],
-  "statsChannel": "", <-- Channel ID where logs will be
-  "danbooru": {
-    "login": "" <-- Your danbooru login for the the danbooru command
-  }
-}
-```
-
-> .env-example 
-
 - First rename ``.env-example`` to ``.env``
 
-First enter your bot token. You can find it in your applications tab on [Discord Developer Portal](https://discord.com/developers/applications)
+Enter your bot token. You can find it in your applications tab on [Discord Developer Portal](https://discord.com/developers/applications)
 
-```
-TOKEN=YOUR-DISCORD-BOT-TOKEN
-```
-
-You can put your API keys if you want all the bot features (Optional)
+You can put your API keys if you want to use all the bot features (Optional)
 - Replace ``*`` with your own API Secret Key
 - Set your JSON key file to use the Google Cloud commands
 
 ```
+TENOR_SECRET_KEY=********************
 IMGUR_SECRET_KEY=********************
 GIPHY_SECRET_KEY=********************
 URBAN_DICTIONARY_SECRET_KEY=********************
 DANBOORU_SECRET_KEY=********************
+STEAM_SECRET_KEY=********************
 GOOGLE_APPLICATION_CREDENTIALS=PathToYourJSONKeyFile
 ```
 
@@ -74,7 +60,7 @@ If you want to use the logging feature, you'll need to get your PostGreSQL URL
 DATABASE_URL = **************************
 ```
 
-Now you can run the bot with
+Now you can run the bot
 
 ```
 #With Node
@@ -85,9 +71,9 @@ npm start
 pm2 start index.js --name "Paanya"
 ```
 
-## Using my bot
+## Invite
 
-You can find my bot in these website. Don't forget to vote if you do like it and want to support my bot ;)
+You can find my bot in theses websites. Don't forget to vote if you do like it and want to support my bot ;)
 
 <a href="https://top.gg/bot/829230505123119164" target="_blank">top.gg</a> |
 <a href="https://discordbotlist.com/bots/paanya" target="_blank">discordbotlist.com</a> |
@@ -114,3 +100,9 @@ You can find my bot in these website. Don't forget to vote if you do like it and
 ## Author
 
 - Heyimlulu
+
+## License
+
+Licensed under the [GNU Affero General Public License v3.0 License](). Click for more information.
+
+Paanya is named after the secondary character of "Mashiroiro Symphony", an anime by Minazuki, Futago (Art) & Palette (Story).

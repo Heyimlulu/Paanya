@@ -20,9 +20,10 @@ You need to do the following
   - You can also check their guide [here.](https://discordjs.guide/)
 - Register to the Google Cloud platform for the tts commands
 - Register to theses websites to get your API key 
-  - imgur 
-  - giphy
-  - reddit 
+  - Imgur 
+  - Giphy
+  - Reddit 
+  - Steam
   - RapidAPI for Urban Dictionary
   - Danbooru
 - A PostGreSQL database for the logging feature
@@ -36,29 +37,9 @@ npm install
 
 ### Running
 
-- First rename ``.env-example`` to ``.env``
+First rename ``.env-example`` to ``.env``
 
-Enter your bot token. You can find it in your applications tab on [Discord Developer Portal](https://discord.com/developers/applications)
-
-You can put your API keys if you want to use all the bot features (Optional)
-- Replace ``*`` with your own API Secret Key
-- Set your JSON key file to use the Google Cloud commands
-
-```
-TENOR_SECRET_KEY=********************
-IMGUR_SECRET_KEY=********************
-GIPHY_SECRET_KEY=********************
-URBAN_DICTIONARY_SECRET_KEY=********************
-DANBOORU_SECRET_KEY=********************
-STEAM_SECRET_KEY=********************
-GOOGLE_APPLICATION_CREDENTIALS=PathToYourJSONKeyFile
-```
-
-If you want to use the logging feature, you'll need to get your PostGreSQL URL 
-
-```
-DATABASE_URL = **************************
-```
+Then enter your bot token. You can find it in your applications tab on [Discord Developer Portal](https://discord.com/developers/applications)
 
 Now you can run the bot
 
@@ -73,11 +54,9 @@ pm2 start index.js --name "Paanya"
 
 ## Invite
 
-You can find my bot in theses websites. Don't forget to vote if you do like it and want to support my bot ;)
+You can find my bot on theses websites. Don't forget to vote if you do like it and want to support my bot ;)
 
-<a href="https://top.gg/bot/829230505123119164" target="_blank">top.gg</a> |
-<a href="https://discordbotlist.com/bots/paanya" target="_blank">discordbotlist.com</a> |
-<a href="https://discord.bots.gg/bots/829230505123119164" target="_blank">discord.bots.gg</a>
+[top.gg](https://top.gg/bot/829230505123119164) • [discordbotlist.com](https://discordbotlist.com/bots/paanya) • [discord.bots.gg](https://discord.bots.gg/bots/829230505123119164)
 
 ## Built with
 
@@ -104,5 +83,3 @@ You can find my bot in theses websites. Don't forget to vote if you do like it a
 ## License
 
 Licensed under the [GNU Affero General Public License v3.0 License](). Click for more information.
-
-Paanya is named after the secondary character of "Mashiroiro Symphony", an anime by Minazuki, Futago (Art) & Palette (Story).

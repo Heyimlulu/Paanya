@@ -7,17 +7,24 @@
 </h1>
 
 <h4 align="center">
-  Moderation, Fun, General, Image, Minigame, Social & Utility commands
+  Moderation, Fun, General, Image, Minigame, Social & Utility commands.
 </h4>
 
-## Getting started
+<p align="center">
+  <a href="https://top.gg/bot/829230505123119164">
+    <img src="https://top.gg/api/widget/829230505123119164.svg" />
+  </a>
+</p>
+
+# Getting started
 
 ### Prerequisites
 
 You need to do the following
 - Install [NodeJS](https://nodejs.org/) on your computer
-- Install the DiscordJS module. You can check their official website and documentation [here.](https://discord.js.org/#/)
-  - You can also check their guide [here.](https://discordjs.guide/)
+- Install the [Discord.JS](https://discord.js.org) module
+  - You can also check their guide [here](https://discordjs.guide/)
+- Install the [Discord-akairo](https://discord-akairo.github.io/) framework
 - Register to the Google Cloud platform for the tts commands
 - Register to theses websites to get your API key 
   - Imgur 
@@ -52,13 +59,25 @@ npm start
 pm2 start index.js --name "Paanya"
 ```
 
-## Invite
+# Invite
 
 You can find my bot on theses websites. Don't forget to vote if you do like it and want to support my bot ;)
 
 [top.gg](https://top.gg/bot/829230505123119164) • [discordbotlist.com](https://discordbotlist.com/bots/paanya) • [discord.bots.gg](https://discord.bots.gg/bots/829230505123119164)
 
-## Built with
+# Author
+
+- Heyimlulu (Lucas)
+
+# Donation
+
+Donations are optional, but are appreciated if you want to support this project ❤
+
+<a href="https://www.paypal.com/donate?hosted_button_id=FLJ8V26SHZDKS&source=url">
+  <img src="https://www.paypalobjects.com/en_US/CH/i/btn/btn_donateCC_LG.gif" alt="Donate with PayPal button" />
+</a>
+
+# Built with
 
 - [Discord.JS](https://discord.js.org/#/) - Discord API used
 - [Discord-akairo](https://discord-akairo.github.io/#/) - Framework used for Discord.JS
@@ -70,16 +89,6 @@ You can find my bot on theses websites. Don't forget to vote if you do like it a
   <img height="50px" align="center" src="https://cdn.worldvectorlogo.com/logos/intellijidea.svg">
 </a>
 
-## Donation
-
-<a href="https://www.paypal.com/donate?hosted_button_id=FLJ8V26SHZDKS&source=url">
-  <img src="https://www.paypalobjects.com/en_US/CH/i/btn/btn_donateCC_LG.gif" alt="Donate with PayPal button" />
-</a>
-
-## Author
-
-- Heyimlulu
-
-## License
+# License
 
 Licensed under the [GNU Affero General Public License v3.0 License](). Click for more information.

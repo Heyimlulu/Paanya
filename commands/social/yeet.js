@@ -2,20 +2,14 @@ const { Command } = require('discord-akairo');
 const fetch = require('node-fetch');
 const Discord = require('discord.js');
 
-class KillCommand extends Command {
+class YeetCommand extends Command {
     constructor() {
-        super('kill', {
-            aliases: ['kill'],
+        super('yeet', {
+            aliases: ['yeet'],
             category: 'roleplay',
             clientPermissions: ['SEND_MESSAGES', 'EMBED_LINKS'],
-            args: [
-                {
-                    id: 'user',
-                    type: 'string'
-                }
-            ],
             description: {
-                content: 'Kill the mentionned user',
+                content: 'Which user do you want to yeet',
                 usage: '[@user]',
                 examples: ['']
             }
@@ -28,13 +22,13 @@ class KillCommand extends Command {
 
             let member = message.mentions.members.first();
 
-            fetch(`https://waifu.pics/api/sfw/kill`).then((response) => {
+            fetch(`https://waifu.pics/api/sfw/yeet`).then((response) => {
                 return response.json();
             }).then((response) => {
 
                 const embed = new Discord.MessageEmbed()
                     .setColor(message.member ? message.member.displayHexColor : 'RANDOM')
-                    .setDescription(`🔪 ${message.author} kills ${member}`)
+                    .setDescription(`${message.author} yeets ${member}`)
                     .setImage(response.url)
                     .setFooter('Powered by waifu.pics')
 
@@ -49,4 +43,4 @@ class KillCommand extends Command {
     }
 }
 
-module.exports = KillCommand;
+module.exports = YeetCommand;

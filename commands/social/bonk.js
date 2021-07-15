@@ -2,20 +2,14 @@ const { Command } = require('discord-akairo');
 const fetch = require('node-fetch');
 const Discord = require('discord.js');
 
-class KillCommand extends Command {
+class BonkCommand extends Command {
     constructor() {
-        super('kill', {
-            aliases: ['kill'],
+        super('bonk', {
+            aliases: ['bonk'],
             category: 'roleplay',
             clientPermissions: ['SEND_MESSAGES', 'EMBED_LINKS'],
-            args: [
-                {
-                    id: 'user',
-                    type: 'string'
-                }
-            ],
             description: {
-                content: 'Kill the mentionned user',
+                content: 'Hit/Bonk the mentionned user',
                 usage: '[@user]',
                 examples: ['']
             }
@@ -28,13 +22,13 @@ class KillCommand extends Command {
 
             let member = message.mentions.members.first();
 
-            fetch(`https://waifu.pics/api/sfw/kill`).then((response) => {
+            fetch(`https://waifu.pics/api/sfw/bonk`).then((response) => {
                 return response.json();
             }).then((response) => {
 
                 const embed = new Discord.MessageEmbed()
                     .setColor(message.member ? message.member.displayHexColor : 'RANDOM')
-                    .setDescription(`🔪 ${message.author} kills ${member}`)
+                    .setDescription(`${message.author} hits ${member}`)
                     .setImage(response.url)
                     .setFooter('Powered by waifu.pics')
 
@@ -49,4 +43,4 @@ class KillCommand extends Command {
     }
 }
 
-module.exports = KillCommand;
+module.exports = BonkCommand;

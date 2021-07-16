@@ -91,4 +91,6 @@ Donations are optional, but are appreciated if you want to support this project 
 
 # License
 
-Licensed under the [GNU Affero General Public License v3.0 License](). Click for more information.
+Licensed under the [GNU General Public License v3.0](https://github.com/Heyimlulu/Paanya/blob/main/LICENSE). Click for more information.
+
+Paanya is named after the secondary character of **Mashiro-iro Symphony**, a manga by Minazuki, Futago (Art) and Palette (Story).

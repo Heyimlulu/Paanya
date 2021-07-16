@@ -356,7 +356,7 @@ class DateTimeCommand extends Command {
     constructor() {
         super('datetime', {
             aliases: ['datetime', 'date', 'time'],
-            category: 'general',
+            category: 'hidden',
             clientPermissions: ["SEND_MESSAGES", "EMBED_LINKS"],
             args: [
                 {

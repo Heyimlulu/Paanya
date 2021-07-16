@@ -16,10 +16,10 @@
   "author": "Heyimlulu",
   "license": "ISC",
   "dependencies": {
-    "4chan-boards": "^2.0.1",
     "@discordjs/opus": "^0.5.0",
     "@google-cloud/storage": "^5.8.3",
     "@google-cloud/text-to-speech": "^3.1.3",
+    "4chan-boards": "^2.0.1",
     "aki-api": "^5.2.1",
     "asciify-image": "^0.1.6",
     "canvas": "^2.7.0",
@@ -43,7 +43,7 @@
     "sequelize": "^6.6.2",
     "superagent": "^6.1.0",
     "turndown": "^7.0.0",
-    "ytdl-core": "^4.7.0"
+    "ytdl-core": "^4.8.3"
   },
   "devDependencies": {
     "@google-cloud/storage": "^5.8.3",

@@ -17,7 +17,6 @@ class FCommand extends Command {
 
     async exec(message) {
 
-
         const embed = new MessageEmbed()
             .setColor(message.member ? message.member.displayHexColor : 'RANDOM')
             .setAuthor(message.author.username, message.author.displayAvatarURL(), message.author.displayAvatarURL())

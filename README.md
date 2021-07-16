@@ -1,27 +1,38 @@
-# Paanya
+<p align="center">
+  <img style="max-width:100%;" src="https://i.imgur.com/zOl84re.jpeg" alt="Paanya - Discord Bot" />
+</p>
 
-Paanya is a multipurpose and fun discord bot made with the Discord.JS API and the Discord Akairo Framework
+<h1 align="center">
+  Paanya Discord Bot
+</h1>
 
-## Getting started
+<h4 align="center">
+  Moderation, Fun, General, Image, Minigame, Social & Utility commands.
+</h4>
+
+<p align="center">
+  <a href="https://top.gg/bot/829230505123119164">
+    <img src="https://top.gg/api/widget/829230505123119164.svg" />
+  </a>
+</p>
+
+# Getting started
 
 ### Prerequisites
 
 You need to do the following
 - Install [NodeJS](https://nodejs.org/) on your computer
-- Install the DiscordJS module. You can check their official website and documentation [here.](https://discord.js.org/#/)
-  - You can also check their guide [here.](https://discordjs.guide/)
-- Install theses modules to get the music command working
-  - discordjs/opus
-  - ffmpeg, ffmpeg-static, flutent-ffmpeg
-  - ytdl-core
+- Install the [Discord.JS](https://discord.js.org) module
+  - You can also check their guide [here](https://discordjs.guide/)
+- Install the [Discord-akairo](https://discord-akairo.github.io/) framework
 - Register to the Google Cloud platform for the tts commands
 - Register to theses websites to get your API key 
-  - imgur 
-  - giphy
-  - reddit 
+  - Imgur 
+  - Giphy
+  - Reddit 
+  - Steam
   - RapidAPI for Urban Dictionary
   - Danbooru
-  - Google credentials for tts command
 - A PostGreSQL database for the logging feature
 
 ### Installing
@@ -33,48 +44,11 @@ npm install
 
 ### Running
 
-> config.json 
+First rename ``.env-example`` to ``.env``
 
-```
-{
-  "owner": "", <-- Your discord user ID
-  "prefix": ["nya"],
-  "statsChannel": "", <-- Channel ID where logs will be
-  "danbooru": {
-    "login": "" <-- Your danbooru login for the the danbooru command
-  }
-}
-```
+Then enter your bot token. You can find it in your applications tab on [Discord Developer Portal](https://discord.com/developers/applications)
 
-> .env-example 
-
-- First rename ``.env-example`` to ``.env``
-
-First enter your bot token. You can find it in your applications tab on [Discord Developer Portal](https://discord.com/developers/applications)
-
-```
-TOKEN=YOUR-DISCORD-BOT-TOKEN
-```
-
-You can put your API keys if you want all the bot features (Optional)
-- Replace ``*`` with your own API Secret Key
-- Set your JSON key file to use the Google Cloud commands
-
-```
-IMGUR_SECRET_KEY=********************
-GIPHY_SECRET_KEY=********************
-URBAN_DICTIONARY_SECRET_KEY=********************
-DANBOORU_SECRET_KEY=********************
-GOOGLE_APPLICATION_CREDENTIALS=PathToYourJSONKeyFile
-```
-
-If you want to use the logging feature, you'll need to get your PostGreSQL URL 
-
-```
-DATABASE_URL = **************************
-```
-
-Now you can run the bot with
+Now you can run the bot
 
 ```
 #With Node
@@ -85,15 +59,25 @@ npm start
 pm2 start index.js --name "Paanya"
 ```
 
-## Using my bot
+# Invite
 
-You can find my bot in these website. Don't forget to vote if you do like it and want to support my bot ;)
+You can find my bot on theses websites. Don't forget to vote if you do like it and want to support my bot ;)
 
-<a href="https://top.gg/bot/829230505123119164" target="_blank">top.gg</a> |
-<a href="https://discordbotlist.com/bots/paanya" target="_blank">discordbotlist.com</a> |
-<a href="https://discord.bots.gg/bots/829230505123119164" target="_blank">discord.bots.gg</a>
+[top.gg](https://top.gg/bot/829230505123119164) • [discordbotlist.com](https://discordbotlist.com/bots/paanya) • [discord.bots.gg](https://discord.bots.gg/bots/829230505123119164)
 
-## Built with
+# Author
+
+- Heyimlulu (Lucas)
+
+# Donation
+
+Donations are optional, but are appreciated if you want to support this project ❤
+
+<a href="https://www.paypal.com/donate?hosted_button_id=FLJ8V26SHZDKS&source=url">
+  <img src="https://www.paypalobjects.com/en_US/CH/i/btn/btn_donateCC_LG.gif" alt="Donate with PayPal button" />
+</a>
+
+# Built with
 
 - [Discord.JS](https://discord.js.org/#/) - Discord API used
 - [Discord-akairo](https://discord-akairo.github.io/#/) - Framework used for Discord.JS
@@ -105,15 +89,6 @@ You can find my bot in these website. Don't forget to vote if you do like it and
   <img height="50px" align="center" src="https://cdn.worldvectorlogo.com/logos/intellijidea.svg">
 </a>
 
-## Donation
+# License
 
-<form action="https://www.paypal.com/donate" method="post" target="_top">
-<input type="hidden" name="hosted_button_id" value="FLJ8V26SHZDKS" />
-<input type="image" src="https://www.paypalobjects.com/en_US/CH/i/btn/btn_donateCC_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
-<img alt="" border="0" src="https://www.paypal.com/en_CH/i/scr/pixel.gif" width="1" height="1" />
-</form>
-
-
-## Author
-
-- Heyimlulu
+Licensed under the [GNU Affero General Public License v3.0 License](). Click for more information.

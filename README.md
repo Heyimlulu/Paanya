@@ -10,11 +10,11 @@
   Moderation, Fun, General, Image, Minigame, Social & Utility commands.
 </h4>
 
-<p align="center">
+<div align="center">
   <a href="https://top.gg/bot/829230505123119164">
-    <img src="https://top.gg/api/widget/829230505123119164.svg" />
+    <img src="https://top.gg/api/widget/829230505123119164.svg" alt="Paanya" />
   </a>
-</p>
+</div>
 
 # Getting started
 

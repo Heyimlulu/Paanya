@@ -1,4 +1,5 @@
 const { Listener } = require('discord-akairo');
+const { prefix } = require('../config/config.json');
 const play = require('../json/status/playing.json');
 const watch = require('../json/status/watching.json');
 const listen = require('../json/status/listening.json');
@@ -42,21 +43,24 @@ class readyListener extends Listener {
             // Generate a random number between 0 and 2
             let random = Math.floor((Math.random() * 4));
 
-            if (random == 0) {
+            if (random == 0) { // Random "playing" status
 
                 let status = play[Math.floor(Math.random() * (play.length))];
+                status = status.replace('{{prefix}}', prefix[0]);
 
                 await client.user.setActivity(status, { type: "PLAYING" });
 
-            } else if (random == 1) {
+            } else if (random == 1) { // Random "watching" status
 
                 let status = watch[Math.floor(Math.random() * (watch.length))];
+                status = status.replace('{{prefix}}', prefix[0]);
 
                 await client.user.setActivity(status, { type: "WATCHING" });
 
-            } else if (random == 2) {
+            } else if (random == 2) { // Random "listening" status
 
                 let status = listen[Math.floor(Math.random() * (listen.length))];
+                status = status.replace('{{prefix}}', prefix[0]);
 
                 await client.user.setActivity(status, { type: "LISTENING" });
 

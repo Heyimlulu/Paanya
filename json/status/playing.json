@@ -1,3 +1,8 @@
 [
-  "with the other kitty | my prefix is nya", "with you", "you can use <nya help> for the commands list", "Nyan Nyan Dance | my prefix is nya", "Nyan Souls 3"
+  "you can use <{{prefix}} help> for the commands list",
+  "Nyan Nyan Dance | my prefix is: {{prefix}}",
+  "Nyan Souls 3",
+  "{{prefix}} feedback <feedback> to tell me what you think of my bot!",
+  "You can support me with the donate command!",
+  "alone | my prefix is: {{prefix}}"
 ]

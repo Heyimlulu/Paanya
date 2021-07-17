@@ -1,3 +1,5 @@
 [
-  "you | my prefix is nya", "a cat shows", "hoomans", "Nyan Cat | my prefix is nya"
+  "you | my prefix is: {{prefix}}",
+  "hoomans",
+  "everything you type"
 ]

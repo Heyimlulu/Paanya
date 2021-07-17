@@ -10,11 +10,17 @@
   Moderation, Fun, General, Image, Minigame, Social & Utility commands.
 </h4>
 
-<p align="center">
+<div align="center">
   <a href="https://top.gg/bot/829230505123119164">
-    <img src="https://top.gg/api/widget/829230505123119164.svg" />
+    <img src="https://top.gg/api/widget/829230505123119164.svg" alt="Paanya" />
   </a>
-</p>
+</div>
+
+<div align="center">
+  <a href="https://top.gg/bot/829230505123119164">top.gg</a> •
+  <a href="https://discordbotlist.com/bots/paanya">discordbotlist.com</a> •
+  <a href="https://discord.bots.gg/bots/829230505123119164">discord.bots.gg</a>
+</div>
 
 # Getting started
 
@@ -59,12 +65,6 @@ npm start
 pm2 start index.js --name "Paanya"
 ```
 
-# Invite
-
-You can find my bot on theses websites. Don't forget to vote if you do like it and want to support my bot ;)
-
-[top.gg](https://top.gg/bot/829230505123119164) • [discordbotlist.com](https://discordbotlist.com/bots/paanya) • [discord.bots.gg](https://discord.bots.gg/bots/829230505123119164)
-
 # Author
 
 - Heyimlulu (Lucas)
@@ -91,4 +91,6 @@ Donations are optional, but are appreciated if you want to support this project 
 
 # License
 
-Licensed under the [GNU Affero General Public License v3.0 License](). Click for more information.
+Licensed under the [GNU General Public License v3.0](https://github.com/Heyimlulu/Paanya/blob/main/LICENSE). Click for more information.
+
+Paanya is named after the secondary character of **Mashiro-iro Symphony**, a manga by Minazuki, Futago (Art) and Palette (Story).

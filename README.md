@@ -16,6 +16,12 @@
   </a>
 </div>
 
+<div align="center">
+  <a href="https://top.gg/bot/829230505123119164">top.gg</a> •
+  <a href="https://discordbotlist.com/bots/paanya">discordbotlist.com</a> •
+  <a href="https://discord.bots.gg/bots/829230505123119164">discord.bots.gg</a>
+</div>
+
 # Getting started
 
 ### Prerequisites
@@ -58,12 +64,6 @@ npm start
 #With pm2
 pm2 start index.js --name "Paanya"
 ```
-
-# Invite
-
-You can find my bot on theses websites. Don't forget to vote if you do like it and want to support my bot ;)
-
-[top.gg](https://top.gg/bot/829230505123119164) • [discordbotlist.com](https://discordbotlist.com/bots/paanya) • [discord.bots.gg](https://discord.bots.gg/bots/829230505123119164)
 
 # Author
 

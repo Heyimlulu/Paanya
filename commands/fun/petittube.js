@@ -28,12 +28,10 @@ class PetitTubeCommand extends Command {
         const url = $('iframe')[0].attribs.src;
 
         let embed = new MessageEmbed()
-            .setAuthor(message.member.user.tag, message.member.user.displayAvatarURL())
             .setColor(message.member ? message.member.displayHexColor : 'RANDOM')
-            .setTitle('Click here to view your random fetched video!')
-            .setURL(url)
+            .setDescription(`Click [here](${url}) to view the video!`)
             .setThumbnail('https://petittube.com/title.png')
-            .setFooter('Powered by https://petittube.com/')
+            .setFooter('Videos might be NSFW so be careful')
 
         await message.channel.send(embed);
     }

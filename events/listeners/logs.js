@@ -1,8 +1,8 @@
 const { Listener } = require('discord-akairo');
 //const { Client } = require('pg');
-const { owner, prefix } = require('../config/config.json');
-const Logs = require('../models').logs;
-const dateUtils = require('../utils/datetime');
+const { owner, prefix } = require('../../config/config.json');
+const Logs = require('../../models').logs;
+const dateUtils = require('../../utils/datetime');
 
 class LogsListener extends Listener {
     constructor() {

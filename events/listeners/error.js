@@ -1,5 +1,5 @@
 const { Listener } = require('discord-akairo');
-const { statsChannel } = require('../config/config.json');
+const { statsChannel } = require('../../config/config.json');
 const Discord = require('discord.js');
 const fs = require('fs');
 
@@ -33,7 +33,7 @@ class ErrorListener extends Listener {
         let dd = today.getDate(); // Day
         let mm = today.getMonth() + 1; // Month
         let yyyy = today.getFullYear(); // Year
-        
+
         today = mm + '/' + dd + '/' + yyyy; // US date format
 
         // Get current hour

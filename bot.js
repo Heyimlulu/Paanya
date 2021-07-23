@@ -34,11 +34,11 @@ class PaanyaClient extends AkairoClient {
         });
 
         this.inhibitorHandler = new InhibitorHandler(this, {
-            directory: './inhibitors/'
+            directory: './events/inhibitors/'
         });
 
         this.listenerHandler = new ListenerHandler(this, {
-            directory: './listeners/'
+            directory: './events/listeners/'
         });
 
         this.listenerHandler.setEmitters({

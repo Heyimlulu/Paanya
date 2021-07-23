@@ -27,6 +27,7 @@
     "cleverbot-free": "^1.0.5",
     "currency-converter-lt": "^1.1.1",
     "discord-akairo": "^8.1.0",
+    "discord-buttons": "^4.0.0",
     "discord.js": "^12.5.3",
     "dotenv": "^8.2.0",
     "ffmpeg": "0.0.4",

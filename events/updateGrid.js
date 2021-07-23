@@ -1,5 +1,5 @@
-// Tic Tac Toe made by giorgiocav123
-// https://discord.com/developers/docs/interactions/message-components
+// Tic Tac Toe made by giorgiocav123 - https://gist.github.com/giorgi-o/9c7eede3b5c72c8b9f071b6dc8c8cd3c
+// Discord new components docs - https://discord.com/developers/docs/interactions/message-components
 
 module.exports = async(button) => {
 	const message = button.message;

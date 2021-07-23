@@ -1,13 +1,13 @@
 const { AkairoClient, CommandHandler, InhibitorHandler, ListenerHandler } = require('discord-akairo');
 const dotenv = require('dotenv');
 dotenv.config();
-const config = require('./config/config.json');
+const { owner, prefix } = require('./config/config.json');
 
 class PaanyaClient extends AkairoClient {
 
     constructor() {
         super({
-            ownerID: config.owner,
+            ownerID: owner,
             presence: {
                 status: 'online',
                 activity: {
@@ -19,7 +19,7 @@ class PaanyaClient extends AkairoClient {
 
         this.commandHandler = new CommandHandler(this, {
             directory: './commands/',
-            prefix: config.prefix,
+            prefix: prefix,
             argumentDefaults: {
                 prompt: {
                     timeout: 'Time ran out, command has been cancelled.',

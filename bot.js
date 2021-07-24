@@ -2,7 +2,7 @@ const { AkairoClient, CommandHandler, InhibitorHandler, ListenerHandler } = requ
 const dotenv = require('dotenv');
 dotenv.config();
 const { owner, prefix } = require('./config/config.json');
-const updateGrid = require('./events/updateGrid');
+const updateGrid = require('./events/misc/updateGrid');
 
 class PaanyaClient extends AkairoClient {
 

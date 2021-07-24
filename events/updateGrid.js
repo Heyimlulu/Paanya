@@ -26,14 +26,12 @@ module.exports = async(button) => {
 	buttonPressed.label = xs_turn ? 'X' : 'O';
 	buttonPressed.style = xs_turn ? "SUCCESS" : "DANGER";
 
-	const styleToNumber = style => style === "SECONDARY" ? 2 : style === "SUCCESS" ? 3 : 4;
-
 	const components = [];
 
 	for(let actionRow of message.components) {
 		components.push({type: 1, components: []});
 		for (let btn of actionRow.components) {
-			components[components.length - 1].components.push({type: 2, label: btn.label, style: styleToNumber(btn.style), custom_id: btn.custom_id});
+			components[components.length - 1].components.push({type: 2, label: btn.label, style: 2, custom_id: btn.custom_id});
 		}
 	}
 

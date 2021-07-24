@@ -1,8 +1,8 @@
 const { Listener } = require('discord-akairo');
-const { prefix } = require('../config/config.json');
-const play = require('../json/status/playing.json');
-const watch = require('../json/status/watching.json');
-const listen = require('../json/status/listening.json');
+const { prefix } = require('../../config/config.json');
+const play = require('../../json/status/playing.json');
+const watch = require('../../json/status/watching.json');
+const listen = require('../../json/status/listening.json');
 // Imports the Google Cloud client library.
 const {Storage} = require('@google-cloud/storage');
 

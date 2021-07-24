@@ -1,5 +1,5 @@
 const { Listener } = require('discord-akairo');
-const { statsChannel } = require('../config/config.json');
+const { statsChannel } = require('../../config/config.json');
 const Discord = require('discord.js');
 let report = [];
 let time = new Date();
@@ -13,7 +13,7 @@ class CommandStartedListener extends Listener {
     }
 
     exec(message, command, args) {
-        
+
         let today = new Date(), lastUpdate;
 
         if (statsChannel) {

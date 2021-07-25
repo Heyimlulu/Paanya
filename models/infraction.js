@@ -1,10 +1,10 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const infraction = sequelize.define('infraction', {
-    user: DataTypes.TEXT,
+    user: DataTypes.STRING,
     userID: DataTypes.BIGINT,
-    message: DataTypes.TEXT,
-    command: DataTypes.TEXT
+    message: DataTypes.STRING,
+    command: DataTypes.STRING
   }, {
     timestamps: true
   });

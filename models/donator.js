@@ -2,7 +2,7 @@
 module.exports = (sequelize, DataTypes) => {
   const donator = sequelize.define('donator', {
     userID: DataTypes.BIGINT,
-    donation: DataTypes.TEXT
+    donation: DataTypes.STRING
   }, {
     timestamps: false
   });

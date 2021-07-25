@@ -1,9 +1,9 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const logs = sequelize.define('logs', {
-    user: DataTypes.TEXT,
+    user: DataTypes.STRING,
     userID: DataTypes.BIGINT,
-    message: DataTypes.TEXT
+    message: DataTypes.STRING
   }, {
     timestamps: true
   });

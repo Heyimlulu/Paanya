@@ -2,7 +2,7 @@
 module.exports = (sequelize, DataTypes) => {
   const guildBlacklist = sequelize.define('guildBlacklist', {
     guildID: DataTypes.BIGINT,
-    reason: DataTypes.TEXT
+    reason: DataTypes.STRING
   }, {
     timestamps: false
   });

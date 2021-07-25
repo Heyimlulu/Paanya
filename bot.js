@@ -1,7 +1,7 @@
 const { AkairoClient, CommandHandler, InhibitorHandler, ListenerHandler } = require('discord-akairo');
 const dotenv = require('dotenv');
 dotenv.config();
-const { owner, prefix } = require('./config/config.json');
+const { owner, prefix } = require('./config.json');
 const updateGrid = require('./events/misc/updateGrid');
 
 class PaanyaClient extends AkairoClient {

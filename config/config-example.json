@@ -1,11 +1,17 @@
 {
-  "owner": "",
-  "prefix": ["nya"],
-  "statsChannel": "",
-  "donation": {
-    "url": ""
+  "development": {
+    "database": "",
+    "username": "",
+    "password": "",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
   },
-  "danbooru": {
-    "login": ""
+  "production": {
+    "database": "",
+    "username": "",
+    "password": "",
+    "host": "",
+    "dialect": "postgres",
+    "logging": false
   }
 }

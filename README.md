@@ -33,13 +33,9 @@ You need to do the following
 - Install the [Discord-akairo](https://discord-akairo.github.io/) framework
 - Register to the Google Cloud platform for the tts commands
 - Register to theses websites to get your API key 
-  - Imgur 
-  - Giphy
-  - Reddit 
-  - Steam
-  - RapidAPI for Urban Dictionary
-  - Danbooru
-- A PostGreSQL database for the logging feature
+  - Imgur, Giphy, Reddit, Steam, RapidAPI for Urban Dictionary & Danbooru
+- A PostGreSQL or any SQL database for the logging feature
+  - npx sequelize-cli db:migrate
 
 ### Installing
 

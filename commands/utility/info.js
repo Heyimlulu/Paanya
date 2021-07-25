@@ -1,6 +1,6 @@
 const { Command } = require('discord-akairo');
 const Discord = require('discord.js');
-const { owner, prefix } = require('../../config/config.json');
+const { owner, prefix } = require('../../config.json');
 
 class InfoCommand extends Command {
     constructor() {

@@ -1,7 +1,7 @@
 const { Command } = require('discord-akairo');
 const Discord = require('discord.js');
 const feedbackID = require('../../json/feedbackID.json');
-const { prefix } = require('../../config/config.json');
+const { prefix } = require('../../config.json');
 
 class DmCommand extends Command {
     constructor() {

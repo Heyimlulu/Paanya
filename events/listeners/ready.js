@@ -1,5 +1,5 @@
 const { Listener } = require('discord-akairo');
-const { prefix } = require('../../config/config.json');
+const { prefix } = require('../../config.json');
 const play = require('../../json/status/playing.json');
 const watch = require('../../json/status/watching.json');
 const listen = require('../../json/status/listening.json');

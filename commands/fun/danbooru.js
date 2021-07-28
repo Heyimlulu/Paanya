@@ -3,7 +3,7 @@ const Discord = require('discord.js');
 const fetch = require('node-fetch');
 const dotenv = require('dotenv');
 dotenv.config();
-const config = require('../../config/config.json');
+const config = require('../../config.json');
 
 class DanbooruCommand extends Command {
     constructor() {

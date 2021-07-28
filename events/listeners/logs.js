@@ -1,6 +1,6 @@
 const { Listener } = require('discord-akairo');
 //const { Client } = require('pg');
-const { owner, prefix } = require('../../config/config.json');
+const { owner, prefix } = require('../../config.json');
 const Logs = require('../../models').logs;
 const dateUtils = require('../../utils/datetime');
 

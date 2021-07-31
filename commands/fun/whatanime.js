@@ -36,6 +36,10 @@ class WhatAnimeCommand extends Command {
             url = Attachment[0].url;
         }
 
+        if (!url) {
+            return message.channel.send('I couldn\'t find anything. Please make sure you input a valid image url');
+        }
+
         //let img = url; // select image
         let canvas = createCanvas(1000, 1000);
         let background = await loadImage(url).catch(() => {

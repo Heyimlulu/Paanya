@@ -41,7 +41,7 @@
     "owoify-js": "^1.0.7",
     "pg": "^8.7.1",
     "postgres": "^1.0.2",
-    "sequelize": "^6.6.2",
+    "sequelize": "^6.6.5",
     "superagent": "^6.1.0",
     "turndown": "^7.1.1",
     "ytdl-core": "^4.9.0"

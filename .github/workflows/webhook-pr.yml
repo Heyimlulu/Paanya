@@ -1,15 +1,13 @@
-name: discord message
+name: Discord Webhook on pull request
 
 on:
-  push:
+  pull_request:
     branches: [main]
     paths-ignore:
       - README.md
       - .github/
       - package.json
-  #pull_request:
-    #branches: [main]
-    
+
 jobs:
   build:
     name: Build
@@ -22,4 +20,4 @@ jobs:
           webhook_id: ${{ secrets.WEBHOOK_ID }}
           webhook_token: ${{ secrets.WEBHOOK_TOKEN }}
           color: "#9146FF"
-          message: "A new commit has been pushed on Heyimlulu/Paanya on Main branch."
+          message: "A Pull Request for Paanya has been merged on the Main branch."

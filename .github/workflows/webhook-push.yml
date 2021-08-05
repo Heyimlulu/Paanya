@@ -1,0 +1,23 @@
+name: Discord Webhook on push
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - README.md
+      - .github/
+      - package.json
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: send custom message
+        uses: appleboy/discord-action@master
+        with:
+          webhook_id: ${{ secrets.WEBHOOK_ID }}
+          webhook_token: ${{ secrets.WEBHOOK_TOKEN }}
+          color: "#9146FF"
+          message: "A new commit for Paanya has been pushed on the Main branch."

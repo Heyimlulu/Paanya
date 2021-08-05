@@ -2,7 +2,7 @@ name: Discord Webhook on pull request
 
 on:
   pull_request:
-    branches: [main]
+    branches: [dev]
     paths-ignore:
       - README.md
       - .github/

@@ -20,4 +20,4 @@ jobs:
           webhook_id: ${{ secrets.WEBHOOK_ID }}
           webhook_token: ${{ secrets.WEBHOOK_TOKEN }}
           color: "#9146FF"
-          message: "A new commit for Paanya has been pushed on the Main branch."
+          message: "A new commit for Paanya has been pushed on the Dev branch."

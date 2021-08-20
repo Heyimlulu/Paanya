@@ -17,7 +17,7 @@
   "license": "ISC",
   "dependencies": {
     "@discordjs/opus": "^0.5.3",
-    "@google-cloud/storage": "^5.13.0",
+    "@google-cloud/storage": "^5.13.1",
     "@google-cloud/text-to-speech": "^3.2.7",
     "4chan-boards": "^2.0.1",
     "aki-api": "^6.0.7",
@@ -47,7 +47,7 @@
     "ytdl-core": "^4.9.1"
   },
   "devDependencies": {
-    "@google-cloud/storage": "^5.13.0",
+    "@google-cloud/storage": "^5.13.1",
     "@google-cloud/text-to-speech": "^3.2.7",
     "canvas": "^2.8.0",
     "dotenv": "^10.0.0",

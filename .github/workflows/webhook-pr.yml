@@ -20,4 +20,4 @@ jobs:
           webhook_id: ${{ secrets.WEBHOOK_ID }}
           webhook_token: ${{ secrets.WEBHOOK_TOKEN }}
           color: "#9146FF"
-          message: "A Pull Request for Paanya has been merged on the Dev branch."
+          message: "A Pull Request for Paanya has been merged on the Main branch."

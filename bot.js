@@ -2,7 +2,7 @@ const { AkairoClient, CommandHandler, InhibitorHandler, ListenerHandler } = requ
 const dotenv = require('dotenv');
 dotenv.config();
 const { owner, prefix } = require('./config.json');
-const updateGrid = require('./events/misc/updateGrid');
+//const updateGrid = require('./events/misc/updateGrid');
 
 class PaanyaClient extends AkairoClient {
 
@@ -60,11 +60,13 @@ class PaanyaClient extends AkairoClient {
 
 const client = new PaanyaClient();
 // Below const client
-require("discord-buttons")(client);
+//require("discord-buttons")(client);
 
 client.login(process.env.TOKEN);
 
+/*
 client.on('clickButton', async button => {
     // Tic Tac Toe
     await updateGrid(button);
 });
+*/

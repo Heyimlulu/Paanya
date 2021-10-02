@@ -1,6 +1,5 @@
 const { Command } = require('discord-akairo');
 const Discord = require('discord.js');
-const fetch = require('node-fetch');
 
 class ShinobuCommand extends Command {
     constructor() {

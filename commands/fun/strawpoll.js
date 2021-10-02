@@ -1,5 +1,4 @@
 const { Command } = require('discord-akairo');
-const fetch = require('node-fetch');
 
 class StrawpollCommand extends Command {
     constructor() {

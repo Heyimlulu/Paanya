@@ -1,7 +1,6 @@
 const { Listener } = require('discord-akairo');
 const { statsChannel } = require('../../config.json');
 const Discord = require('discord.js');
-const fetch = require('node-fetch');
 const config = require('../../config/bot-sites.json');
 const guildBlacklist = require('../../models').guildBlacklist;
 

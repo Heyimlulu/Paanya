@@ -1,5 +1,4 @@
 const { Command } = require('discord-akairo');
-const fetch = require('node-fetch');
 
 class InsultCommand extends Command {
     constructor() {

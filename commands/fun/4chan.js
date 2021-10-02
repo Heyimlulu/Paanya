@@ -1,5 +1,4 @@
 const { Command } = require('discord-akairo');
-const fetch = require('node-fetch');
 const boards = require('4chan-boards');
 const { MessageEmbed } = require('discord.js');
 

@@ -1,11 +1,18 @@
 const { AkairoClient, CommandHandler, InhibitorHandler, ListenerHandler } = require('discord-akairo');
 const dotenv = require('dotenv');
 dotenv.config();
-const { owner, prefix } = require('./config.json');
-//const updateGrid = require('./events/misc/updateGrid');
+
+// config.json
+const fs = require('fs');
+if (!fs.existsSync('./config.json')) throw new Error('\x1b[31mI could not find config.json, are you sure you have it?\x1b[0m');
+const { owner, prefix, token } = require('./config.json');
+
+// Intents
+const { Intents } = require('discord.js');
+let intents = new Intents(Intents.ALL);
+intents.remove('GUILD_PRESENCES');
 
 class PaanyaClient extends AkairoClient {
-
     constructor() {
         super({
             ownerID: owner,
@@ -16,6 +23,10 @@ class PaanyaClient extends AkairoClient {
                     name: 'Getting everything ready...',
                 }
             }
+        }, {
+            partials: ['MESSAGE'],
+            disableMentions: 'everyone',
+            intents: intents
         });
 
         this.commandHandler = new CommandHandler(this, {
@@ -30,15 +41,24 @@ class PaanyaClient extends AkairoClient {
                     retries: 4,
                     time: 30000
                 }
-            }
+            },
+            commandUtil: true,
+            commandUtilLifetime: 60000,
+            allowMention: true,
+            handleEdits: true,
+            ignorePermissions: owner,
+            ignoreCooldown: owner
         });
 
         this.inhibitorHandler = new InhibitorHandler(this, {
-            directory: './events/inhibitors/'
+            directory: './event/inhibitors/',
+            emitters: {
+                process
+			},
         });
 
         this.listenerHandler = new ListenerHandler(this, {
-            directory: './events/listeners/'
+            directory: './event/listeners/'
         });
 
         this.listenerHandler.setEmitters({
@@ -50,23 +70,21 @@ class PaanyaClient extends AkairoClient {
 
         this.commandHandler.useInhibitorHandler(this.inhibitorHandler);
         this.commandHandler.useListenerHandler(this.listenerHandler);
-
-        this.commandHandler.loadAll();
-        this.inhibitorHandler.loadAll();
+        
         this.listenerHandler.loadAll();
+        this.inhibitorHandler.loadAll();
+        this.commandHandler.loadAll();
     }
-
 }
 
 const client = new PaanyaClient();
-// Below const client
-//require("discord-buttons")(client);
+
+// Should be below const client
+// require("discord-buttons")(client);
 
 client.login(process.env.TOKEN);
 
-/*
-client.on('clickButton', async button => {
-    // Tic Tac Toe
-    await updateGrid(button);
-});
-*/
+// client.on('clickButton', async button => {
+//     // Tic Tac Toe
+//     await updateGrid(button);
+// });

@@ -1,6 +1,4 @@
 const { Command } = require('discord-akairo');
-const { MessageEmbed } = require('discord.js');
-const fetch = require('node-fetch');
 
 class AchievementCommand extends Command {
     constructor() {

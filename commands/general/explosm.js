@@ -1,6 +1,5 @@
 const { Command } = require('discord-akairo');
 const { MessageAttachment } = require('discord.js');
-const fetch = require('node-fetch');
 const cheerio = require('cheerio');
 const Canvas = require('canvas');
 

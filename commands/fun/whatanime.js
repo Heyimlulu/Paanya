@@ -1,6 +1,5 @@
 const { Command } = require('discord-akairo');
 const { MessageEmbed } = require('discord.js');
-const fetch = require('node-fetch');
 const dotenv = require('dotenv');
 dotenv.config();
 const { createCanvas, loadImage } = require('canvas');

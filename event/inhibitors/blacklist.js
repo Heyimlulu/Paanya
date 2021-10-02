@@ -8,7 +8,8 @@ class BlacklistInhibitor extends Inhibitor {
         })
     }
 
-    exec(message) {
+    async exec(message) {
+        // Block user message
         const blacklist = [blacklistID];
         return blacklist.includes(message.author.id);
     }

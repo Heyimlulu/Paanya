@@ -1,13 +1,10 @@
 const { Listener } = require('discord-akairo');
-const { prefix } = require('../../config.json');
+const { prefix } = require('../../config.json'); 
 const play = require('../../json/status/playing.json');
 const watch = require('../../json/status/watching.json');
 const listen = require('../../json/status/listening.json');
-// Imports the Google Cloud client library.
-const {Storage} = require('@google-cloud/storage');
 
-class readyListener extends Listener {
-
+class ReadyListener extends Listener {
     constructor() {
         super('ready', {
             emitter: 'client',
@@ -16,21 +13,23 @@ class readyListener extends Listener {
     }
 
     async exec() {
-        let clientTag = this.client.user.tag; // Bot name
-        let guildSize = this.client.guilds.cache.size; // Bot ID
-        let userSize = this.client.users.cache.size; // Total users
-        let channelSize = this.client.channels.cache.size; // Total channels
-        let commandSize = this.client.commandHandler.modules.size - 12; // Total commands
-        let clientID = this.client.user.id; // Total servers
 
-        //  Send stats to the console
+        let bot = {
+            id: this.client.user.id,
+            name: this.client.user.tag,
+            guilds: this.client.guilds.cache.size,
+            users: this.client.users.cache.size,
+            channels: this.client.channels.cache.size,
+            commands: this.client.commandHandler.modules.size
+        }
+
         console.log('===========[ READY ]===========');
-        console.log(`\x1b[32mLogged in as \x1b[34m${clientTag}\x1b[0m! (\x1b[33m${clientID}\x1b[0m)`);
-        console.log(`Ready to serve in \x1b[33m${channelSize}\x1b[0m channels on \x1b[33m${guildSize}\x1b[0m servers, for a total of \x1b[33m${userSize}\x1b[0m users. (\x1b[33m${commandSize}\x1b[0m commands loaded)`);
+        console.log(`\x1b[32mLogged in as \x1b[34m${bot.name}\x1b[0m! (\x1b[33m${bot.id}\x1b[0m)`);
+        console.log(`Ready to serve in \x1b[33m${bot.channels}\x1b[0m channels on \x1b[33m${bot.guilds}\x1b[0m servers, for a total of \x1b[33m${bot.users}\x1b[0m users. (\x1b[33m${bot.commands}\x1b[0m commands loaded)`);
         console.log(`${this.client.readyAt}`);
         console.log('===========[ READY ]===========');
 
-        // Bot status
+        // Bot status - Set status at startup
         setStatus(this.client);
 
         // Change status every 30 minutes
@@ -68,25 +67,8 @@ class readyListener extends Listener {
 
         }
 
-        // Google Cloud
-        const storage = new Storage();
 
-        async function listBuckets() {
-            try {
-                const results = await storage.getBuckets();
-
-                const [buckets] = results;
-
-                console.log('Buckets:');
-                buckets.forEach(bucket => {
-                    console.log(bucket.name);
-                });
-            } catch (err) {
-                console.error('ERROR:', err);
-            }
-        }
-        listBuckets();
     }
 }
 
-module.exports = readyListener;
+module.exports = ReadyListener;

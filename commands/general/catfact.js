@@ -1,5 +1,4 @@
 const { Command } = require('discord-akairo');
-const fetch = require('node-fetch');
 const { MessageEmbed } = require('discord.js');
 
 class CatFactCommand extends Command {

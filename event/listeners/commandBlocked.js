@@ -8,7 +8,7 @@ class CommandBlockedListener extends Listener {
         });
     }
 
-    exec(message, command, reason) {
+    async exec(message, command, reason) {
         console.log(`${message.author.username} was blocked from using ${command.id} because of ${reason}!`);
     }
 }

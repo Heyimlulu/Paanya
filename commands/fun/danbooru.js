@@ -2,7 +2,8 @@ const { Command } = require('discord-akairo');
 const Discord = require('discord.js');
 const dotenv = require('dotenv');
 dotenv.config();
-const config = require('../../config.json');
+const axios = require('axios');
+const { danbooru } = require('../../config.json');
 
 class DanbooruCommand extends Command {
     constructor() {
@@ -20,33 +21,29 @@ class DanbooruCommand extends Command {
 
     async exec(message, args) {
 
-        fetch(`https://danbooru.donmai.us/explore/posts/popular.json?api_key=${process.env.DANBOORU_SECRET_KEY}&login=${config.danbooru.login}&limit=100`).then((response) => {
-            return response.json();
-        }).then((response) => {
+        await axios.get(`https://danbooru.donmai.us/explore/posts/popular.json?api_key=${process.env.DANBOORU_SECRET_KEY}&login=${danbooru.login}&limit=100`)
+        .then(async (response) => {
 
-            try {
-                const i = Math.floor((Math.random() * response.length));
+            const result = await response.data;
 
-                if (!message.channel.nsfw) return message.channel.send('You must be in a NSFW channel only to use this command!');
-                if (response[i].has_children == true || response[i].has_active_children == true || response[i].has_visible_children == true) {
-                    return message.channel.send('I could not send you the image because it contains blacklisted words');
-                }
+            const i = Math.floor((Math.random() * result.length));
 
-                const embed = new Discord.MessageEmbed()
-                    .setColor(message.member ? message.member.displayHexColor : 'RANDOM')
-                    .setAuthor(message.member.user.tag, message.member.user.displayAvatarURL())
-                    .setTitle(response[i].tag_string_artist)
-                    .setURL(response[i].source)
-                    .setImage(response[i].large_file_url)
-                //.setFooter(`tags: ${response[i].tag_string}`)
+            if (!message.channel.nsfw) return message.channel.send('You must be in a NSFW channel only to use this command!');
 
-                message.channel.send(embed);
-            } catch {
-                return message.channel.send('Something went wrong. Please try again')
+            if (result[i].has_children == true || result[i].has_active_children == true || result[i].has_visible_children == true) {
+                return message.channel.send('I could not send you the image because it contains blacklisted words');
             }
+            const embed = new Discord.MessageEmbed()
+                .setColor(message.member ? message.member.displayHexColor : 'RANDOM')
+                .setAuthor(message.member.user.tag, message.member.user.displayAvatarURL())
+                .setTitle(result[i].tag_string_artist)
+                .setURL(result[i].source)
+                .setImage(result[i].large_file_url)
+                //.setFooter(`tags: ${result[i].tag_string}`)
+            
+                message.channel.send(embed);
 
-        });
-
+        })
     }
 }
 

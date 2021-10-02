@@ -41,8 +41,6 @@ class ImgurCommand extends Command {
 
             const result = response.data;
 
-            console.log(result);
-
             let badWordFound = false;
 
             // Check if user input contains censored word
@@ -53,7 +51,6 @@ class ImgurCommand extends Command {
             }
 
             if (badWordFound == true) {
-
                 let date = await dateUtils();
 
                 const body = {
@@ -69,79 +66,20 @@ class ImgurCommand extends Command {
 
                 await message.delete();
                 await message.channel.send('Sorry, that word is unavailable or has been blacklisted');
-
             } else {
+                const i = Math.floor((Math.random() * result.data.length));
 
-                // const i = Math.floor((Math.random() * result.length));
+                if (result.data[i].hasOwnProperty('title')) {
+                    var title = result.data[i].title;
+                } else {
+                    var title = 'Untitled';
+                }
 
-                // console.log(result[i].title);
-                // console.log(result[i].link);
-
-                // if (response.data[i].hasOwnProperty('title')) {
-                //     var title = response.data[i].title;
-                // } else {
-                //     var title = 'Untitled';
-                // }
-
-                // await message.channel.send(`**${result[i].title}**\n${result[i].link}`)
-
+                await message.channel.send(`**${title}**\n${result.data[i].link}`)
             }
         }).catch((error) => {
             return message.channel.send(`An error has occurred: ${error}`);
         })
-
-        // fetch(`https://api.imgur.com/3/gallery/search/viral/top/0?q=${search}`, {
-        //     headers: {'Authorization': `Client-ID ${process.env.IMGUR_SECRET_KEY}`},
-        // }).then((response) => {
-        //     return response.json();
-
-        // }).then(async (response) => {
-
-        //     if (response.success == 'false') return message.channel.send('An error has occurred');
-
-        //     let badWordFound = false;
-
-        //     // Check if user input contains censored word
-        //     for (let findWord in censor) {
-        //         if (search.toLowerCase().includes(censor[findWord].toLowerCase())) {
-        //             badWordFound = true;
-        //         }
-        //     }
-
-        //     if (badWordFound == true) {
-
-        //         let date = await dateUtils();
-
-        //         const body = {
-        //             user: message.author.tag,
-        //             userID: message.author.id,
-        //             message: message.content,
-        //             command: 'imgur',
-        //             createdAt: date,
-        //             updatedAt: date
-        //         };
-
-        //         Infraction.create(body);
-
-        //         await message.delete();
-        //         await message.channel.send('Sorry, that word is unavailable or has been blacklisted');
-
-        //     } else {
-
-        //         const i = Math.floor((Math.random() * response.data.length));
-
-        //         if (response.data[i].hasOwnProperty('title')) {
-        //             var title = response.data[i].title;
-        //         } else {
-        //             var title = 'Untitled';
-        //         }
-
-        //         await message.channel.send(`**${title}**\n${response.data[i].link}`)
-
-        //     }
-
-        // });
-
     }
 }
 

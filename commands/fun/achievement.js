@@ -1,4 +1,5 @@
 const { Command } = require('discord-akairo');
+const axios = require('axios');
 
 class AchievementCommand extends Command {
     constructor() {
@@ -52,13 +53,14 @@ class AchievementCommand extends Command {
         if (!text) return;
         if (text.length > 26) return message.channel.send('This text has too many characters, please try again!');
 
-        try {
-            const response = await fetch(`https://minecraft-api.com/api/achivements/${block}/${title}/${text}`);
-            return message.channel.send(response.url.replace(/\%20/g, '..'));
-        } catch {
-            return message.channel.send('Uh Oh.. there was an error. Did you use a correct block name from the [list](https://minecraft-api.com/achivements/blocks/)?')
-        }
+        await axios.get(`https://minecraft-api.com/api/achivements/${block}/${title}/${text}`)
+        .then(async (response) => {
 
+            const result = response.config.url;
+
+            return message.channel.send(result.replace(/\%20/g, '..'));
+
+        }).catch((error) => message.channel.send('Uh Oh.. there was an error. Did you use a correct block name from the [list](https://minecraft-api.com/achivements/blocks/)?'));
     }
 }
 

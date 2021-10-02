@@ -1,6 +1,7 @@
 const { Command } = require('discord-akairo');
 const dotenv = require('dotenv');
 dotenv.config();
+const axios = require('axios');
 const censor = require("../../json/censor.json");
 const Infraction = require('../../models').infraction;
 const dateUtils = require('../../utils/datetime');
@@ -32,13 +33,10 @@ class GiphyCommand extends Command {
 
         let search = args.gif;
 
-        fetch(`https://api.giphy.com/v1/gifs/search?api_key=${process.env.GIPHY_SECRET_KEY}&q=${search}&limit=10&offset=0&rating=g&lang=en`).then((response) => {
-            
-            return response.json();
+        await axios.get(`https://api.giphy.com/v1/gifs/search?api_key=${process.env.GIPHY_SECRET_KEY}&q=${search}&limit=10&offset=0&rating=g&lang=en`)
+        .then(async (response) => {
 
-        }).then(async (response) => {
-
-            if (response.success == 'false') return message.channel.send('An error has occurred');
+            const result = await response.data;
 
             let badWordFound = false;
 
@@ -50,7 +48,6 @@ class GiphyCommand extends Command {
             }
 
             if (badWordFound == true) {
-
                 let date = await dateUtils();
 
                 const body = {
@@ -66,23 +63,18 @@ class GiphyCommand extends Command {
 
                 await message.delete();
                 await message.channel.send('Sorry, that word is unavailable or has been blacklisted');
-
             } else {
+                const i = Math.floor((Math.random() * result.data.length));
 
-                const i = Math.floor((Math.random() * response.data.length));
-
-                if (response.data[i].hasOwnProperty('title')) {
-                    var title = response.data[i].title;
+                if (result.data[i].hasOwnProperty('title')) {
+                    var title = result.data[i].title;
                 } else {
                     var title = 'Untitled';
                 }
 
-                await message.channel.send(`**${title}**\n${response.data[i].url}`);
-
+                await message.channel.send(`**${title}**\n${result.data[i].url}`);
             }
-
-        });
-
+        }).catch((error) => message.channel.send(`An error has occurred: **${error}**`))
     }
 }
 

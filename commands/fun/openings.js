@@ -1,6 +1,7 @@
 const { Command } = require('discord-akairo');
 const dotenv = require('dotenv');
 dotenv.config();
+const axios = require('axios');
 const { MessageEmbed } = require('discord.js');
 
 class OpeningsCommand extends Command {
@@ -17,26 +18,22 @@ class OpeningsCommand extends Command {
         });
     }
 
-    async exec(message, args) {
+    async exec(message) {
 
-        let video;
+        const uid = await axios.get('https://openings.moe/api/list.php')
+        .then(async (response) => {
+            const list = await response.data
+            const i = Math.floor((Math.random() * list.length) + 1);
+            
+            return list[i].uid; // Get video UID
+        });
 
-        const response = await fetch('https://openings.moe/api/list.php');
-        const list = await response.json();
-
-        const i = Math.floor((Math.random() * list.length) + 1);
-        console.log(list[i].uid);
-
-        video = list[i].uid; // Get video UID
-
-        const getDetails = await fetch(`https://openings.moe/api/details.php?name=${video}`);
-        const details = await getDetails.json();
-        console.log(details);
+        const video = await axios.get(`https://openings.moe/api/details.php?name=${uid}`);
 
         let embed = new MessageEmbed()
             .setColor(message.member ? message.member.displayHexColor : 'RANDOM')
-            .setTitle(`${details.song.title} by ${details.song.artist} (from ${details.source})`)
-            .setDescription(`[mp4](https://openings.moe/video/${details.file}.mp4) | [webm](https://openings.moe/video/${details.file}.webm)`)
+            .setTitle(`${video.data.song.title} by ${video.data.song.artist} (from ${video.data.source})`)
+            .setDescription(`[mp4](https://openings.moe/video/${video.data.file}.mp4) | [webm](https://openings.moe/video/${video.data.file}.webm)`)
             .setThumbnail('https://openings.moe/assets/logo/512px.png')
             .setFooter('Powered by https://openings.moe/')
 

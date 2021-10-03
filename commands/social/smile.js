@@ -22,7 +22,7 @@ class HappyCommand extends Command {
 
         const embed = new MessageEmbed()
             .setColor(message.member ? message.member.displayHexColor : 'RANDOM')
-            .setDescription(`😀 ${message.author} smiles`)
+            .setDescription(`😀 ${message.author} is happy`)
             .setImage(image)
             .setFooter('Powered by waifu.pics')
 

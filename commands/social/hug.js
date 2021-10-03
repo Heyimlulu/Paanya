@@ -1,5 +1,6 @@
 const { Command } = require('discord-akairo');
-const Discord = require('discord.js');
+const { MessageEmbed } = require('discord.js');
+const roleplay = require('../../utils/roleplay');
 
 class HugCommand extends Command {
     constructor() {
@@ -26,25 +27,24 @@ class HugCommand extends Command {
         if (message.mentions.members.first()) {
 
             let member = message.mentions.members.first();
-
-            let response;
-            let hug;
+            let image;
 
             // Randomly generated number between 0 and 1
             let i = Math.floor(Math.random() * 2);
 
-            if (i === 0) {
-                response = await fetch('https://waifu.pics/api/sfw/hug');
-                hug = await response.json();
-            } else if (i === 1) {
-                response = await fetch('https://waifu.pics/api/sfw/glomp');
-                hug = await response.json();
+            switch (i) {
+                case 0:
+                    image = await roleplay('hug');
+                    break;
+                case 1:
+                    image = await roleplay('glomp');
+                    break;
             }
 
-            const embed = new Discord.MessageEmbed()
+            const embed = new MessageEmbed()
                 .setColor(message.member ? message.member.displayHexColor : 'RANDOM')
                 .setDescription(`🤗 ${message.author} hugs ${member}`)
-                .setImage(hug.url)
+                .setImage(image)
                 .setFooter('Powered by waifu.pics')
 
             await message.channel.send(embed);

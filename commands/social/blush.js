@@ -1,5 +1,6 @@
 const { Command } = require('discord-akairo');
-const Discord = require('discord.js');
+const { MessageEmbed } = require('discord.js');
+const roleplay = require('../../utils/roleplay');
 
 class BlushCommand extends Command {
     constructor() {
@@ -17,19 +18,16 @@ class BlushCommand extends Command {
 
     async exec(message) {
 
-        fetch(`https://waifu.pics/api/sfw/blush`).then((response) => {
-            return response.json();
-        }).then((response) => {
 
-            const embed = new Discord.MessageEmbed()
-                .setColor(message.member ? message.member.displayHexColor : 'RANDOM')
-                .setDescription(`😳 ${message.author} blushes`)
-                .setImage(response.url)
-                .setFooter('Powered by waifu.pics')
+        let image = await roleplay('blush');
 
-            message.channel.send(embed);
+        const embed = new MessageEmbed()
+            .setColor(message.member ? message.member.displayHexColor : 'RANDOM')
+            .setDescription(`😳 ${message.author} blushes`)
+            .setImage(image)
+            .setFooter('Powered by waifu.pics')
 
-        });
+        await message.channel.send(embed);
 
     }
 }

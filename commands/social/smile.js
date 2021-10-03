@@ -1,5 +1,6 @@
 const { Command } = require('discord-akairo');
-const Discord = require('discord.js');
+const { MessageEmbed } = require('discord.js');
+const roleplay = require('../../utils/roleplay');
 
 class HappyCommand extends Command {
     constructor() {
@@ -17,20 +18,15 @@ class HappyCommand extends Command {
 
     async exec(message) {
 
-        fetch(`https://waifu.pics/api/sfw/smile`).then((response) => {
-            return response.json();
-        }).then((response) => {
+        let image = await roleplay('smile');
 
-            const embed = new Discord.MessageEmbed()
-                .setColor(message.member ? message.member.displayHexColor : 'RANDOM')
-                .setDescription(`😀 ${message.author} smiles`)
-                .setImage(response.url)
-                .setFooter('Powered by waifu.pics')
+        const embed = new MessageEmbed()
+            .setColor(message.member ? message.member.displayHexColor : 'RANDOM')
+            .setDescription(`😀 ${message.author} smiles`)
+            .setImage(image)
+            .setFooter('Powered by waifu.pics')
 
-            message.channel.send(embed);
-
-        });
-
+        await message.channel.send(embed);
     }
 }
 

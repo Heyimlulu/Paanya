@@ -23,8 +23,6 @@ class CataasCommand extends Command {
         const url = response.data.url;
         const tags = response.data.tags;
 
-        console.log(tags);
-
         const embed = new MessageEmbed()
         .setColor(message.member ? message.member.displayHexColor : 'RANDOM')
         .setAuthor(message.member.user.tag, message.member.user.displayAvatarURL())

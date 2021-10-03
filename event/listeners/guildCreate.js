@@ -3,6 +3,7 @@ const { statsChannel } = require('../../config.json');
 const Discord = require('discord.js');
 const config = require('../../config/bot-sites.json');
 const guildBlacklist = require('../../models').guildBlacklist;
+const axios = require('axios');
 
 class GuildCreateListener extends Listener {
     constructor() {
@@ -39,6 +40,14 @@ class GuildCreateListener extends Listener {
 
         async function guildCounter(url, auth, body) {
 
+            await axios.post(url, body, {
+                'Content-Type': 'application/json',
+                'Authorization': auth
+            })
+                .then((response) => console.log(response))
+                .catch((error) => console.log(error));
+
+            /*
             await fetch(url, {
                 method: 'post',
                 headers: {
@@ -47,6 +56,7 @@ class GuildCreateListener extends Listener {
                 },
                 body: JSON.stringify(body)
             }).then((response) => console.log(response));
+            */
 
         }
 

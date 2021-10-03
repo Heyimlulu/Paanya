@@ -2,6 +2,7 @@ const { Listener } = require('discord-akairo');
 const { statsChannel } = require('../../config.json');
 const Discord = require('discord.js');
 const config = require('../../config/bot-sites.json');
+const axios = require('axios');
 
 class GuildDeleteListener extends Listener {
     constructor() {
@@ -38,6 +39,14 @@ class GuildDeleteListener extends Listener {
 
         async function guildCounter(url, auth, body) {
 
+            await axios.post(url, body, {
+                'Content-Type': 'application/json',
+                'Authorization': auth
+            })
+                .then((response) => console.log(response))
+                .catch((error) => console.log(error));
+
+            /*
             await fetch(url, {
                 method: 'post',
                 headers: {
@@ -46,6 +55,7 @@ class GuildDeleteListener extends Listener {
                 },
                 body: JSON.stringify(body)
             }).then((response) => console.log(response));
+            */
 
         }
 

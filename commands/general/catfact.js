@@ -1,5 +1,6 @@
 const { Command } = require('discord-akairo');
 const { MessageEmbed } = require('discord.js');
+const axios = require('axios');
 
 class CatFactCommand extends Command {
     constructor() {
@@ -17,16 +18,18 @@ class CatFactCommand extends Command {
 
     async exec(message) {
 
-        fetch(`https://catfact.ninja/fact`).then((response) => {
-            return response.json();
-        }).then((response) => {
+        await axios.get('https://catfact.ninja/fact')
+        .then(async (response) => {
+
+            const result = response.data;
 
             const embed = new MessageEmbed()
                 .setColor(message.member ? message.member.displayHexColor : 'RANDOM')
                 .setTitle('Random cat fact 🐱')
-                .setDescription(response.fact)
+                .setDescription(result.fact)
 
-            message.channel.send(embed);
+            await message.channel.send(embed);
+
         })
 
     }

@@ -19,7 +19,7 @@
     "axios": "^0.23.0",
     "canvas": "^2.8.0",
     "cheerio": "^1.0.0-rc.10",
-    "cleverbot-free": "^1.1.6",
+    "cleverbot-free": "^1.1.7",
     "currency-converter-lt": "^1.1.4",
     "discord-akairo": "^8.1.0",
     "discord-buttons": "^4.0.0",

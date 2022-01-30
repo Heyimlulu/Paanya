@@ -39,7 +39,7 @@ You need to do the following
 
 ### Installing
 
-```
+```sh
 git clone https://github.com/Heyimlulu/Paanya.git
 npm install
 ```
@@ -52,12 +52,12 @@ Then enter your bot token. You can find it in your applications tab on [Discord 
 
 Now you can run the bot
 
-```
-#With Node
+```sh
+# With Node
 node index.js
 npm start
 
-#With pm2
+# With pm2
 pm2 start index.js --name "Paanya"
 ```
 

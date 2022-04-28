@@ -16,7 +16,7 @@
     "4chan-boards": "^2.0.1",
     "aki-api": "^6.0.8",
     "asciify-image": "^0.1.8",
-    "axios": "^0.27.1",
+    "axios": "^0.27.2",
     "canvas": "^2.9.1",
     "cheerio": "^1.0.0-rc.10",
     "cleverbot-free": "^1.1.11",

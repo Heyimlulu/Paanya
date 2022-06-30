@@ -11,7 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "@discordjs/opus": "^0.7.0",
-    "@google-cloud/storage": "^6.2.1",
+    "@google-cloud/storage": "^6.2.2",
     "@google-cloud/text-to-speech": "^4.0.0",
     "4chan-boards": "^2.0.1",
     "aki-api": "^6.0.8",

@@ -32,7 +32,7 @@
     "jimp": "^0.16.1",
     "meta-extractor": "^2.1.0",
     "mysql2": "^2.3.3",
-    "node-fetch": "^3.2.6",
+    "node-fetch": "^3.2.7",
     "owoify-js": "^1.0.7",
     "pg": "^8.7.3",
     "postgres": "^3.2.4",
